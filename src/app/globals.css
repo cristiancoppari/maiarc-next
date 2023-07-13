@@ -68,7 +68,7 @@
     }
 }
 
-@import "@/components/buttons/Burger/Burger.css";
+@import "src/components/buttons/Burger/Burger.css";
 
 @layer base {
     * {
