@@ -68,8 +68,6 @@
     }
 }
 
-@import "src/components/buttons/Burger/Burger.css";
-
 @layer base {
     * {
         @apply border-border;
@@ -78,3 +76,5 @@
         @apply bg-background text-foreground;
     }
 }
+
+@import "@/components/buttons/Burger/Burger.css";
