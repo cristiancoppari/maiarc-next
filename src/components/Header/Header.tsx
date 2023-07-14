@@ -71,9 +71,9 @@ function Header() {
 
                 <ul
                     className={cn(
-                        "absolute right-0 top-16 z-20 w-full flex-col justify-around border-l bg-transparent transition-colors duration-500 md:relative md:top-0 md:h-auto md:flex-row md:items-center md:border-none",
+                        "absolute right-0 top-16 z-20 w-full flex-col justify-around bg-transparent transition-colors duration-500 md:relative md:top-0 md:h-auto md:flex-row md:items-center md:border-none",
                         isMenuOpen || isDesktop ? "flex" : "hidden",
-                        isMenuOpen && "bg-slate-900 opacity-90",
+                        isMenuOpen && "bg-black",
                     )}
                 >
                     {nav_links_left.map((link) => {
