@@ -1,6 +1,7 @@
 import type { ICardAccommodation } from "@/types/cards";
 
 import Image from "next/image";
+import { Button } from "@/components/UI/button";
 
 const CardAccommodation = ({
     image,
@@ -21,6 +22,7 @@ const CardAccommodation = ({
                 <h4 className="p --font-lora">{name}</h4>
                 <p>{location}</p>
                 <p>{capacity}</p>
+                <Button variant="link">Consultar</Button>
             </div>
         </div>
     );
