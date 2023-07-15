@@ -1,11 +1,16 @@
 import Head from "next/head";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Lora } from "next/font/google";
 
 import Header from "@/components/Header/Header";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
-    variable: "--alertas-font-primary",
+    variable: "--font-montserrat",
+});
+
+const lora = Lora({
+    subsets: ["latin"],
+    variable: "--font-lora",
 });
 
 interface PageLayoutProps {
@@ -20,7 +25,7 @@ function PageLayout({ children, title }: PageLayoutProps) {
                 <title>{title}</title>
             </Head>
 
-            <div className={`${montserrat.variable}`}>
+            <div className={`${montserrat.variable} ${lora.variable}`}>
                 <Header />
                 {children}
                 {/* <Footer /> */}
