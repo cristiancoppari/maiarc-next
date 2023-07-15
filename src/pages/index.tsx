@@ -9,6 +9,7 @@ import ServiceGallery from "@/components/Galleries/ServiceGallery/ServiceGallery
 import BigGallery from "@/components/Galleries/BigGallery/BigGallery";
 import CarouselAccommodations from "@/components/Carousel/CarouselAccomodations";
 import InstagramGallery from "@/components/Galleries/InstagramGallery/InstagramGallery";
+import Newsletter from "@/components/Newsletter/Newsletter";
 
 import img_desktop_xl from "@/assets/images/hero-desktop-xl.jpeg";
 import img_desktop from "@/assets/images/hero-desktop.jpeg";
@@ -136,6 +137,8 @@ export default function Home() {
       >
         <InstagramGallery />
       </TitleSubtitle>
+
+      <Newsletter />
     </PageLayout>
   );
 }
