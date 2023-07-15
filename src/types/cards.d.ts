@@ -9,3 +9,10 @@ export interface ICardBig {
     description: string;
     link: string;
 }
+
+export interface ICardAccommodation {
+    image: string;
+    location: string;
+    name: string;
+    capacity: number;
+}

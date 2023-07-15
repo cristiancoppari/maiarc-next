@@ -1,7 +1,6 @@
 import type { ICardBig } from "@/types/cards";
 
-import Link from "next/link";
-import { Button } from "@/components/UI/button";
+import ButtonBlack from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
 import Image from "next/image";
 
@@ -23,9 +22,7 @@ const CardBig = ({ title, image, description, link }: ICardBig) => {
                     <p className="p mb-8">{description}</p>
                 </div>
 
-                <Button asChild>
-                    <Link href={link}>Ver más</Link>
-                </Button>
+                <ButtonBlack link={link} text="Ver más" />
             </div>
         </div>
     );

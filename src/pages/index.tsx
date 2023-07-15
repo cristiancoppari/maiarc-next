@@ -1,10 +1,13 @@
 "use client";
 
+import type { ICardAccommodation } from "@/types/cards";
+
 import PageLayout from "@/components/UI/PageLayout";
 import Hero from "@/components/Heros/Hero";
 import TitleSubtitle from "@/components/Sections/TitleSubtitle/TitleSubtitle";
 import ServiceGallery from "@/components/Galleries/ServiceGallery/ServiceGallery";
 import BigGallery from "@/components/Galleries/BigGallery/BigGallery";
+import CarouselAccommodations from "@/components/Carousel/CarouselAccomodations";
 
 import img_desktop_xl from "@/assets/images/hero-desktop-xl.jpeg";
 import img_desktop from "@/assets/images/hero-desktop.jpeg";
@@ -78,6 +81,33 @@ const big_cards = [
     },
 ];
 
+const accommodation_cards: ICardAccommodation[] = [
+    {
+        image: img_card.src,
+        name: "Villa 1",
+        capacity: 10,
+        location: "España",
+    },
+    {
+        image: img_card.src,
+        name: "Villa 2",
+        capacity: 11,
+        location: "Ibiza",
+    },
+    {
+        image: img_card.src,
+        name: "Villa 3",
+        capacity: 12,
+        location: "Tulum",
+    },
+    {
+        image: img_card.src,
+        name: "Villa 4",
+        capacity: 13,
+        location: "Miami",
+    },
+];
+
 export default function Home() {
     return (
         <PageLayout title="MAIARC Concierge">
@@ -88,6 +118,14 @@ export default function Home() {
             >
                 <ServiceGallery cards={cards} />
                 <BigGallery cards={big_cards} />
+            </TitleSubtitle>
+
+            <TitleSubtitle
+                title="Tu próximo alojamiento de lujo"
+                text="Recorré las propiedades que tenemos a disposición y elegí el lugar perfecto para vos. Contactanos para más información."
+                classes="container"
+            >
+                <CarouselAccommodations elements={accommodation_cards} />
             </TitleSubtitle>
         </PageLayout>
     );

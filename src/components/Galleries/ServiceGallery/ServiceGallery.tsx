@@ -1,9 +1,7 @@
 import type { ICardImageTitle } from "@/types/cards";
 
-import Link from "next/link";
-
-import { Button } from "@/components/UI/button";
 import CardImageTitle from "../../Cards/CardImageTitle/CardImageTitle";
+import ButtonBlack from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
 interface ICards {
     cards: ICardImageTitle[];
@@ -22,9 +20,7 @@ const ServiceGallery = ({ cards }: ICards) => {
                 ))}
             </div>
 
-            <Button asChild className="mt-6 rounded-full px-8 uppercase">
-                <Link href="/">Contacto</Link>
-            </Button>
+            <ButtonBlack link="/" text="Contacto" classes="mt-12" />
         </div>
     );
 };
