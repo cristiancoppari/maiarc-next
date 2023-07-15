@@ -3,6 +3,7 @@ import { Montserrat, Lora } from "next/font/google";
 
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import WhatsappButton from "@/components/Buttons/WhatsappButton/WhatsappButton";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -30,6 +31,8 @@ function PageLayout({ children, title }: PageLayoutProps) {
         <Header />
         {children}
         <Footer />
+
+        <WhatsappButton />
       </div>
     </>
   );
