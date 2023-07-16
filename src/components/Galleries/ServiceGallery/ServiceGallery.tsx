@@ -1,6 +1,7 @@
 import type { ICardImageTitle } from "@/types/cards";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
 import CardImageTitle from "../../Cards/CardImageTitle/CardImageTitle";
 import ButtonBlack from "@/components/Buttons/ButtonBlack/ButtonBlack";
@@ -13,7 +14,12 @@ const ServiceGallery = ({ cards }: ICards) => {
   return (
     <div className="container pb-20">
       <Swiper
-        style={{ padding: "2rem 0" }}
+        style={{ paddingTop: "2rem" }}
+        pagination={{
+          dynamicBullets: true,
+          clickable: true,
+        }}
+        modules={[Pagination]}
         breakpoints={{
           // when window width is >= 640px
           640: {
@@ -35,7 +41,7 @@ const ServiceGallery = ({ cards }: ICards) => {
         ))}
       </Swiper>
 
-      <ButtonBlack link="/" text="Contacto" classes="mt-12" />
+      <ButtonBlack link="/" text="Contacto" classes="mt-16" />
     </div>
   );
 };
