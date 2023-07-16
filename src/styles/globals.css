@@ -111,7 +111,7 @@
   }
 
   .h4 {
-    @apply text-lg font-bold md:text-xl;
+    @apply text-lg font-medium md:text-xl;
   }
 
   .p {

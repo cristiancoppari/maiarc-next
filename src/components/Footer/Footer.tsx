@@ -1,3 +1,5 @@
+import type { SvgImport } from "@/types/images";
+
 /* eslint-disable @next/next/no-img-element */
 import icon_fb from "@/assets/images/facebook.svg";
 import icon_ig from "@/assets/images/instagram.svg";
@@ -5,10 +7,6 @@ import icon_wpp from "@/assets/images/whatsapp.svg";
 
 import { Button } from "../UI/button";
 import Link from "next/link";
-
-type SvgImport = {
-  src: string;
-};
 
 const social: Array<{ icon: string; link: string }> = [
   {

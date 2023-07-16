@@ -10,16 +10,25 @@ interface CarouselBlockAccommodations {
 function CarouselAccommodations({ elements }: CarouselBlockAccommodations) {
   return (
     <Swiper
-      slidesPerView={2}
-      spaceBetween={50}
       pagination={{
         dynamicBullets: true,
         clickable: true,
       }}
       modules={[Pagination]}
+      breakpoints={{
+        640: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      }}
     >
       {elements.map((element, index) => (
-        <SwiperSlide key={index}>
+        <SwiperSlide key={index} className="p-4">
           <CardAccommodation {...element} />
         </SwiperSlide>
       ))}

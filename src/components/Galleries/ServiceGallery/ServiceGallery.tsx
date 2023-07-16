@@ -21,11 +21,9 @@ const ServiceGallery = ({ cards }: ICards) => {
         }}
         modules={[Pagination]}
         breakpoints={{
-          // when window width is >= 640px
           640: {
             slidesPerView: 2,
           },
-          // when window width is >= 768px
           1024: {
             slidesPerView: 3,
           },

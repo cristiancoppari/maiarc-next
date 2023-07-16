@@ -1,10 +1,14 @@
 export interface ImagePack {
-    desktop_xl: string;
-    desktop: string;
-    tablet: string;
-    mobile: string;
+  desktop_xl: string;
+  desktop: string;
+  tablet: string;
+  mobile: string;
 }
 
 export interface ImageProps {
-    images: ImagePack[];
+  images: ImagePack[];
+}
+
+export interface SvgImport {
+  src: string;
 }
