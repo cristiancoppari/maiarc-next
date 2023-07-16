@@ -1,6 +1,7 @@
-"use client";
-
 import type { ICardAccommodation } from "@/types/cards";
+
+import { useContext } from "react";
+import { LangContext } from "@/context/langContext";
 
 import PageLayout from "@/components/UI/PageLayout";
 import Hero from "@/components/Heros/Hero";
@@ -39,30 +40,24 @@ const images = [
   },
 ];
 
-const cards = [
+const cards_imgs = [
   {
     image: img_card.src,
-    title: "Villas de Lujo",
   },
   {
     image: img_card.src,
-    title: "Yates",
   },
   {
     image: img_card.src,
-    title: "Vehículos Premium",
   },
   {
     image: img_card.src,
-    title: "Jet Privado / Helicóptero",
   },
   {
     image: img_card.src,
-    title: "Producción de eventos",
   },
   {
     image: img_card.src,
-    title: "Reservaciones",
   },
 ];
 
@@ -111,12 +106,21 @@ const accommodation_cards: ICardAccommodation[] = [
 ];
 
 export default function Home() {
+  const content = useContext(LangContext);
+
+  const translated_content = content.home.services_gallery;
+
+  const cards = cards_imgs.map((card, index) => ({
+    ...card,
+    ...translated_content[index],
+  }));
+
   return (
     <PageLayout title="MAIARC Concierge">
       <Hero images={images} />
       <TitleSubtitle
-        title="Donde el lujo y la exclusividad cobran vida. Descubre nuestra gama de servicios exclusivos con un solo clic"
-        text="Ponemos a su disposición servicios únicos en Tulum, Ibiza, Miami y los destinos más exclusivos a nivel global. Diseñamos experiencias personalizadas para convertir tus expectativas en vivencias inolvidables."
+        title={content.home.title}
+        text={content.home.text}
         classes="container"
       >
         <ServiceGallery cards={cards} />

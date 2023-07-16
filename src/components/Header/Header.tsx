@@ -1,9 +1,7 @@
-import { type ChangeEvent, useState } from "react";
-
-import { es } from "@/lang/es";
-import { en } from "@/lang/en";
+import { useState, useContext } from "react";
 
 import { useRouter } from "next/router";
+import { LangContext } from "@/context/langContext";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,7 +17,7 @@ function Header() {
   const router = useRouter();
   const { locale } = router;
 
-  const t = locale === "es" ? es : en;
+  const content = useContext(LangContext);
 
   const changeLanguage = (locale: string) => {
     void router.push(router.pathname, router.asPath, { locale });
@@ -31,19 +29,21 @@ function Header() {
 
   return (
     <header className="header fixed left-0 top-0 z-10 w-full bg-black">
-      <div className="container flex justify-end gap-4 bg-slate-100 py-2">
-        <button
-          className={cn("uppercase", locale === "es" && "font-medium")}
-          onClick={() => changeLanguage("es")}
-        >
-          ES 🇪🇸
-        </button>
-        <button
-          className={cn("uppercase", locale === "en" && "font-medium")}
-          onClick={() => changeLanguage("en")}
-        >
-          EN 🇺🇸
-        </button>
+      <div className="bg-slate-100">
+        <div className="container flex h-8 justify-end gap-4">
+          <button
+            className={cn("uppercase", locale === "es" && "font-bold")}
+            onClick={() => changeLanguage("es")}
+          >
+            ES 🇪🇸
+          </button>
+          <button
+            className={cn("uppercase", locale === "en" && "font-bold")}
+            onClick={() => changeLanguage("en")}
+          >
+            EN 🇺🇸
+          </button>
+        </div>
       </div>
       <div
         className={cn(
@@ -68,12 +68,12 @@ function Header() {
 
         <ul
           className={cn(
-            "absolute right-0 top-16 z-20 w-full flex-col justify-around bg-transparent transition-colors duration-500 md:relative md:top-0 md:h-auto md:flex-row md:items-center md:border-none",
+            "absolute right-0 top-24 z-20 w-full flex-col justify-around bg-transparent transition-colors duration-500 md:relative md:top-0 md:h-auto md:flex-row md:items-center md:border-none",
             isMenuOpen || isDesktop ? "flex" : "hidden",
             isMenuOpen && "bg-black",
           )}
         >
-          {t.nav_links_left.map((link) => {
+          {content?.nav_links_left.map((link) => {
             return (
               <li className="p-4 text-center md:p-0" key={link.label}>
                 <Link
@@ -96,7 +96,7 @@ function Header() {
             </Link>
           )}
 
-          {t.nav_links_right.map((link) => {
+          {content?.nav_links_right.map((link) => {
             return (
               <li className="p-4 text-center md:p-0" key={link.label}>
                 <Link

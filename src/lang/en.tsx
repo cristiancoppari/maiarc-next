@@ -27,4 +27,29 @@ export const en = {
       href: "/contacto",
     },
   ],
+  home: {
+    title:
+      "Where luxury and exclusivity come to life. Discover our range of exclusive services with a single click",
+    text: "We offer unique services in Tulum, Ibiza, Miami and the most exclusive destinations worldwide. We design personalized experiences to turn your expectations into unforgettable experiences.",
+    services_gallery: [
+      {
+        title: "Luxury Villas",
+      },
+      {
+        title: "Yatchs",
+      },
+      {
+        title: "Premium Cars",
+      },
+      {
+        title: "Private Jets / Helicopters",
+      },
+      {
+        title: "Event production",
+      },
+      {
+        title: "Reservations",
+      },
+    ],
+  },
 };
