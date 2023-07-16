@@ -2,15 +2,21 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 import type { ImageProps } from "@/types/images";
 
 import Image from "next/image";
 
-import "swiper/css";
-
 const Carousel = ({ images }: ImageProps) => {
   return (
-    <Swiper className="h-full">
+    <Swiper
+      pagination={{
+        dynamicBullets: true,
+        clickable: true,
+      }}
+      modules={[Pagination]}
+      className="h-full"
+    >
       {images.map((image, index) => (
         <SwiperSlide key={index}>
           <picture>

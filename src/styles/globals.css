@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "swiper/css/bundle";
+@import "../components/Buttons/Burger/Burger.css";
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -119,5 +122,23 @@
     font-family: var(--font-lora);
   }
 }
+.swiper {
+  overflow-y: visible !important;
+}
 
-@import "../components/Buttons/Burger/Burger.css";
+.swiper-pagination {
+  bottom: -20px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #999999;
+  opacity: 0.8;
+  margin: 0 5px; /* Adjust the spacing between dots as needed */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #333333;
+  opacity: 1;
+}
