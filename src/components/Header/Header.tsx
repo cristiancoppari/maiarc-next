@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { type ChangeEvent, useState } from "react";
 
 import { es } from "@/lang/es";
 import { en } from "@/lang/en";
@@ -21,8 +21,7 @@ function Header() {
 
   const t = locale === "es" ? es : en;
 
-  const changeLanguage = (e: ChangeEvent<HTMLSelectElement>) => {
-    const locale = e.target.value;
+  const changeLanguage = (locale: string) => {
     void router.push(router.pathname, router.asPath, { locale });
   };
 
@@ -32,11 +31,19 @@ function Header() {
 
   return (
     <header className="header fixed left-0 top-0 z-10 w-full bg-black">
-      <div className="bg-slate-100">
-        <select onChange={changeLanguage} defaultValue={locale}>
-          <option value="es">ES</option>
-          <option value="en">EN</option>
-        </select>
+      <div className="container flex justify-end gap-4 bg-slate-100 py-2">
+        <button
+          className={cn("uppercase", locale === "es" && "font-medium")}
+          onClick={() => changeLanguage("es")}
+        >
+          ES 🇪🇸
+        </button>
+        <button
+          className={cn("uppercase", locale === "en" && "font-medium")}
+          onClick={() => changeLanguage("en")}
+        >
+          EN 🇺🇸
+        </button>
       </div>
       <div
         className={cn(

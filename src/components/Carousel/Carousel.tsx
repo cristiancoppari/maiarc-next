@@ -26,7 +26,7 @@ const Carousel = ({ images }: ImageProps) => {
             <Image
               src={image.mobile} // Default image
               alt="Description of the image"
-              layout="fill"
+              fill
             />
           </picture>
         </SwiperSlide>
