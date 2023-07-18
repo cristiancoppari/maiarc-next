@@ -21,8 +21,13 @@ export interface Footer {
 }
 
 export interface NavLinks {
+  type: string;
   label: string;
   href: string;
+}
+
+export interface DropdownLink extends NavLinks {
+  items: NavLinks[];
 }
 
 export interface Home extends Section {

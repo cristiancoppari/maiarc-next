@@ -3,28 +3,56 @@ export const en = {
     content: {
       nav_links_left: [
         {
+          type: "link",
           label: "Who we are",
           href: "/",
         },
         {
+          type: "dropdown",
           label: "Destinations",
+          items: [
+            {
+              type: "link",
+              label: "Tulum",
+              href: "/destinos/tulum",
+            },
+            {
+              type: "link",
+              label: "Miami",
+              href: "/destinos/miami",
+            },
+            {
+              type: "link",
+              label: "Punta del Este",
+              href: "/destinos/punta-del-este",
+            },
+            {
+              type: "link",
+              label: "Ibiza",
+              href: "/destinos/ibiza",
+            },
+          ],
           href: "/destinos",
         },
         {
+          type: "link",
           label: "Real Estate",
           href: "/real-estate",
         },
       ],
       nav_links_right: [
         {
+          type: "link",
           label: "Unique Experiences",
           href: "/experiencias-unicas",
         },
         {
+          type: "link",
           label: "Superyachts",
           href: "/super-yates",
         },
         {
+          type: "link",
           label: "Contact",
           href: "/contacto",
         },
