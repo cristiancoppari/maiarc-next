@@ -22,7 +22,7 @@ export const es = {
         },
         {
           label: "Superyates",
-          href: "/superyates",
+          href: "/super-yates",
         },
         {
           label: "Contacto",

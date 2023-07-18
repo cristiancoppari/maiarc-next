@@ -22,7 +22,7 @@ export const en = {
         },
         {
           label: "Superyachts",
-          href: "/superyates",
+          href: "/super-yates",
         },
         {
           label: "Contact",

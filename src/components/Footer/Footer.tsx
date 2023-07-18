@@ -38,7 +38,7 @@ const Footer = ({ content }: Footer) => {
 
       <div>
         <Button variant="link" asChild>
-          <Link href="/privacy-policy" className="mb-8 text-xs">
+          <Link href="/politicas-de-privacidad" className="mb-8 text-xs">
             {content}
           </Link>
         </Button>
