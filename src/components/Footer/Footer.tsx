@@ -23,7 +23,11 @@ const social: Array<{ icon: string; link: string }> = [
   },
 ];
 
-const Footer = () => {
+interface Footer {
+  content: string;
+}
+
+const Footer = ({ content }: Footer) => {
   return (
     <footer className="flex flex-col items-center py-12">
       <p className="mb-8">LOGO</p>
@@ -35,7 +39,7 @@ const Footer = () => {
       <div>
         <Button variant="link" asChild>
           <Link href="/privacy-policy" className="mb-8 text-xs">
-            Politicas de privacidad y Avisos Legales
+            {content}
           </Link>
         </Button>
       </div>

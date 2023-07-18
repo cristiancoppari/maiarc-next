@@ -1,55 +1,94 @@
 export const en = {
-  nav_links_left: [
-    {
-      label: "Who we are",
-      href: "/",
+  header: {
+    content: {
+      nav_links_left: [
+        {
+          label: "Who we are",
+          href: "/",
+        },
+        {
+          label: "Destinations",
+          href: "/destinos",
+        },
+        {
+          label: "Real Estate",
+          href: "/real-estate",
+        },
+      ],
+      nav_links_right: [
+        {
+          label: "Unique Experiences",
+          href: "/experiencias-unicas",
+        },
+        {
+          label: "Superyachts",
+          href: "/superyates",
+        },
+        {
+          label: "Contact",
+          href: "/contacto",
+        },
+      ],
     },
-    {
-      label: "Destinations",
-      href: "/destinos",
-    },
-    {
-      label: "Real Estate",
-      href: "/real-estate",
-    },
-  ],
-  nav_links_right: [
-    {
-      label: "Unique Experiences",
-      href: "/experiencias-unicas",
-    },
-    {
-      label: "Superyachts",
-      href: "/superyates",
-    },
-    {
-      label: "Contact",
-      href: "/contacto",
-    },
-  ],
+  },
+  footer: {
+    content: "Privacy Policy and Legal Notices",
+  },
   home: {
     title:
       "Where luxury and exclusivity come to life. Discover our range of exclusive services with a single click",
     text: "We offer unique services in Tulum, Ibiza, Miami and the most exclusive destinations worldwide. We design personalized experiences to turn your expectations into unforgettable experiences.",
-    services_gallery: [
-      {
-        title: "Luxury Villas",
-      },
-      {
-        title: "Yatchs",
-      },
-      {
-        title: "Premium Cars",
-      },
-      {
-        title: "Private Jets / Helicopters",
-      },
-      {
-        title: "Event production",
-      },
-      {
-        title: "Reservations",
-      },
-    ],
+    services_gallery: {
+      cards: [
+        {
+          title: "Luxury Villas",
+        },
+        {
+          title: "Yatchs",
+        },
+        {
+          title: "Premium Cars",
+        },
+        {
+          title: "Private Jets / Helicopters",
+        },
+        {
+          title: "Event production",
+        },
+        {
+          title: "Reservations",
+        },
+      ],
+      cta: "Contact",
+    },
+    big_gallery: {
+      cards: [
+        {
+          title: "Luxury Villas",
+          description:
+            "We offer you the most exclusive villas in the world. Enjoy the best destinations with the highest quality services and the most exclusive amenities.",
+          cta_label: "More",
+        },
+        {
+          title: "Super Yachts",
+          description:
+            "We offer you the most exclusive villas in the world. Enjoy the best destinations with the highest quality services and the most exclusive amenities.",
+          cta_label: "More",
+        },
+      ],
+    },
+    accommodations: {
+      title: "Accommodations",
+      text: "We offer you the most exclusive villas in the world. Enjoy the best destinations with the highest quality services and the most exclusive amenities.",
+    },
+    instagram_gallery: {
+      title: "Our community",
+      text: "Be part! Follow us on Instagram @maiarc.concierge.",
+    },
+    newsletter: {
+      title: "Inspire yourself",
+      text: "Subscribe to the newsletter and be the first to find out about the latest news and experiences we have to offer you within the global luxury.",
+      cta: "Subscribe",
+    },
   },
 };

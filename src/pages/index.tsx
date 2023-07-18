@@ -1,5 +1,3 @@
-import type { ICardAccommodation } from "@/types/cards";
-
 import { useContext } from "react";
 import { LangContext } from "@/context/langContext";
 
@@ -61,24 +59,18 @@ const cards_imgs = [
   },
 ];
 
-const big_cards = [
+const big_cards_imgs = [
   {
     image: img_card.src,
-    title: "Villas de Lujo",
-    description:
-      "Disfruta de los eventos más exclusivos del calendario VIP mundial. Maiarc se encarga de diseñarte una experiencia única y personalizada.",
     link: "/experiencias-unicas",
   },
   {
     image: img_card.src,
-    title: "Yates",
-    description:
-      "Nuestro broker especializado te brinda acceso a los yates más exclusivos en cualquier parte del mundo. Sumergete en destinos paradisíacos, disfruta de servicios de alta gama y vive una experiencia única.",
     link: "/super-yates",
   },
 ];
 
-const accommodation_cards: ICardAccommodation[] = [
+const accommodation_cards = [
   {
     image: img_card.src,
     name: "Villa 1",
@@ -108,11 +100,16 @@ const accommodation_cards: ICardAccommodation[] = [
 export default function Home() {
   const content = useContext(LangContext);
 
-  const translated_content = content.home.services_gallery;
+  const translated_content = content.home;
 
   const cards = cards_imgs.map((card, index) => ({
     ...card,
-    ...translated_content[index],
+    ...translated_content.services_gallery.cards[index],
+  }));
+
+  const big_cards = big_cards_imgs.map((card, index) => ({
+    ...card,
+    ...translated_content.big_gallery.cards[index],
   }));
 
   return (
@@ -123,27 +120,30 @@ export default function Home() {
         text={content.home.text}
         classes="container"
       >
-        <ServiceGallery cards={cards} />
+        <ServiceGallery
+          cards={cards}
+          cta={translated_content.services_gallery.cta}
+        />
         <BigGallery cards={big_cards} />
       </TitleSubtitle>
 
       <TitleSubtitle
-        title="Tu próximo alojamiento de lujo"
-        text="Recorré las propiedades que tenemos a disposición y elegí el lugar perfecto para vos. Contactanos para más información."
+        title={translated_content.accommodations.title}
+        text={translated_content.accommodations.text}
         classes="container"
       >
         <CarouselAccommodations elements={accommodation_cards} />
       </TitleSubtitle>
 
       <TitleSubtitle
-        title="Nuestra comunidad"
-        text="Se parte! Seguinos en Instagram @maiarc.concierge."
+        title={translated_content.instagram_gallery.title}
+        text={translated_content.instagram_gallery.text}
         classes="container"
       >
         <InstagramGallery />
       </TitleSubtitle>
 
-      <Newsletter />
+      <Newsletter content={translated_content.newsletter} />
     </PageLayout>
   );
 }

@@ -8,9 +8,10 @@ import ButtonBlack from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
 interface ICards {
   cards: ICardImageTitle[];
+  cta: string;
 }
 
-const ServiceGallery = ({ cards }: ICards) => {
+const ServiceGallery = ({ cards, cta }: ICards) => {
   return (
     <div className="container pb-20">
       <Swiper
@@ -39,7 +40,7 @@ const ServiceGallery = ({ cards }: ICards) => {
         ))}
       </Swiper>
 
-      <ButtonBlack link="/" text="Contacto" classes="mt-16" />
+      <ButtonBlack link="/" text={cta} classes="mt-16" />
     </div>
   );
 };

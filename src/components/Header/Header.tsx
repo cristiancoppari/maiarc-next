@@ -1,7 +1,8 @@
-import { useState, useContext } from "react";
+import type { NavLinks } from "@/types/content";
+
+import { useState } from "react";
 
 import { useRouter } from "next/router";
-import { LangContext } from "@/context/langContext";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,14 +11,20 @@ import useDesktop from "@/hooks/useDesktop";
 import Burger from "@/components/Buttons/Burger/Burger";
 import logo from "@/assets/images/logo.png";
 
-function Header() {
+interface Header {
+  content: {
+    nav_links_left: NavLinks[];
+    nav_links_right: NavLinks[];
+  };
+}
+
+function Header({ content }: Header) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDesktop] = useDesktop();
 
   const router = useRouter();
-  const { locale } = router;
 
-  const content = useContext(LangContext);
+  const { locale } = router;
 
   const changeLanguage = (locale: string) => {
     void router.push(router.pathname, router.asPath, { locale });
@@ -73,7 +80,7 @@ function Header() {
             isMenuOpen && "bg-black",
           )}
         >
-          {content?.nav_links_left.map((link) => {
+          {content.nav_links_left.map((link) => {
             return (
               <li className="p-4 text-center md:p-0" key={link.label}>
                 <Link
@@ -96,7 +103,7 @@ function Header() {
             </Link>
           )}
 
-          {content?.nav_links_right.map((link) => {
+          {content.nav_links_right.map((link) => {
             return (
               <li className="p-4 text-center md:p-0" key={link.label}>
                 <Link

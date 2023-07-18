@@ -4,7 +4,7 @@ import ButtonBlack from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
 import Image from "next/image";
 
-const CardBig = ({ title, image, description, link }: ICardBig) => {
+const CardBig = ({ title, image, description, link, cta_label }: ICardBig) => {
   return (
     <div className="flex flex-col shadow-xl">
       <Image
@@ -20,7 +20,7 @@ const CardBig = ({ title, image, description, link }: ICardBig) => {
           <p className="p mb-8">{description}</p>
         </div>
 
-        <ButtonBlack link={link} text="Ver más" />
+        <ButtonBlack link={link} text={cta_label} />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ export interface ICardBig {
   image: string;
   description: string;
   link: string;
+  cta_label: string;
 }
 
 export interface ICardAccommodation {

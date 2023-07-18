@@ -16,6 +16,7 @@ const BigGallery = ({ cards }: BigGalleryProps) => {
           title={card.title}
           link={card.link}
           description={card.description}
+          cta_label={card.cta_label}
         />
       ))}
     </div>

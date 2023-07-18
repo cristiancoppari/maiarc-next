@@ -1,36 +1,12 @@
 import { type ReactNode, createContext } from "react";
 import { useRouter } from "next/router";
 
-interface Root {
-  nav_links_left: NavLinksLeft[];
-  nav_links_right: NavLinksRight[];
-  home: Home;
-}
-
-interface NavLinksLeft {
-  label: string;
-  href: string;
-}
-
-interface Home {
-  title: string;
-  text: string;
-  services_gallery: ServiceGallery[];
-}
-
-interface NavLinksRight {
-  label: string;
-  href: string;
-}
-
-interface ServiceGallery {
-  title: string;
-}
+import type { Content } from "@/types/content";
 
 import { es } from "@/lang/es";
 import { en } from "@/lang/en";
 
-export const LangContext = createContext<Root>({} as Root);
+export const LangContext = createContext<Content>({} as Content);
 export const LangDispatchContext = createContext({});
 
 const LangContextProvider = ({ children }: { children: ReactNode }) => {
@@ -51,7 +27,7 @@ const LangContextProvider = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <LangContext.Provider value={locale_file as Root}>
+    <LangContext.Provider value={locale_file as Content}>
       {children}
       {/* <LangDispatchContext.Provider value={{ changeLanguage }}>
       </LangDispatchContext.Provider> */}
