@@ -67,33 +67,6 @@ export const en = {
       "Where luxury and exclusivity come to life. Discover our range of exclusive services with a single click",
     text: "We offer unique services in Tulum, Ibiza, Miami and the most exclusive destinations worldwide. We design personalized experiences to turn your expectations into unforgettable experiences.",
     services_gallery: {
-      nav_links_right: [
-        {
-          type: "link",
-          label: "Experiencias únicas",
-          href: "/experiencias-unicas",
-        },
-        {
-          type: "link",
-          label: "Superyates",
-          href: "/super-yates",
-        },
-        {
-          type: "link",
-          label: "Contacto",
-          href: "/contacto",
-        },
-      ],
-    },
-  },
-  footer: {
-    content: "Política de privacidad y Avisos Legales",
-  },
-  home: {
-    title:
-      "Donde el lujo y la exclusividad cobran vida. Descubre nuestra gama de servicios exclusivos con un solo clic",
-    text: "Ponemos a su disposición servicios únicos en Tulum, Ibiza, Miami y los destinos más exclusivos a nivel global. Diseñamos experiencias personalizadas para convertir tus expectativas en vivencias inolvidables.",
-    services_gallery: {
       cards: [
         {
           title: "Luxury Villas",
