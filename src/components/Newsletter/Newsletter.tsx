@@ -10,7 +10,7 @@ interface NewsletterProps {
 
 const Newsletter = ({ content }: NewsletterProps) => {
   return (
-    <section className="bg-zinc-500 py-8">
+    <section className="bg-zinc-700 py-8">
       <div className="container md:w-3/4">
         <h3 className="h3 mb-2 uppercase text-slate-100">{content.title}</h3>
         <p className="mb-8 text-slate-100">{content.text}</p>

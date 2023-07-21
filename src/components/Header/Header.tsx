@@ -42,7 +42,7 @@ function Header({ content }: Header) {
   };
 
   return (
-    <header className="header fixed left-0 top-0 z-10 w-full bg-black">
+    <header className="header fixed left-0 top-0 z-10 w-full bg-black opacity-80">
       <div className="bg-slate-100">
         <div className="container flex h-8 justify-end gap-4">
           <button

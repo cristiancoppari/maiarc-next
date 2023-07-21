@@ -10,7 +10,7 @@ const CardImageTitle = ({ image, title }: ICardImageTitle) => {
         alt=""
         width={400}
         height={300}
-        className="mx-auto w-full"
+        className="mx-auto aspect-square w-full"
       />
       <div className="p-4 text-center">
         <h3 className="p --font-lora">- {title} -</h3>

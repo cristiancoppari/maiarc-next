@@ -18,9 +18,9 @@ const CardAccommodation = ({
         height={400}
         className="h-52 w-full object-cover"
       />
-      <div className="p-4 text-center">
-        <h4 className="h4 --font-lora mb-4">{name}</h4>
-        <div className="flex justify-between px-4">
+      <div className="p-6">
+        <h4 className="h4 --font-lora mb-2 text-left">{name}</h4>
+        <div className="flex justify-between">
           <div className="flex gap-4">
             <div className="flex items-center gap-2">
               <svg

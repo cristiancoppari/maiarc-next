@@ -84,7 +84,25 @@ export const es = {
           title: "Producción de eventos",
         },
         {
+          title: "Bienestar",
+        },
+        {
           title: "Reservaciones",
+        },
+        {
+          title: "Tours",
+        },
+        {
+          title: "Reservas",
+        },
+        {
+          title: "Seguridad",
+        },
+        {
+          title: "Chef",
+        },
+        {
+          title: "Mesas Vip",
         },
       ],
       cta: "Contacto",

@@ -12,7 +12,7 @@ const CardBig = ({ title, image, description, link, cta_label }: ICardBig) => {
         alt=""
         width={400}
         height={300}
-        className="mx-auto w-full"
+        className="mx-auto aspect-square w-full"
       />
       <div className="relative flex h-full flex-col items-center justify-between p-4 md:p-8">
         <div>
