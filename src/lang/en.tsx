@@ -129,6 +129,10 @@ export const en = {
     accommodations: {
       title: "Accommodations",
       text: "We offer you the most exclusive villas in the world. Enjoy the best destinations with the highest quality services and the most exclusive amenities.",
+      cta: {
+        label: "More",
+        href: "/experiencias-unicas",
+      },
     },
     instagram_gallery: {
       title: "Our community",

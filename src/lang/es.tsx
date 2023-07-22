@@ -126,6 +126,10 @@ export const es = {
     accommodations: {
       title: "Tu próximo alojamiento de lujo",
       text: "Recorré las propiedades que tenemos a disposición y elegí el lugar perfecto para vos. Contactanos para más información.",
+      cta: {
+        label: "Ver más",
+        href: "/experiencias-unicas",
+      },
     },
     instagram_gallery: {
       title: "Nuestra comunidad",

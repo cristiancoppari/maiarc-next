@@ -2,9 +2,10 @@ import { useContext, useState } from "react";
 import { LangContext } from "@/context/langContext";
 
 import PageLayout from "@/components/UI/PageLayout";
+
 import Hero from "@/components/Heros/Hero";
-import TitleSubtitle from "@/components/Sections/TitleSubtitle/TitleSubtitle";
-import ServiceGallery from "@/components/Galleries/ServiceGallery/ServiceGallery";
+import Section from "@/components/Sections/Section";
+import CarouselServices from "@/components/Carousel/CarouselServices";
 import BigGallery from "@/components/Galleries/BigGallery/BigGallery";
 import CarouselAccommodations from "@/components/Carousel/CarouselAccomodations";
 import InstagramGallery from "@/components/Galleries/InstagramGallery/InstagramGallery";
@@ -161,33 +162,38 @@ export default function Home() {
   return (
     <PageLayout title="MAIARC Concierge">
       <Hero images={images} />
-      <TitleSubtitle
+
+      <Section
         title={content.home.title}
         text={content.home.text}
         classes="container"
       >
-        <ServiceGallery
+        <CarouselServices
           cards={cards}
           cta={translated_content.services_gallery.cta}
         />
-        <BigGallery cards={big_cards} />
-      </TitleSubtitle>
 
-      <TitleSubtitle
+        <BigGallery cards={big_cards} />
+      </Section>
+
+      <Section
         title={translated_content.accommodations.title}
         text={translated_content.accommodations.text}
-        classes="container"
+        classes="bg-zinc-200"
       >
-        <CarouselAccommodations elements={accommodation_cards} />
-      </TitleSubtitle>
+        <CarouselAccommodations
+          elements={accommodation_cards}
+          cta={translated_content.accommodations.cta}
+        />
+      </Section>
 
-      <TitleSubtitle
+      <Section
         title={translated_content.instagram_gallery.title}
         text={translated_content.instagram_gallery.text}
         classes="container"
       >
         <InstagramGallery />
-      </TitleSubtitle>
+      </Section>
 
       <Newsletter content={translated_content.newsletter} />
 

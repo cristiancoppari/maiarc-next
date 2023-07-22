@@ -18,7 +18,7 @@ const CardAccommodation = ({
         height={400}
         className="h-52 w-full object-cover"
       />
-      <div className="p-6">
+      <div className="bg-zinc-100 p-6 text-slate-900">
         <h4 className="h4 --font-lora mb-2 text-left">{name}</h4>
         <div className="flex justify-between">
           <div className="flex gap-4">

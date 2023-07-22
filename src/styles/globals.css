@@ -2,8 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "swiper/css/bundle";
+@import "@splidejs/react-splide/css";
 @import "../components/Buttons/Burger/Burger.css";
+
+.splide__arrow svg {
+  @apply fill-slate-100;
+}
+
+.splide__arrow {
+  @apply bg-black opacity-100;
+}
+
+.splide__arrow--prev {
+  @apply -left-10;
+}
+
+.splide__arrow--next {
+  @apply -right-10;
+}
+
+.splide__pagination__page {
+  @apply bg-black opacity-50;
+}
+
+.splide__pagination__page.is-active {
+  @apply bg-black opacity-100;
+}
 
 @layer base {
   :root {
@@ -122,24 +146,8 @@
   .--font-lora {
     font-family: var(--font-lora);
   }
-}
-.swiper {
-  overflow-y: visible !important;
-}
 
-.swiper-pagination {
-  bottom: -20px !important;
-}
-
-.swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background-color: #999999;
-  opacity: 0.8;
-  margin: 0 5px; /* Adjust the spacing between dots as needed */
-}
-
-.swiper-pagination-bullet-active {
-  background-color: #333333;
-  opacity: 1;
+  .carousel-hero .splide__track {
+    @apply h-full;
+  }
 }

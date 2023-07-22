@@ -1,38 +1,50 @@
 import type { ICardAccommodation } from "@/types/cards";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 import CardAccommodation from "../Cards/CardAccommodation/CardAccommodation";
+import ButtonBlack from "../Buttons/ButtonBlack/ButtonBlack";
 
 interface CarouselBlockAccommodations {
   elements: ICardAccommodation[];
+  cta: {
+    label: string;
+    href: string;
+  };
 }
 
-function CarouselAccommodations({ elements }: CarouselBlockAccommodations) {
+function CarouselAccommodations({
+  elements,
+  cta,
+}: CarouselBlockAccommodations) {
   return (
-    <Swiper
-      pagination={{
-        dynamicBullets: true,
-        clickable: true,
-      }}
-      modules={[Pagination]}
-      breakpoints={{
-        640: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 3,
-        },
-      }}
-    >
-      {elements.map((element, index) => (
-        <SwiperSlide key={index} className="p-4">
-          <CardAccommodation {...element} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="container">
+      <Splide
+        options={{
+          type: "loop",
+          perPage: 1,
+          perMove: 1,
+          mediaQuery: "min",
+          breakpoints: {
+            768: {
+              perPage: 2,
+              perMove: 1,
+            },
+            1024: {
+              perPage: 3,
+              perMove: 1,
+            },
+          },
+        }}
+        className="with-arrows"
+      >
+        {elements.map((element, index) => (
+          <SplideSlide key={index} className="p-2 py-8">
+            <CardAccommodation {...element} />
+          </SplideSlide>
+        ))}
+      </Splide>
+
+      <ButtonBlack link={cta.href} text={cta.label} classes="mt-12" />
+    </div>
   );
 }
 

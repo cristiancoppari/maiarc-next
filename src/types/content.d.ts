@@ -45,6 +45,10 @@ export interface InstagramGallery extends Section {
 export interface Accomodations {
   title: string;
   text: string;
+  cta: {
+    label: string;
+    href: string;
+  };
   // cards: AccomodationCard[];
 }
 

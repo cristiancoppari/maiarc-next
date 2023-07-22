@@ -1,25 +1,20 @@
-"use client";
-
 /* eslint-disable @next/next/no-img-element */
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 import type { ImageProps } from "@/types/images";
 
 import Image from "next/image";
 
-const Carousel = ({ images }: ImageProps) => {
+const CarouselHero = ({ images }: ImageProps) => {
   return (
-    <Swiper
-      pagination={{
-        dynamicBullets: true,
-        clickable: true,
+    <Splide
+      className="carousel-hero h-full"
+      options={{
+        arrows: false,
       }}
-      modules={[Pagination]}
-      className="h-full"
     >
       {images.map((image, index) => (
-        <SwiperSlide key={index}>
-          <picture>
+        <SplideSlide key={index}>
+          <picture className="relative block h-full">
             <source media="(min-width: 1280px)" srcSet={image.desktop_xl} />
             <source media="(min-width: 1024px)" srcSet={image.desktop} />
             <source media="(min-width: 768px)" srcSet={image.tablet} />
@@ -30,10 +25,10 @@ const Carousel = ({ images }: ImageProps) => {
               className="object-cover"
             />
           </picture>
-        </SwiperSlide>
+        </SplideSlide>
       ))}
-    </Swiper>
+    </Splide>
   );
 };
 
-export default Carousel;
+export default CarouselHero;

@@ -1,6 +1,6 @@
-import type { ITitleSubtitle } from "@/types/sections";
+import type { ISection } from "@/types/sections";
 
-const TitleSubtitle = ({ title, text, children, classes }: ITitleSubtitle) => {
+const Section = ({ title, text, children, classes }: ISection) => {
   return (
     <section
       className={`px-8 py-12 text-center lg:py-24 ${!!classes ? classes : ""}`}
@@ -16,4 +16,4 @@ const TitleSubtitle = ({ title, text, children, classes }: ITitleSubtitle) => {
   );
 };
 
-export default TitleSubtitle;
+export default Section;

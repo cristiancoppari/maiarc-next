@@ -1,11 +1,11 @@
 import type { ImageProps } from "@/types/images";
 
-import Carousel from "@/components/Carousel/Carousel";
+import CarouselHero from "@/components/Carousel/CarouselHero";
 
 const Hero = ({ images }: ImageProps) => {
   return (
     <section style={{ height: "calc(100vh - 200px)" }}>
-      <Carousel images={images} />
+      <CarouselHero images={images} />
     </section>
   );
 };
