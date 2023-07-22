@@ -1,4 +1,5 @@
 import type { NavLinks, DropdownLink } from "@/types/content";
+import { motion } from "framer-motion";
 
 import { useState } from "react";
 
@@ -9,12 +10,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import useDesktop from "@/hooks/useDesktop";
 import Burger from "@/components/Buttons/Burger/Burger";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "../UI/dropdown-menu";
 
 import logo from "@/assets/images/logo.png";
 
@@ -24,10 +19,24 @@ interface Header {
     nav_links_right: NavLinks[];
   };
 }
+const dropdownVariants = {
+  hidden: {
+    opacity: 0,
+    display: "none",
+    height: 0,
+  },
+  visible: {
+    opacity: 1,
+    display: "flex",
+    height: "auto",
+    transition: { duration: 0.5 },
+  },
+};
 
 function Header({ content }: Header) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDesktop] = useDesktop();
+  const [isHovered, setIsHovered] = useState(false);
 
   const router = useRouter();
 
@@ -84,7 +93,7 @@ function Header({ content }: Header) {
 
           <ul
             className={cn(
-              "absolute right-0 top-24 z-20 w-full flex-col justify-around bg-transparent transition-colors duration-500 md:relative md:top-0 md:h-auto md:flex-row md:items-center md:border-none",
+              "absolute right-0 top-24 z-20 w-full flex-col justify-around transition-colors duration-500 md:relative md:top-0 md:h-full md:flex-row md:items-center md:border-none",
               isMenuOpen || isDesktop ? "flex" : "hidden",
               isMenuOpen && "bg-black",
             )}
@@ -92,42 +101,39 @@ function Header({ content }: Header) {
             {content.nav_links_left.map((link) => {
               if (link.type === "dropdown") {
                 return (
-                  <DropdownMenu key={link.label}>
-                    <DropdownMenuTrigger className="text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100">
-                      {link.label}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="ml-2 inline-block h-6 w-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                        />
-                      </svg>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                  <li
+                    className="relative grid place-items-center text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100 md:h-full"
+                    key={link.label}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    {link.label}
+                    <motion.ul
+                      className="top-full flex flex-col items-center bg-black md:absolute md:items-start"
+                      variants={dropdownVariants}
+                      initial="hidden"
+                      animate={isHovered ? "visible" : "hidden"}
+                    >
                       {(link as DropdownLink).items.map((item) => (
-                        <DropdownMenuItem
+                        <li
+                          className="w-max px-4 py-2 text-sm font-light uppercase text-slate-300 opacity-80 transition-all duration-300 ease-in-out hover:text-slate-100"
                           key={item.label}
-                          className="transition-color text-sm font-light uppercase text-slate-900 duration-300 ease-in-out hover:text-slate-100"
                         >
-                          {item.label}
-                        </DropdownMenuItem>
+                          <Link href={item.href}>{item.label}</Link>
+                        </li>
                       ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                    </motion.ul>
+                  </li>
                 );
               } else {
                 return (
-                  <li className="p-4 text-center md:p-0" key={link.label}>
+                  <li
+                    className="grid h-full place-items-center p-4 text-center md:p-0"
+                    key={link.label}
+                  >
                     <Link
                       href={link.href}
-                      className="text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:-translate-x-1 hover:text-slate-100"
+                      className="text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100"
                     >
                       {link.label}
                     </Link>
@@ -148,10 +154,13 @@ function Header({ content }: Header) {
 
             {content.nav_links_right.map((link) => {
               return (
-                <li className="p-4 text-center md:p-0" key={link.label}>
+                <li
+                  className="grid h-full place-items-center p-4 text-center md:p-0"
+                  key={link.label}
+                >
                   <Link
                     href={link.href}
-                    className="text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:-translate-x-1 hover:text-slate-100"
+                    className="text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100"
                   >
                     {link.label}
                   </Link>
