@@ -53,6 +53,12 @@ const images = [
     tablet: img_tablet.src,
     mobile: img_mobile.src,
   },
+  {
+    desktop_xl: img_desktop_xl.src,
+    desktop: img_desktop.src,
+    tablet: img_tablet.src,
+    mobile: img_mobile.src,
+  },
 ];
 
 const cards_imgs = [

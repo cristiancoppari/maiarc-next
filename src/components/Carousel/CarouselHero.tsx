@@ -9,7 +9,10 @@ const CarouselHero = ({ images }: ImageProps) => {
     <Splide
       className="carousel-hero h-full"
       options={{
+        type: "loop",
         arrows: false,
+        autoplay: true,
+        interval: 3000,
       }}
     >
       {images.map((image, index) => (
