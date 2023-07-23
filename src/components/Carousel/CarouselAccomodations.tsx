@@ -16,7 +16,7 @@ function CarouselAccommodations({
   cta,
 }: CarouselBlockAccommodations) {
   return (
-    <div className="container">
+    <div className="container px-0 md:px-8">
       <Splide
         options={{
           type: "loop",

@@ -14,11 +14,11 @@
 }
 
 .splide__arrow--prev {
-  @apply -left-10;
+  @apply -left-7;
 }
 
 .splide__arrow--next {
-  @apply -right-10;
+  @apply -right-7;
 }
 
 .splide__pagination__page {
@@ -111,7 +111,8 @@
   a,
   .p,
   p,
-  button {
+  button,
+  ul {
     font-family: var(--font-montserrat);
   }
 
