@@ -1,9 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
-import { LangContext } from "@/context/langContext";
-
-import PageLayout from "@/components/UI/PageLayout";
+import { useState } from "react";
 
 import Hero from "@/components/Heros/Hero";
 import Section from "@/components/Sections/Section";
@@ -146,15 +143,14 @@ const accommodation_cards = [
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
-  const content = useContext(LangContext);
   const translated_content = content.home;
 
   const cards = cards_imgs.map((card, index) => ({
@@ -168,7 +164,7 @@ export default function Home() {
   }));
 
   return (
-    <PageLayout title="MAIARC Concierge">
+    <>
       <Hero images={images} />
 
       <Section
@@ -206,6 +202,6 @@ export default function Home() {
       <Newsletter content={translated_content.newsletter} />
 
       <ConsultationModal isOpen={isModalOpen} closeModal={closeModal} />
-    </PageLayout>
+    </>
   );
 }
