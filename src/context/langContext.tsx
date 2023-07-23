@@ -1,5 +1,7 @@
+"use client";
+
 import { type ReactNode, createContext } from "react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/navigation";
 
 import type { Content } from "@/types/content";
 
@@ -10,8 +12,8 @@ export const LangContext = createContext<Content>({} as Content);
 export const LangDispatchContext = createContext({});
 
 const LangContextProvider = ({ children }: { children: ReactNode }) => {
-  const router = useRouter();
-  const { locale } = router;
+  // const router = useRouter();
+  const locale = "es";
 
   let locale_file;
 

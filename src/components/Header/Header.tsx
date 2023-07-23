@@ -38,9 +38,9 @@ function Header({ content }: Header) {
   const [isDesktop] = useDesktop();
   const [isHovered, setIsHovered] = useState(false);
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const { locale } = router;
+  const locale = "es";
 
   const changeLanguage = (locale: string) => {
     void router.push(router.pathname, router.asPath, { locale });
