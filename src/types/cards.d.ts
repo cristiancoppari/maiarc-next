@@ -11,10 +11,16 @@ export interface ICardBig {
   cta_label: string;
 }
 
-export interface ICardAccommodation {
+export interface IAccommodation {
+  id: string;
   image: string;
   location: string;
   name: string;
   capacity: number;
+}
+
+export interface ICardAccommodation {
+  card: IAccommodation;
   openModal?: () => void;
+  selectVilla?: (id: string) => void;
 }

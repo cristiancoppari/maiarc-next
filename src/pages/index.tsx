@@ -18,24 +18,28 @@ import villa_img from "@/assets/images/villa-1.png";
 
 const accommodation_cards = [
   {
+    id: "1",
     image: villa_img.src,
     name: "Villa 1",
     capacity: 10,
     location: "España",
   },
   {
+    id: "2",
     image: villa_img.src,
     name: "Villa 2",
     capacity: 11,
     location: "Ibiza",
   },
   {
+    id: "3",
     image: villa_img.src,
     name: "Villa 3",
     capacity: 12,
     location: "Tulum",
   },
   {
+    id: "4",
     image: villa_img.src,
     name: "Villa 4",
     capacity: 13,
@@ -45,9 +49,14 @@ const accommodation_cards = [
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [villaId, setVillaId] = useState<string>("");
 
   const openModal = () => {
     setIsModalOpen(true);
+  };
+
+  const selectVilla = (id: string) => {
+    setVillaId(id);
   };
 
   const closeModal = () => {
@@ -56,6 +65,7 @@ export default function Home() {
 
   const content = useContext(LangContext);
   const translated_content = content.home;
+  const villa = accommodation_cards.find((card) => card.id === villaId);
 
   const cards = cards_imgs.map((card, index) => ({
     ...card,
@@ -93,6 +103,7 @@ export default function Home() {
           elements={accommodation_cards}
           cta={translated_content.accommodations.cta}
           openModal={openModal}
+          selectVilla={selectVilla}
         />
       </Section>
 
@@ -106,7 +117,11 @@ export default function Home() {
 
       <Newsletter content={translated_content.newsletter} />
 
-      <ConsultationModal isOpen={isModalOpen} closeModal={closeModal} />
+      <ConsultationModal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        villa={!!villa ? villa : accommodation_cards[0]}
+      />
     </PageLayout>
   );
 }
