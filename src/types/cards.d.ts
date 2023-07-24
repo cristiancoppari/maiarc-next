@@ -16,4 +16,5 @@ export interface ICardAccommodation {
   location: string;
   name: string;
   capacity: number;
+  openModal?: () => void;
 }

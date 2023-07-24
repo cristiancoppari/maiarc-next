@@ -1,4 +1,4 @@
-import PageLayout from "@/components/UI/PageLayout";
+import PageLayout from "@/components/ui/PageLayout";
 
 const ExperienciasUnicasPage = () => {
   return (

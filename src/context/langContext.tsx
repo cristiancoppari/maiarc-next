@@ -27,7 +27,7 @@ const LangContextProvider = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <LangContext.Provider value={locale_file as Content}>
+    <LangContext.Provider value={locale_file}>
       {children}
       {/* <LangDispatchContext.Provider value={{ changeLanguage }}>
       </LangDispatchContext.Provider> */}

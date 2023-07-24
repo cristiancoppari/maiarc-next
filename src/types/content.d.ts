@@ -1,8 +1,6 @@
-export interface Content {
-  header: Header;
-  home: Home;
-  footer: Footer;
-}
+import type { Lang } from "@/lang/es";
+
+export interface Content extends Lang {}
 
 export interface Section {
   title: string;

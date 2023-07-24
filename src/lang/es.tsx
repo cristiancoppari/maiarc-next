@@ -141,4 +141,69 @@ export const es = {
       cta: "Suscribirme",
     },
   },
+  contact: {
+    title: "Contacto",
+    text: "Contactanos para más información. Estamos aquí para ayudarte.",
+    form: {
+      name: {
+        label: "Nombre",
+        placeholder: "Juan Carlos",
+        error: {
+          required: "Tienes que ingresar un nombre",
+          pattern: "Tienes que ingresar mas de 1 caracter",
+        },
+      },
+      phone: {
+        label: "Teléfono",
+        placeholder: "123456789",
+        error: {
+          required: "Tienes que ingresar un teléfono",
+          pattern: "Tienes que ingresar un teléfono válido",
+        },
+      },
+      email: {
+        label: "Email",
+        placeholder: "juan.carlos@gmail.com",
+        error: {
+          required: "Tienes que ingresar un email",
+          pattern: "Tienes que ingresar un email válido",
+        },
+      },
+      message: {
+        label: "Mensaje",
+        placeholder: "Hola, quisiera más información sobre...",
+        error: {
+          required: "Tienes que ingresar un mensaje",
+          pattern: "Tienes que ingresar mas de 1 caracter",
+        },
+      },
+      destinations: {
+        label: "Destino",
+        placeholder: "Selecciona un destino",
+        error: {
+          required: "Tienes que ingresar un destino",
+          pattern: "Tienes que ingresar mas de 1 caracter",
+        },
+      },
+      date_start: {
+        label: "Fecha de inicio",
+        placeholder: "Selecciona una fecha",
+        error: {
+          required: "Tienes que ingresar una fecha",
+          pattern: "Tienes que ingresar una fecha válida",
+        },
+      },
+      date_end: {
+        label: "Fecha de fin",
+        placeholder: "Selecciona una fecha",
+        error: {
+          required: "Tienes que ingresar una fecha",
+          pattern: "Tienes que ingresar una fecha válida",
+        },
+      },
+      submit: "Enviar",
+    },
+  },
 };
+
+export type Lang = typeof es;

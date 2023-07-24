@@ -1,13 +1,14 @@
 import type { ICardAccommodation } from "@/types/cards";
 
 import Image from "next/image";
-import { Button } from "@/components/UI/button";
+import { Button } from "@/components/ui/button";
 
 const CardAccommodation = ({
   image,
   name,
   location,
   capacity,
+  openModal,
 }: ICardAccommodation) => {
   return (
     <div className="shadow-xl">
@@ -63,7 +64,9 @@ const CardAccommodation = ({
               <p>{location}</p>
             </div>
           </div>
-          <Button variant="link">Consultar</Button>
+          <Button variant="link" onClick={openModal}>
+            Consultar
+          </Button>
         </div>
       </div>
     </div>

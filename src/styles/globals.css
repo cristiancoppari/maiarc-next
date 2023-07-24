@@ -112,7 +112,9 @@
   .p,
   p,
   button,
-  ul {
+  ul,
+  label,
+  input {
     font-family: var(--font-montserrat);
   }
 

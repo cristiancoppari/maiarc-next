@@ -1,6 +1,6 @@
 import type { ICardBig } from "@/types/cards";
 
-import ButtonBlack from "@/components/Buttons/ButtonBlack/ButtonBlack";
+import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
 import Image from "next/image";
 
@@ -20,7 +20,7 @@ const CardBig = ({ title, image, description, link, cta_label }: ICardBig) => {
           <p className="p mb-8">{description}</p>
         </div>
 
-        <ButtonBlack link={link} text={cta_label} />
+        <ButtonBlackLink link={link} text={cta_label} />
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import type { ICardImageTitle } from "@/types/cards";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 import CardImageTitle from "../Cards/CardImageTitle/CardImageTitle";
-import ButtonBlack from "@/components/Buttons/ButtonBlack/ButtonBlack";
+import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
 interface ICards {
   cards: ICardImageTitle[];
@@ -41,7 +41,7 @@ const CarouselServices = ({ cards, cta }: ICards) => {
         ))}
       </Splide>
 
-      <ButtonBlack link="/" text={cta} classes="mt-16" />
+      <ButtonBlackLink link="/" text={cta} classes="mt-16" />
     </div>
   );
 };

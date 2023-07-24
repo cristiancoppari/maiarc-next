@@ -1,7 +1,7 @@
 import type { ICardAccommodation } from "@/types/cards";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import CardAccommodation from "../Cards/CardAccommodation/CardAccommodation";
-import ButtonBlack from "../Buttons/ButtonBlack/ButtonBlack";
+import { ButtonBlackLink } from "../Buttons/ButtonBlack/ButtonBlack";
 
 interface CarouselBlockAccommodations {
   elements: ICardAccommodation[];
@@ -9,11 +9,13 @@ interface CarouselBlockAccommodations {
     label: string;
     href: string;
   };
+  openModal: () => void;
 }
 
 function CarouselAccommodations({
   elements,
   cta,
+  openModal,
 }: CarouselBlockAccommodations) {
   return (
     <div className="container px-0 md:px-8">
@@ -38,12 +40,12 @@ function CarouselAccommodations({
       >
         {elements.map((element, index) => (
           <SplideSlide key={index} className="p-2 py-8">
-            <CardAccommodation {...element} />
+            <CardAccommodation {...element} openModal={openModal} />
           </SplideSlide>
         ))}
       </Splide>
 
-      <ButtonBlack link={cta.href} text={cta.label} classes="mt-12" />
+      <ButtonBlackLink link={cta.href} text={cta.label} classes="mt-12" />
     </div>
   );
 }

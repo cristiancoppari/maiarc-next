@@ -144,4 +144,68 @@ export const en = {
       cta: "Subscribe",
     },
   },
+  contact: {
+    title: "Contact",
+    text: "We are here to help you. Contact us and we will get back to you as soon as possible.",
+    form: {
+      name: {
+        label: "Name",
+        placeholder: "Juan Carlos",
+        error: {
+          required: "You have to enter a name",
+          pattern: "You have to enter more than 1 character",
+        },
+      },
+      phone: {
+        label: "Phone",
+        placeholder: "123456789",
+        error: {
+          required: "You have to enter a phone",
+          pattern: "You have to enter more than 1 character",
+        },
+      },
+      email: {
+        label: "Email",
+        placeholder: "juan.carlos@gmail.com",
+        error: {
+          required: "You have to enter an email",
+          pattern: "You have to enter more than 1 character",
+        },
+      },
+      message: {
+        label: "Message",
+        placeholder: "Leave a message",
+        error: {
+          required: "You have to enter a message",
+          pattern: "You have to enter more than 1 character",
+        },
+      },
+      destinations: {
+        label: "Destinations",
+        placeholder: "Select a destination",
+        error: {
+          required: "You have to select a destination",
+        },
+      },
+      date_start: {
+        label: "Start date",
+        placeholder: "Select a date",
+        error: {
+          required: "You have to select a date",
+          pattern: "You have to enter a valid date",
+        },
+      },
+      date_end: {
+        label: "End date",
+        placeholder: "Select a date",
+        error: {
+          required: "You have to select a date",
+          pattern: "You have to enter a valid date",
+        },
+      },
+      submit: "Send",
+    },
+  },
 };
+
+export type Lang = typeof en;
