@@ -185,6 +185,7 @@ export const en = {
         placeholder: "Select a destination",
         error: {
           required: "You have to select a destination",
+          pattern: "You have to enter more than 1 character",
         },
       },
       date_start: {

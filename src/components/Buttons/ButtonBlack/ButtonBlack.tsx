@@ -1,10 +1,14 @@
-import type { BlackButtonProps } from "@/types/buttons";
+import type { ButtonBlackProps, ButtonBlackLinkProps } from "@/types/buttons";
 
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 
-export const ButtonBlackLink = ({ link, text, classes }: BlackButtonProps) => {
+export const ButtonBlackLink = ({
+  link,
+  text,
+  classes,
+}: ButtonBlackLinkProps) => {
   return (
     <Button
       asChild
@@ -15,7 +19,7 @@ export const ButtonBlackLink = ({ link, text, classes }: BlackButtonProps) => {
   );
 };
 
-export const ButtonBlack = ({ text, classes, type }: BlackButtonProps) => {
+export const ButtonBlack = ({ text, classes, type }: ButtonBlackProps) => {
   return (
     <Button
       type={!!type ? type : "button"}

@@ -7,7 +7,9 @@ import { es } from "@/lang/es";
 import { en } from "@/lang/en";
 
 export const LangContext = createContext<Content>({} as Content);
-export const LangDispatchContext = createContext({});
+export const LangDispatchContext = createContext<React.Dispatch<string>>(
+  () => {},
+);
 
 const LangContextProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
