@@ -42,8 +42,9 @@ function Header({ content }: Header) {
 
   const { locale } = router;
 
-  const changeLanguage = (locale: string) => {
-    void router.push(router.pathname, router.asPath, { locale });
+  const changeLanguage = (newLocale: string) => {
+    const { pathname, query } = router;
+    void router.push({ pathname, query }, undefined, { locale: newLocale });
   };
 
   const toggleMenu = () => {

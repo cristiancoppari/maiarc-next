@@ -234,22 +234,22 @@ export const en = {
     cards: [
       {
         title: "Tulum",
-        image: maiarc_test,
+        image: maiarc_test.src,
         href: "/destinos/tulum",
       },
       {
         title: "Ibiza",
-        image: maiarc_test,
+        image: maiarc_test.src,
         href: "/destinos/ibiza",
       },
       {
         title: "Miami",
-        image: maiarc_test,
+        image: maiarc_test.src,
         href: "/destinos/miami",
       },
       {
         title: "Punta del Este",
-        image: maiarc_test,
+        image: maiarc_test.src,
         href: "/destinos/punta-del-este",
       },
     ],
