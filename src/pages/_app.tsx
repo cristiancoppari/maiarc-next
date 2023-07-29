@@ -1,4 +1,4 @@
-import { Montserrat, Lora } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
@@ -9,15 +9,10 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 
-const lora = Lora({
-  subsets: ["latin"],
-  variable: "--font-lora",
-});
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <LangContextProvider>
-      <main className={`${montserrat.variable} ${lora.variable}`}>
+      <main className={`${montserrat.className}`}>
         <Component {...pageProps} />
       </main>
     </LangContextProvider>

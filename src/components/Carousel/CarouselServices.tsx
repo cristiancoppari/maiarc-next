@@ -1,8 +1,9 @@
 import type { ICardImageTitle } from "@/types/cards";
 
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-
 import CardImageTitle from "../Cards/CardImageTitle/CardImageTitle";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+
 import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
 interface ICards {
@@ -12,34 +13,32 @@ interface ICards {
 
 const CarouselServices = ({ cards, cta }: ICards) => {
   return (
-    <div className="pb-20">
-      <Splide
-        options={{
-          type: "loop",
-          perPage: 1,
-          perMove: 1,
-          gap: "1rem",
-          autoplay: true,
-          mediaQuery: "min",
-          breakpoints: {
-            768: {
-              perPage: 2,
-              perMove: 2,
-            },
-            1024: {
-              perPage: 3,
-              perMove: 3,
-            },
+    <div className="container pb-20">
+      <Swiper
+        style={{ paddingTop: "2rem" }}
+        pagination={{
+          dynamicBullets: true,
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+          1200: {
+            slidesPerView: 4,
           },
         }}
-        className="with-arrows"
       >
         {cards.map((card) => (
-          <SplideSlide key={card.title} className="p-2 py-8">
+          <SwiperSlide key={card.title} className="p-4">
             <CardImageTitle image={card.image} title={card.title} />
-          </SplideSlide>
+          </SwiperSlide>
         ))}
-      </Splide>
+      </Swiper>
 
       <ButtonBlackLink link="/" text={cta} classes="mt-16" />
     </div>

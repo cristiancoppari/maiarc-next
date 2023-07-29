@@ -5,7 +5,7 @@ export const en = {
         {
           type: "link",
           label: "Who we are",
-          href: "/",
+          href: "/quienes-somos",
         },
         {
           type: "dropdown",
@@ -205,6 +205,25 @@ export const en = {
         },
       },
       submit: "Send",
+    },
+  },
+  who_we_are: {
+    section_1: {
+      title: "Who we are",
+      texts: [
+        "We are a luxury concierge company that offers exclusive services in Tulum, Ibiza, Miami, and the most exclusive destinations globally.",
+        "Our goal is to provide unique and personalized experiences to our clients, so they can enjoy the best destinations in the world.",
+        "We have a team of highly trained professionals to provide a service of excellence and quality.",
+      ],
+    },
+    section_2: {
+      title:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, assumenda!",
+      subtitle: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      texts: [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, assumenda!",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quaerat quidem numquam nulla architecto nesciunt assumenda dolorem necessitatibus, deserunt ducimus?",
+      ],
     },
   },
 };

@@ -1,14 +1,13 @@
 import type { NavLinks, DropdownLink } from "@/types/content";
-import { motion } from "framer-motion";
-
 import { useState } from "react";
-
 import { useRouter } from "next/router";
+import useDesktop from "@/hooks/useDesktop";
+
 import Image from "next/image";
 import Link from "next/link";
 
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import useDesktop from "@/hooks/useDesktop";
 import Burger from "@/components/Buttons/Burger/Burger";
 
 import logo from "@/assets/images/logo.png";
@@ -19,6 +18,7 @@ interface Header {
     nav_links_right: NavLinks[];
   };
 }
+
 const dropdownVariants = {
   hidden: {
     opacity: 0,

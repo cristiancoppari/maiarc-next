@@ -2,32 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "@splidejs/react-splide/css";
+@import "swiper/css";
 @import "../components/Buttons/Burger/Burger.css";
-
-.splide__arrow svg {
-  @apply fill-slate-100;
-}
-
-.splide__arrow {
-  @apply bg-black opacity-100;
-}
-
-.splide__arrow--prev {
-  @apply -left-7;
-}
-
-.splide__arrow--next {
-  @apply -right-7;
-}
-
-.splide__pagination__page {
-  @apply bg-black opacity-50;
-}
-
-.splide__pagination__page.is-active {
-  @apply bg-black opacity-100;
-}
 
 @layer base {
   :root {
@@ -95,62 +71,38 @@
   }
 }
 
-@layer base {
-  .h1,
-  h1,
-  .h2,
-  h2,
-  .h3,
-  h3,
-  .h4,
-  h4,
-  .h5,
-  h5,
-  .h6,
-  h6,
-  a,
-  .p,
-  p,
-  button,
-  ul,
-  label,
-  input {
-    font-family: var(--font-montserrat);
-  }
+body {
+  @apply bg-background text-foreground;
+}
 
-  * {
-    @apply border-border;
-  }
+.h1 {
+  @apply text-4xl font-bold md:text-5xl;
+}
 
-  body {
-    @apply bg-background text-foreground;
-  }
+.h2 {
+  @apply text-2xl font-light md:text-3xl;
+}
 
-  .h1 {
-    @apply text-4xl font-bold md:text-5xl;
-  }
+.h3 {
+  @apply text-xl font-bold md:text-2xl;
+}
 
-  .h2 {
-    @apply text-2xl font-light md:text-3xl;
-  }
+.h4 {
+  @apply text-lg font-medium md:text-xl;
+}
 
-  .h3 {
-    @apply text-xl font-bold md:text-2xl;
-  }
+.p {
+  @apply text-base font-light;
+}
 
-  .h4 {
-    @apply text-lg font-medium md:text-xl;
-  }
+.--font-lora {
+  font-family: var(--font-lora);
+}
 
-  .p {
-    @apply text-base font-light;
-  }
+.carousel-hero .splide__track {
+  @apply h-full;
+}
 
-  .--font-lora {
-    font-family: var(--font-lora);
-  }
-
-  .carousel-hero .splide__track {
-    @apply h-full;
-  }
+.section-padding {
+  @apply px-8 py-12 lg:py-24;
 }
