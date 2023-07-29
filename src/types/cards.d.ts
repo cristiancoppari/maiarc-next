@@ -1,6 +1,7 @@
 export interface ICardImageTitle {
   title: string;
   image: string;
+  href?: string;
 }
 
 export interface ICardBig {

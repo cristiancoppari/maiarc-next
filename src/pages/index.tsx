@@ -97,7 +97,7 @@ export default function Home() {
       <Section
         title={translated_content.accommodations.title}
         text={translated_content.accommodations.text}
-        classes="bg-zinc-200"
+        classes="bg-zinc-400"
       >
         <CarouselAccommodations
           elements={accommodation_cards}

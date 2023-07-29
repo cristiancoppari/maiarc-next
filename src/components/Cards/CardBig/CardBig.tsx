@@ -20,7 +20,9 @@ const CardBig = ({ title, image, description, link, cta_label }: ICardBig) => {
           <p className="p mb-8">{description}</p>
         </div>
 
-        {!!cta_label && <ButtonBlackLink link={link} text={cta_label} />}
+        {!!cta_label && !!link && (
+          <ButtonBlackLink link={link} text={cta_label} />
+        )}
       </div>
     </div>
   );

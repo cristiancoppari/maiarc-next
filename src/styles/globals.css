@@ -5,6 +5,15 @@
 @import "swiper/css";
 @import "../components/Buttons/Burger/Burger.css";
 
+/*
+maiarc grey 1 -> neutral-100
+maiarc grey 2 -> neutral-200
+maiarc grey 3 -> neutral-800
+
+typo dark -> neutral-800
+typo light -> neutral-100
+*/
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -75,18 +84,30 @@ body {
   @apply bg-background text-foreground;
 }
 
+/*
+Used sections
+*/
 .h1 {
-  @apply text-4xl font-bold md:text-5xl;
+  @apply text-2xl font-medium md:text-3xl;
 }
 
+/*
+Used in subtitles
+*/
 .h2 {
-  @apply text-2xl font-light md:text-3xl;
+  @apply text-xl font-normal md:text-2xl;
 }
 
+/*
+Used in big cards
+*/
 .h3 {
-  @apply text-xl font-bold md:text-2xl;
+  @apply text-xl font-medium md:text-2xl;
 }
 
+/*
+Used in service cards
+*/
 .h4 {
   @apply text-lg font-medium md:text-xl;
 }

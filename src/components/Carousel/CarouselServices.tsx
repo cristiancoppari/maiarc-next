@@ -28,9 +28,6 @@ const CarouselServices = ({ cards, cta }: ICards) => {
           1024: {
             slidesPerView: 3,
           },
-          1200: {
-            slidesPerView: 4,
-          },
         }}
       >
         {cards.map((card) => (

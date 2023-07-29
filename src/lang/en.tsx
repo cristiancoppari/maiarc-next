@@ -1,3 +1,5 @@
+import maiarc_test from "@/assets/images/maiarc-test.webp";
+
 export const en = {
   header: {
     content: {
@@ -225,6 +227,32 @@ export const en = {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quaerat quidem numquam nulla architecto nesciunt assumenda dolorem necessitatibus, deserunt ducimus?",
       ],
     },
+  },
+  destinations: {
+    title: "Destinations",
+    text: "We offer you the most exclusive villas in the world. Enjoy the best destinations with the highest quality services and the most exclusive amenities.",
+    cards: [
+      {
+        title: "Tulum",
+        image: maiarc_test,
+        href: "/destinos/tulum",
+      },
+      {
+        title: "Ibiza",
+        image: maiarc_test,
+        href: "/destinos/ibiza",
+      },
+      {
+        title: "Miami",
+        image: maiarc_test,
+        href: "/destinos/miami",
+      },
+      {
+        title: "Punta del Este",
+        image: maiarc_test,
+        href: "/destinos/punta-del-este",
+      },
+    ],
   },
 };
 
