@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Root {
   data: Daum[];
   meta: Meta;
@@ -48,8 +49,8 @@ export interface Daum2 {
 
 export interface Attributes3 {
   name: string;
-  alternativeText: unknown;
-  caption: unknown;
+  alternativeText: any;
+  caption: any;
   width: number;
   height: number;
   formats: Formats;
@@ -58,9 +59,9 @@ export interface Attributes3 {
   mime: string;
   size: number;
   url: string;
-  previewUrl: unknown;
+  previewUrl: any;
   provider: string;
-  provider_metadata: unknown;
+  provider_metadata: any;
   createdAt: string;
   updatedAt: string;
 }
@@ -75,7 +76,7 @@ export interface Thumbnail {
   hash: string;
   ext: string;
   mime: string;
-  path: unknown;
+  path: any;
   width: number;
   height: number;
   size: number;
@@ -87,7 +88,7 @@ export interface Small {
   hash: string;
   ext: string;
   mime: string;
-  path: unknown;
+  path: any;
   width: number;
   height: number;
   size: number;
@@ -95,7 +96,7 @@ export interface Small {
 }
 
 export interface Localizations {
-  data: unknown[];
+  data: any[];
 }
 
 export interface Meta {

@@ -15,6 +15,7 @@ import ConsultationModal from "@/components/Modals/ConsultationModal";
 import { images, cards_imgs, big_cards_imgs } from "@/data/images";
 
 import villa_img from "@/assets/images/villa-1.png";
+import type { Root } from "@/types/api";
 
 const accommodation_cards = [
   {
@@ -54,12 +55,12 @@ export const getStaticProps = async () => {
       `${process.env.API_URL}/accommodations?populate=*&locale=all`,
     );
 
-    const { data } = await res.json();
+    const data = (await res.json()) as Root;
 
-    const locales = data.filter(
+    const locales = data.data.filter(
       (element) => element.attributes.locale === "en",
     );
-    console.log(JSON.stringify(locales, null, 2));
+    console.log(locales);
   } catch (error) {
     throw new Error("Hubo un error");
   }
