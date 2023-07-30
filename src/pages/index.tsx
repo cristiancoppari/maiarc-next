@@ -47,6 +47,28 @@ const accommodation_cards = [
   },
 ];
 
+// eslint-disable-next-line @typescript-eslint/require-await
+export const getStaticProps = async () => {
+  try {
+    const res = await fetch(
+      `${process.env.API_URL}/accommodations?populate=*&locale=all`,
+    );
+
+    const { data } = await res.json();
+
+    const locales = data.filter(
+      (element) => element.attributes.locale === "en",
+    );
+    console.log(JSON.stringify(locales, null, 2));
+  } catch (error) {
+    throw new Error("Hubo un error");
+  }
+
+  return {
+    props: {},
+  };
+};
+
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [villaId, setVillaId] = useState<string>("");

@@ -13,6 +13,7 @@ const TextImage = ({ content, image, theme }: ITextImage) => {
       >
         <div className="right flex-1">{content}</div>
         <div className="image flex-1">
+          <img src="" alt="" />
           <Image src={image.src} alt={image.text} width={800} height={600} />
         </div>
       </div>
