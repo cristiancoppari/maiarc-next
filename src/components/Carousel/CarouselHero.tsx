@@ -4,8 +4,6 @@ import type { ImageProps } from "@/types/images";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
-import Image from "next/image";
-
 const CarouselHero = ({ images }: ImageProps) => {
   return (
     <Swiper
@@ -22,11 +20,7 @@ const CarouselHero = ({ images }: ImageProps) => {
             <source media="(min-width: 1280px)" srcSet={image.desktop_xl} />
             <source media="(min-width: 1024px)" srcSet={image.desktop} />
             <source media="(min-width: 768px)" srcSet={image.tablet} />
-            <Image
-              src={image.mobile} // Default image
-              alt="Description of the image"
-              layout="fill"
-            />
+            <img src={image.mobile} alt="" className="w-full" />
           </picture>
         </SwiperSlide>
       ))}

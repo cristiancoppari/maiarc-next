@@ -2,18 +2,10 @@ import type { ICardBig } from "@/types/cards";
 
 import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
-import Image from "next/image";
-
 const CardBig = ({ title, image, description, link, cta_label }: ICardBig) => {
   return (
     <div className="flex flex-col shadow-xl">
-      <Image
-        src={image}
-        alt=""
-        width={400}
-        height={300}
-        className="mx-auto aspect-square w-full"
-      />
+      <img src={image} alt="" className="mx-auto aspect-square w-full" />
       <div className="relative flex h-full flex-col items-center justify-between p-4 md:p-8">
         <div>
           <h3 className="h3 --font-lora mb-4 font-medium">- {title} -</h3>

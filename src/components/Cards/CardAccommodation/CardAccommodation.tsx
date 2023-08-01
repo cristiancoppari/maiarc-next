@@ -1,6 +1,4 @@
 import type { ICardAccommodation } from "@/types/cards";
-
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 const CardAccommodation = ({
@@ -10,13 +8,8 @@ const CardAccommodation = ({
 }: ICardAccommodation) => {
   return (
     <div className="shadow-xl">
-      <Image
-        src={card.image}
-        alt=""
-        width={400}
-        height={400}
-        className="h-52 w-full object-cover"
-      />
+      <img src={card.image} alt="" className="h-52 w-full object-cover" />
+
       <div className="bg-zinc-100 p-6 text-slate-900">
         <h4 className="h4 --font-lora mb-2 text-left">{card.name}</h4>
         <div className="flex justify-between">

@@ -1,5 +1,4 @@
 import type { ITextImage } from "@/types/TextImage";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const TextImage = ({ content, image, theme }: ITextImage) => {
@@ -13,8 +12,7 @@ const TextImage = ({ content, image, theme }: ITextImage) => {
       >
         <div className="right flex-1">{content}</div>
         <div className="image flex-1">
-          <img src="" alt="" />
-          <Image src={image.src} alt={image.text} width={800} height={600} />
+          <img src={image.src} alt="" />
         </div>
       </div>
     </div>

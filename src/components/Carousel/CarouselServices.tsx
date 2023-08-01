@@ -30,8 +30,8 @@ const CarouselServices = ({ cards, cta }: ICards) => {
           },
         }}
       >
-        {cards.map((card) => (
-          <SwiperSlide key={card.title} className="p-4">
+        {cards.map((card, index) => (
+          <SwiperSlide key={index} className="p-4">
             <CardImageTitle image={card.image} title={card.title} />
           </SwiperSlide>
         ))}

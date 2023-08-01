@@ -1,3 +1,5 @@
+import type { Locale } from "@/types/locales";
+
 import { useContext, useState } from "react";
 import { LangContext } from "@/context/langContext";
 
@@ -49,18 +51,13 @@ const accommodation_cards = [
 ];
 
 // eslint-disable-next-line @typescript-eslint/require-await
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ locale }: { locale: Locale }) => {
+  console.log(locale);
+
   try {
-    const res = await fetch(
-      `${process.env.API_URL}/accommodations?populate=*&locale=all`,
-    );
+    const res = await fetch(`${process.env.API_URL}/services/?&locale=all`);
 
     const data = (await res.json()) as Root;
-
-    const locales = data.data.filter(
-      (element) => element.attributes.locale === "en",
-    );
-    console.log(locales);
   } catch (error) {
     throw new Error("Hubo un error");
   }

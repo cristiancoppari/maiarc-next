@@ -3,14 +3,13 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import useDesktop from "@/hooks/useDesktop";
 
-import Image from "next/image";
 import Link from "next/link";
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Burger from "@/components/Buttons/Burger/Burger";
 
-import logo from "@/assets/images/logo.png";
+import logo from "@/assets/images/logo-gray.png";
 
 interface Header {
   content: {
@@ -78,11 +77,7 @@ function Header({ content }: Header) {
         >
           {!isDesktop && (
             <Link href="/">
-              <Image
-                src={logo}
-                alt="Alertas Seguridad Privada"
-                className="h-auto w-20"
-              />
+              <img src={logo.src} alt="" className="h-auto w-20" />
             </Link>
           )}
 
@@ -145,11 +140,7 @@ function Header({ content }: Header) {
 
             {isDesktop && (
               <Link href="/">
-                <Image
-                  src={logo}
-                  alt="Alertas Seguridad Privada"
-                  className="h-auto w-20"
-                />
+                <img src={logo.src} alt="" className="h-auto w-20" />
               </Link>
             )}
 

@@ -18,6 +18,7 @@ function PageLayout({ children, title }: PageLayoutProps) {
   return (
     <>
       <Head>
+        <link rel="icon" href="/logo-black.png" />
         <title>{title}</title>
       </Head>
 

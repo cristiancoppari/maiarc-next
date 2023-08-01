@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import instagram_1 from "@/assets/images/instagram-1.png";
 import instagram_2 from "@/assets/images/instagram-2.png";
 import instagram_3 from "@/assets/images/instagram-3.png";
@@ -16,13 +14,11 @@ const InstagramGallery = () => {
   return (
     <div className="flex flex-wrap justify-center gap-12">
       {instagram_images.map((image, index) => (
-        <Image
-          key={index}
+        <img
+          className="w-full sm:w-1/3 md:w-1/5"
           src={image}
           alt={"Maiarc Concierce"}
-          height={400}
-          width={400}
-          className="w-full sm:w-1/3 md:w-1/5"
+          key={index}
         />
       ))}
     </div>

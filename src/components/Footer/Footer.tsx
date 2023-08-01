@@ -1,9 +1,9 @@
 import type { SvgImport } from "@/types/images";
 
-/* eslint-disable @next/next/no-img-element */
 import icon_fb from "@/assets/images/facebook.svg";
 import icon_ig from "@/assets/images/instagram.svg";
 import icon_wpp from "@/assets/images/whatsapp.svg";
+import logo from "@/assets/images/logo-black-subtitle.png";
 
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -30,7 +30,7 @@ interface Footer {
 const Footer = ({ content }: Footer) => {
   return (
     <footer className="flex flex-col items-center py-12">
-      <p className="mb-8">LOGO</p>
+      <img src={logo.src} alt="" className="mb-16 w-24" />
 
       <p className="mb-2 uppercase">Tulum | Ibiza | Miami | Punta del Este</p>
 
