@@ -1,4 +1,4 @@
-import type { ICardImageTitle } from "@/types/cards";
+import type { ICardService } from "@/types/cards";
 
 import CardImageTitle from "../Cards/CardImageTitle/CardImageTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,12 +6,12 @@ import { Pagination } from "swiper/modules";
 
 import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
-interface ICards {
-  cards: ICardImageTitle[];
+interface CarouselServicesProps {
+  cards: ICardService[];
   cta: string;
 }
 
-const CarouselServices = ({ cards, cta }: ICards) => {
+const CarouselServices = ({ cards, cta }: CarouselServicesProps) => {
   return (
     <div className="container pb-20">
       <Swiper
@@ -32,7 +32,7 @@ const CarouselServices = ({ cards, cta }: ICards) => {
       >
         {cards.map((card, index) => (
           <SwiperSlide key={index} className="p-4">
-            <CardImageTitle image={card.image} title={card.title} />
+            <CardImageTitle image={card.image} title={card.name} />
           </SwiperSlide>
         ))}
       </Swiper>

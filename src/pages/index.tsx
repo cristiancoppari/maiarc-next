@@ -1,4 +1,5 @@
 import type { Locale } from "@/types/locales";
+import type { ICardService } from "@/types/cards";
 
 import { useContext, useState } from "react";
 import { LangContext } from "@/context/langContext";
@@ -14,7 +15,7 @@ import InstagramGallery from "@/components/Galleries/InstagramGallery/InstagramG
 import Newsletter from "@/components/Newsletter/Newsletter";
 import ConsultationModal from "@/components/Modals/ConsultationModal";
 
-import { images, cards_imgs, big_cards_imgs } from "@/data/images";
+import { images, big_cards_imgs } from "@/data/images";
 
 import villa_img from "@/assets/images/villa-1.png";
 import type { Root } from "@/types/api";
@@ -52,22 +53,36 @@ const accommodation_cards = [
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export const getStaticProps = async ({ locale }: { locale: Locale }) => {
-  console.log(locale);
-
   try {
-    const res = await fetch(`${process.env.API_URL}/services/?&locale=all`);
+    const res = await fetch(
+      `${process.env.API_URL}/services/?&locale=${locale}&fields[0]=name&populate[image][fields][0]=url`,
+    );
 
     const data = (await res.json()) as Root;
+
+    const services = data.data.map((element): ICardService => {
+      return {
+        id: element.id,
+        name: element.attributes.name,
+        image: `${process.env.STRAPI_URL}${element.attributes.image.data.attributes.url}`,
+      };
+    });
+
+    return {
+      props: {
+        cards_services: services,
+      },
+    };
   } catch (error) {
     throw new Error("Hubo un error");
   }
-
-  return {
-    props: {},
-  };
 };
 
-export default function Home() {
+export default function Home({
+  cards_services,
+}: {
+  cards_services: ICardService[];
+}) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [villaId, setVillaId] = useState<string>("");
 
@@ -87,11 +102,6 @@ export default function Home() {
   const translated_content = content.home;
   const villa = accommodation_cards.find((card) => card.id === villaId);
 
-  const cards = cards_imgs.map((card, index) => ({
-    ...card,
-    ...translated_content.services_gallery.cards[index],
-  }));
-
   const big_cards = big_cards_imgs.map((card, index) => ({
     ...card,
     ...translated_content.big_gallery.cards[index],
@@ -107,7 +117,7 @@ export default function Home() {
         classes="container"
       >
         <CarouselServices
-          cards={cards}
+          cards={cards_services}
           cta={translated_content.services_gallery.cta}
         />
 

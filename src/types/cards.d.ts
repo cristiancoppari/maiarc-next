@@ -1,3 +1,9 @@
+interface ICardService {
+  id: number;
+  name: string;
+  image: string;
+}
+
 export interface ICardImageTitle {
   title: string;
   image: string;

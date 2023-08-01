@@ -30,7 +30,7 @@ interface Footer {
 const Footer = ({ content }: Footer) => {
   return (
     <footer className="flex flex-col items-center py-12">
-      <img src={logo.src} alt="" className="mb-16 w-24" />
+      <img src={logo.src} alt="" className="mb-14 w-32" />
 
       <p className="mb-2 uppercase">Tulum | Ibiza | Miami | Punta del Este</p>
 
