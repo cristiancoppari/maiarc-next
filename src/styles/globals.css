@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "swiper/css";
+@import "swiper/css/bundle";
 @import "../components/Buttons/Burger/Burger.css";
 
 /*
@@ -126,4 +126,19 @@ Used in service cards
 
 .section-padding {
   @apply px-8 py-12 lg:py-24;
+}
+
+/* Change the color of the inactive dots */
+.swiper-pagination-bullet {
+  @apply bg-zinc-500 !important;
+}
+
+/* Change the color of the active dot */
+.swiper-pagination-bullet-active {
+  @apply bg-black !important;
+}
+
+.custom-pagination {
+  @apply mx-auto;
+  @apply translate-x-0 !important;
 }

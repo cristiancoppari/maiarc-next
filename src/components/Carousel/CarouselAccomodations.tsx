@@ -2,6 +2,7 @@ import type { IAccommodation } from "@/types/cards";
 import { Swiper, SwiperSlide } from "swiper/react";
 import CardAccommodation from "../Cards/CardAccommodation/CardAccommodation";
 import { ButtonBlackLink } from "../Buttons/ButtonBlack/ButtonBlack";
+import { Autoplay, Pagination } from "swiper/modules";
 
 interface CarouselBlockAccommodations {
   elements: IAccommodation[];
@@ -24,6 +25,16 @@ function CarouselAccommodations({
       <Swiper
         slidesPerView={1}
         spaceBetween={50}
+        modules={[Autoplay, Pagination]}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          dynamicBullets: true,
+          clickable: true,
+          el: ".custom-pagination",
+        }}
         breakpoints={{
           640: {
             slidesPerView: 2,
@@ -42,6 +53,8 @@ function CarouselAccommodations({
             />
           </SwiperSlide>
         ))}
+
+        <div className="custom-pagination mt-8"></div>
       </Swiper>
 
       <ButtonBlackLink link={cta.href} text={cta.label} classes="mt-12" />

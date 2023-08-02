@@ -2,7 +2,7 @@ import type { ICardService } from "@/types/cards";
 
 import CardImageTitle from "../Cards/CardImageTitle/CardImageTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
@@ -19,8 +19,13 @@ const CarouselServices = ({ cards, cta }: CarouselServicesProps) => {
         pagination={{
           dynamicBullets: true,
           clickable: true,
+          el: ".custom-pagination",
         }}
-        modules={[Pagination]}
+        modules={[Autoplay, Pagination]}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
         breakpoints={{
           640: {
             slidesPerView: 2,
@@ -35,6 +40,7 @@ const CarouselServices = ({ cards, cta }: CarouselServicesProps) => {
             <CardImageTitle image={card.image} title={card.name} />
           </SwiperSlide>
         ))}
+        <div className="custom-pagination mt-4"></div>
       </Swiper>
 
       <ButtonBlackLink link="/" text={cta} classes="mt-16" />
