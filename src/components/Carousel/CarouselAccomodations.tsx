@@ -21,7 +21,18 @@ function CarouselAccommodations({
 }: CarouselBlockAccommodations) {
   return (
     <div className="container px-0 md:px-8">
-      <Swiper slidesPerView={2} spaceBetween={50}>
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={50}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        }}
+      >
         {elements.map((element, index) => (
           <SwiperSlide key={index}>
             <CardAccommodation

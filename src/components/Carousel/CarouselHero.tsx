@@ -20,7 +20,11 @@ const CarouselHero = ({ images }: ImageProps) => {
             <source media="(min-width: 1280px)" srcSet={image.desktop_xl} />
             <source media="(min-width: 1024px)" srcSet={image.desktop} />
             <source media="(min-width: 768px)" srcSet={image.tablet} />
-            <img src={image.mobile} alt="" className="w-full" />
+            <img
+              src={image.mobile}
+              alt=""
+              className="h-full w-full bg-center object-cover"
+            />
           </picture>
         </SwiperSlide>
       ))}
