@@ -52,7 +52,7 @@ const accommodation_cards = [
 ];
 
 // eslint-disable-next-line @typescript-eslint/require-await
-export const getStaticProps = async ({ locale }: { locale: Locale }) => {
+export const getServerSideProps = async ({ locale }: { locale: Locale }) => {
   try {
     const res = await fetch(
       `${process.env.API_URL}/services/?&locale=${locale}&fields[0]=name&populate[image][fields][0]=url`,
@@ -60,11 +60,13 @@ export const getStaticProps = async ({ locale }: { locale: Locale }) => {
 
     const data = (await res.json()) as Root;
 
+    console.log(JSON.stringify(data, null, 2));
+
     const services = data.data.map((element): ICardService => {
       return {
         id: element.id,
         name: element.attributes.name,
-        image: `${process.env.STRAPI_URL}${element.attributes.image.data.attributes.url}`,
+        image: element.attributes.image.data.attributes.url,
       };
     });
 
