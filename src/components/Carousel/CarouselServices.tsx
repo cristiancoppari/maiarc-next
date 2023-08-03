@@ -8,7 +8,7 @@ import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
 interface CarouselServicesProps {
   cards: ICardService[];
-  cta: string;
+  cta?: string;
 }
 
 const CarouselServices = ({ cards, cta }: CarouselServicesProps) => {
@@ -43,7 +43,7 @@ const CarouselServices = ({ cards, cta }: CarouselServicesProps) => {
         <div className="custom-pagination mt-4"></div>
       </Swiper>
 
-      <ButtonBlackLink link="/" text={cta} classes="mt-16" />
+      {!!cta && <ButtonBlackLink link="/contacto" text={cta} classes="mt-16" />}
     </div>
   );
 };

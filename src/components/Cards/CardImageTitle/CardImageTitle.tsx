@@ -1,6 +1,6 @@
 import type { ICardImageTitle } from "@/types/cards";
 
-const CardImageTitle = ({ image, title }: ICardImageTitle) => {
+const CardImageTitle = ({ image, title, subtitle }: ICardImageTitle) => {
   return (
     <div className="shadow-xl">
       <img
@@ -11,6 +11,7 @@ const CardImageTitle = ({ image, title }: ICardImageTitle) => {
 
       <div className="p-4 text-center">
         <h3 className="p --font-lora">- {title} -</h3>
+        {!!subtitle && <p>{subtitle}</p>}
       </div>
     </div>
   );
