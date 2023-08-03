@@ -9,9 +9,14 @@ import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
 interface CarouselServicesProps {
   cards: ICardService[];
   cta?: string;
+  clickHandler?: (title: string) => void;
 }
 
-const CarouselServices = ({ cards, cta }: CarouselServicesProps) => {
+const CarouselServices = ({
+  cards,
+  cta,
+  clickHandler,
+}: CarouselServicesProps) => {
   return (
     <div className="container pb-20">
       <Swiper
@@ -37,7 +42,12 @@ const CarouselServices = ({ cards, cta }: CarouselServicesProps) => {
       >
         {cards.map((card, index) => (
           <SwiperSlide key={index} className="p-4">
-            <CardImageTitle image={card.image} title={card.name} />
+            <CardImageTitle
+              image={card.image}
+              title={card.name}
+              clickable={card.clickable}
+              onClick={clickHandler}
+            />
           </SwiperSlide>
         ))}
         <div className="custom-pagination mt-4"></div>

@@ -14,6 +14,7 @@ import CarouselAccommodations from "@/components/Carousel/CarouselAccomodations"
 import InstagramGallery from "@/components/Galleries/InstagramGallery/InstagramGallery";
 import Newsletter from "@/components/Newsletter/Newsletter";
 import ConsultationModal from "@/components/Modals/ConsultationModal";
+import CarouselModal from "@/components/Modals/CarouselModal";
 
 import { images, big_cards_imgs } from "@/data/images";
 
@@ -83,19 +84,31 @@ export default function Home({
 }: {
   cards_services: ICardService[];
 }) {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] =
+    useState<boolean>(false);
+  const [isCarouselModalOpen, setIsCarouselModalOpen] =
+    useState<boolean>(false);
   const [villaId, setVillaId] = useState<string>("");
 
   const openModal = () => {
-    setIsModalOpen(true);
+    setIsConsultationModalOpen(true);
+  };
+
+  const openCarouselModal = () => {
+    console.log("clicked");
+    setIsCarouselModalOpen(true);
   };
 
   const selectVilla = (id: string) => {
     setVillaId(id);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeCarouselModal = () => {
+    setIsCarouselModalOpen(false);
+  };
+
+  const closeConsultationModal = () => {
+    setIsConsultationModalOpen(false);
   };
 
   const content = useContext(LangContext);
@@ -134,6 +147,7 @@ export default function Home({
           cta={translated_content.accommodations.cta}
           openModal={openModal}
           selectVilla={selectVilla}
+          openCarouselModal={openCarouselModal}
         />
       </Section>
 
@@ -148,9 +162,14 @@ export default function Home({
       <Newsletter content={translated_content.newsletter} />
 
       <ConsultationModal
-        isOpen={isModalOpen}
-        closeModal={closeModal}
+        isOpen={isConsultationModalOpen}
+        closeModal={closeConsultationModal}
         villa={!!villa ? villa : accommodation_cards[0]}
+      />
+
+      <CarouselModal
+        isOpen={isCarouselModalOpen}
+        closeModal={closeCarouselModal}
       />
     </PageLayout>
   );

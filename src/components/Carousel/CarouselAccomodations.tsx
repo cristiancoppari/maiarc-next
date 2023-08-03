@@ -12,6 +12,7 @@ interface CarouselBlockAccommodations {
   };
   openModal: () => void;
   selectVilla: (id: string) => void;
+  openCarouselModal: () => void;
 }
 
 function CarouselAccommodations({
@@ -19,6 +20,7 @@ function CarouselAccommodations({
   cta,
   openModal,
   selectVilla,
+  openCarouselModal,
 }: CarouselBlockAccommodations) {
   return (
     <div className="container px-0 md:px-8">
@@ -50,6 +52,7 @@ function CarouselAccommodations({
               card={element}
               openModal={openModal}
               selectVilla={selectVilla}
+              openCarouselModal={openCarouselModal}
             />
           </SwiperSlide>
         ))}

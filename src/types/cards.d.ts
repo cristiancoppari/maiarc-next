@@ -2,6 +2,7 @@ interface ICardService {
   id: number;
   name: string;
   image: string;
+  clickable?: boolean | null;
 }
 
 export interface ICardImageTitle {
@@ -9,6 +10,8 @@ export interface ICardImageTitle {
   image: string;
   href?: string;
   subtitle?: string;
+  clickable?: boolean | null;
+  onClick?: (title: string) => void;
 }
 
 export interface ICardBig {
@@ -31,4 +34,5 @@ export interface ICardAccommodation {
   card: IAccommodation;
   openModal?: () => void;
   selectVilla?: (id: string) => void;
+  openCarouselModal?: () => void;
 }

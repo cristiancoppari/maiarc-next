@@ -1,6 +1,8 @@
 import type { Root } from "@/types/api";
 import type { ICardService } from "@/types/cards";
 
+import { useState } from "react";
+
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Heros/Hero";
 import Section from "@/components/Sections/Section";
@@ -40,16 +42,22 @@ export const getServerSideProps = async ({
 
   try {
     const res = await fetch(
-      `${process.env.API_URL}/services/?&locale=${locale}&fields[0]=name&populate[image][fields][0]=url`,
+      `${process.env.API_URL}/services/?&locale=${locale}&fields[0]=name&populate[image][fields][0]=url&fields[2]=clickable`,
     );
 
     const data = (await res.json()) as Root;
 
-    const services = data.data.map((element): ICardService => {
+    // Get the clickables services
+    const data_filtered = data.data.filter((element) => {
+      return element.attributes.clickable;
+    });
+
+    const services = data_filtered.map((element): ICardService => {
       return {
         id: element.id,
         name: element.attributes.name,
         image: element.attributes.image.data.attributes.url,
+        clickable: element.attributes.clickable,
       };
     });
 
@@ -65,6 +73,12 @@ export const getServerSideProps = async ({
 };
 
 const DestinoPage = ({ destino, cards_services }: DestinoPageProps) => {
+  const [service, setService] = useState<string>("");
+
+  const setServiceHandler = (service: string) => {
+    setService(service);
+  };
+
   return (
     <PageLayout title={`${destino} - MAIARC`}>
       <Hero images={images} />
@@ -73,7 +87,20 @@ const DestinoPage = ({ destino, cards_services }: DestinoPageProps) => {
         title={`Maiarc en ${destino}`}
         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, mollitia. Non quaerat quisquam voluptatibus quam perspiciatis molestiae officia dignissimos doloremque!"
       >
-        <CarouselServices cards={cards_services} />
+        <CarouselServices
+          cards={cards_services}
+          clickHandler={setServiceHandler}
+        />
+
+        {/* TODO: esto esta hardcodeado */}
+        {!!service && (
+          <Section title={service}>
+            <CarouselServices
+              cards={cards_services}
+              clickHandler={setServiceHandler}
+            />
+          </Section>
+        )}
       </Section>
     </PageLayout>
   );

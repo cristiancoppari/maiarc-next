@@ -1,9 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export interface Root {
-  data: Daum[];
-  meta: Meta;
-}
-
 export interface Root {
   data: Daum[];
   meta: Meta;
@@ -16,6 +10,7 @@ export interface Daum {
 
 export interface Attributes {
   name: string;
+  clickable?: boolean | null;
   image: Image;
 }
 

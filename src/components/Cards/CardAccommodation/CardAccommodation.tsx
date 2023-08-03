@@ -5,10 +5,16 @@ const CardAccommodation = ({
   card,
   openModal,
   selectVilla,
+  openCarouselModal,
 }: ICardAccommodation) => {
   return (
     <div className="shadow-xl">
-      <img src={card.image} alt="" className="h-52 w-full object-cover" />
+      <img
+        src={card.image}
+        alt=""
+        className="h-52 w-full object-cover"
+        onClick={openCarouselModal}
+      />
 
       <div className="bg-zinc-100 p-6 text-slate-900">
         <h4 className="h4 --font-lora mb-2 text-left">{card.name}</h4>

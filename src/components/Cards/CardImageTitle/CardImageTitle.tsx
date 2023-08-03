@@ -1,8 +1,18 @@
 import type { ICardImageTitle } from "@/types/cards";
+import { cn } from "@/lib/utils";
 
-const CardImageTitle = ({ image, title, subtitle }: ICardImageTitle) => {
+const CardImageTitle = ({
+  image,
+  title,
+  subtitle,
+  clickable,
+  onClick,
+}: ICardImageTitle) => {
   return (
-    <div className="shadow-xl">
+    <div
+      className={cn("shadow-xl", !!clickable && "cursor-pointer")}
+      onClick={() => !!clickable && onClick!(title)}
+    >
       <img
         src={image}
         alt=""
