@@ -60,8 +60,6 @@ export const getServerSideProps = async ({ locale }: { locale: Locale }) => {
 
     const data = (await res.json()) as Root;
 
-    console.log(JSON.stringify(data, null, 2));
-
     const services = data.data.map((element): ICardService => {
       return {
         id: element.id,
