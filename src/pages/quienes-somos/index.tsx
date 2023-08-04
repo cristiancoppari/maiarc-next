@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { LangContext } from "@/context/langContext";
 
 import PageLayout from "@/components/ui/PageLayout";
-import Hero from "@/components/Heros/Hero";
+import Hero from "@/components/Sections/Heros/Hero";
 import TextImage from "@/components/Blocks/TextImage/TextImage";
 import CardBig from "@/components/Cards/CardBig/CardBig";
 import BgImageText from "@/components/Blocks/BgImageText/BgImageText";

@@ -5,7 +5,7 @@ import icon_ig from "@/assets/images/instagram.svg";
 import icon_wpp from "@/assets/images/whatsapp.svg";
 import logo from "@/assets/images/logo-black-subtitle.png";
 
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import Link from "next/link";
 
 const social: Array<{ icon: string; link: string }> = [

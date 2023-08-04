@@ -1,25 +1,25 @@
 import type { Locale } from "@/types/locales";
-import type { ICardService } from "@/types/cards";
+import type { Service } from "@/types/cards";
+import { fetchServices, fetchPremiumServices } from "@/lib/fetchers/fetchers";
 
 import { useContext, useState } from "react";
 import { LangContext } from "@/context/langContext";
 
 import PageLayout from "@/components/ui/PageLayout";
 
-import Hero from "@/components/Heros/Hero";
+import Hero from "@/components/Sections/Heros/Hero";
 import Section from "@/components/Sections/Section";
 import CarouselServices from "@/components/Carousel/CarouselServices";
 import BigGallery from "@/components/Galleries/BigGallery/BigGallery";
 import CarouselAccommodations from "@/components/Carousel/CarouselAccomodations";
 import InstagramGallery from "@/components/Galleries/InstagramGallery/InstagramGallery";
-import Newsletter from "@/components/Newsletter/Newsletter";
+import Newsletter from "@/components/Sections/Newsletter/Newsletter";
 import ConsultationModal from "@/components/Modals/ConsultationModal";
 import CarouselModal from "@/components/Modals/CarouselModal";
 
-import { images, big_cards_imgs } from "@/data/images";
+import { images } from "@/data/images";
 
 import villa_img from "@/assets/images/villa-1.png";
-import type { Root } from "@/types/api";
 
 const accommodation_cards = [
   {
@@ -54,41 +54,31 @@ const accommodation_cards = [
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export const getServerSideProps = async ({ locale }: { locale: Locale }) => {
-  try {
-    const res = await fetch(
-      `${process.env.API_URL}/services/?&locale=${locale}&fields[0]=name&populate[image][fields][0]=url`,
-    );
+  const services_data = await fetchServices(locale);
+  const premium_services_data = await fetchPremiumServices(locale);
 
-    const data = (await res.json()) as Root;
-
-    const services = data.data.map((element): ICardService => {
-      return {
-        id: element.id,
-        name: element.attributes.name,
-        image: element.attributes.image.data.attributes.url,
-      };
-    });
-
-    return {
-      props: {
-        cards_services: services,
-      },
-    };
-  } catch (error) {
-    throw new Error("Hubo un error");
-  }
+  return {
+    props: {
+      services: services_data,
+      premium_services: premium_services_data,
+    },
+  };
 };
 
 export default function Home({
-  cards_services,
+  services,
+  premium_services,
 }: {
-  cards_services: ICardService[];
+  services: Service[];
+  premium_services: Service[];
 }) {
   const [isConsultationModalOpen, setIsConsultationModalOpen] =
     useState<boolean>(false);
   const [isCarouselModalOpen, setIsCarouselModalOpen] =
     useState<boolean>(false);
   const [villaId, setVillaId] = useState<string>("");
+
+  console.log(premium_services);
 
   const openModal = () => {
     setIsConsultationModalOpen(true);
@@ -115,11 +105,6 @@ export default function Home({
   const translated_content = content.home;
   const villa = accommodation_cards.find((card) => card.id === villaId);
 
-  const big_cards = big_cards_imgs.map((card, index) => ({
-    ...card,
-    ...translated_content.big_gallery.cards[index],
-  }));
-
   return (
     <PageLayout title="MAIARC Concierge">
       <Hero images={images} />
@@ -130,11 +115,11 @@ export default function Home({
         classes="container"
       >
         <CarouselServices
-          cards={cards_services}
+          cards={services}
           cta={translated_content.services_gallery.cta}
         />
 
-        <BigGallery cards={big_cards} />
+        <BigGallery services={premium_services} />
       </Section>
 
       <Section

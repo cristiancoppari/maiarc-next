@@ -1,8 +1,8 @@
-import type { ICardBig } from "@/types/cards";
-
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
-const CardBig = ({ title, image, description, link, cta_label }: ICardBig) => {
+const CardBig = ({ title, image, description, link, cta_label }: any) => {
   return (
     <div className="flex flex-col shadow-xl">
       <img src={image} alt="" className="mx-auto aspect-square w-full" />

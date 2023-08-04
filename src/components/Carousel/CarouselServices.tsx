@@ -1,5 +1,6 @@
-import type { ICardService } from "@/types/cards";
-
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import CardImageTitle from "../Cards/CardImageTitle/CardImageTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -7,7 +8,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
 
 interface CarouselServicesProps {
-  cards: ICardService[];
+  cards: any[];
   cta?: string;
   clickHandler?: (title: string) => void;
 }

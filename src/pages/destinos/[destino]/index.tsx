@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Root } from "@/types/api";
-import type { ICardService } from "@/types/cards";
 
 import { useState } from "react";
 
 import PageLayout from "@/components/ui/PageLayout";
-import Hero from "@/components/Heros/Hero";
+import Hero from "@/components/Sections/Heros/Hero";
 import Section from "@/components/Sections/Section";
 
 import { images } from "@/data/images";
@@ -15,7 +17,7 @@ interface Params {
 }
 
 interface DestinoPageProps extends Params {
-  cards_services: ICardService[];
+  cards_services: any[];
 }
 
 export const getServerSideProps = async ({
@@ -52,7 +54,7 @@ export const getServerSideProps = async ({
       return element.attributes.clickable;
     });
 
-    const services = data_filtered.map((element): ICardService => {
+    const services = data_filtered.map((element): any => {
       return {
         id: element.id,
         name: element.attributes.name,

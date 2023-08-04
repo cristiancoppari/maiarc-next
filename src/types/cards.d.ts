@@ -1,38 +1,45 @@
-interface ICardService {
-  id: number;
+import type { Daum2 } from "./api";
+
+interface Service {
+  id: number | string;
   name: string;
   image: string;
-  clickable?: boolean | null;
-}
-
-export interface ICardImageTitle {
-  title: string;
-  image: string;
-  href?: string;
   subtitle?: string;
-  clickable?: boolean | null;
-  onClick?: (title: string) => void;
+  description?: string | null;
+  images?: Daum2[] | null;
 }
 
-export interface ICardBig {
-  title: string;
-  image: string;
-  description: string;
-  link?: string;
-  cta_label?: string;
-}
-
-export interface IAccommodation {
+export interface Accommodation {
   id: string;
-  image: string;
-  location: string;
   name: string;
+  location: string;
   capacity: number;
+  image: string;
 }
 
-export interface ICardAccommodation {
-  card: IAccommodation;
-  openModal?: () => void;
-  selectVilla?: (id: string) => void;
-  openCarouselModal?: () => void;
+export interface SuperYatch {
+  id: string;
+  name: string;
+  location: string;
+  capacity: number;
+  image: string;
 }
+
+export interface UniqueExperience {
+  id: string;
+  name: string;
+  location: string;
+  description: string;
+  image: string;
+}
+
+export interface Card {
+  cta?: {
+    label: string;
+    link: string;
+  };
+  clickable?: boolean | null;
+  clickHandler: (param: string) => void; // to receive many functions that return a void
+}
+
+export interface CardService extends Card, Service {}

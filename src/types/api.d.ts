@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Root {
   data: Daum[];
   meta: Meta;
@@ -9,12 +10,17 @@ export interface Daum {
 }
 
 export interface Attributes {
+  // FIX THIS
+  [x: string]: any;
+  clickable: unknown;
   name: string;
-  clickable?: boolean | null;
-  image: Image;
+  description: string;
+  main_image: MainImage;
+  images: Images;
+  subtitle?: string;
 }
 
-export interface Image {
+export interface MainImage {
   data: Data;
 }
 
@@ -24,6 +30,19 @@ export interface Data {
 }
 
 export interface Attributes2 {
+  url: string;
+}
+
+export interface Images {
+  data: Daum2[];
+}
+
+export interface Daum2 {
+  id: number;
+  attributes: Attributes3;
+}
+
+export interface Attributes3 {
   url: string;
 }
 

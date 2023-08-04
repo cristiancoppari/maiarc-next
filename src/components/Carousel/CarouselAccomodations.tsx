@@ -1,11 +1,12 @@
-import type { IAccommodation } from "@/types/cards";
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Swiper, SwiperSlide } from "swiper/react";
 import CardAccommodation from "../Cards/CardAccommodation/CardAccommodation";
 import { ButtonBlackLink } from "../Buttons/ButtonBlack/ButtonBlack";
 import { Autoplay, Pagination } from "swiper/modules";
 
 interface CarouselBlockAccommodations {
-  elements: IAccommodation[];
+  elements: any[];
   cta: {
     label: string;
     href: string;
