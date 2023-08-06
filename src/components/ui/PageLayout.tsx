@@ -1,8 +1,9 @@
+import type { LangContextType } from "@/context/langContext";
+
 import Head from "next/head";
-
 import { useContext } from "react";
-import { LangContext } from "@/context/langContext";
 
+import { LangContext } from "@/context/langContext";
 import Header from "@/components/Layout/Header/Header";
 import Footer from "@/components/Layout/Footer/Footer";
 import WhatsappButton from "@/components/Buttons/WhatsappButton/WhatsappButton";
@@ -13,7 +14,7 @@ interface PageLayoutProps {
 }
 
 function PageLayout({ children, title }: PageLayoutProps) {
-  const content = useContext(LangContext);
+  const { locale_file } = useContext(LangContext) as LangContextType;
 
   return (
     <>
@@ -23,9 +24,9 @@ function PageLayout({ children, title }: PageLayoutProps) {
       </Head>
 
       <div>
-        <Header content={content.header.content} />
+        <Header content={locale_file.header.content} />
         {children}
-        <Footer content={content.footer.content} />
+        <Footer content={locale_file.footer.content} />
 
         <WhatsappButton />
       </div>

@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import CardImageTitle from "../Cards/CardImageTitle/CardImageTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
-import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
+import { ButtonBlackLink } from "@/components/Buttons/Button/Buttons";
+
+import CardImageTitle from "../Cards/ImageTitle";
 
 interface CarouselServicesProps {
   cards: any[];
@@ -13,11 +14,7 @@ interface CarouselServicesProps {
   clickHandler?: (title: string) => void;
 }
 
-const CarouselServices = ({
-  cards,
-  cta,
-  clickHandler,
-}: CarouselServicesProps) => {
+const CarouselServices = ({ cards, cta, clickHandler }: CarouselServicesProps) => {
   return (
     <div className="container pb-20">
       <Swiper
@@ -43,12 +40,7 @@ const CarouselServices = ({
       >
         {cards.map((card, index) => (
           <SwiperSlide key={index} className="p-4">
-            <CardImageTitle
-              image={card.image}
-              title={card.name}
-              clickable={card.clickable}
-              onClick={clickHandler}
-            />
+            <CardImageTitle image={card.image} title={card.name} clickable={card.clickable} onClick={clickHandler} />
           </SwiperSlide>
         ))}
         <div className="custom-pagination mt-4"></div>

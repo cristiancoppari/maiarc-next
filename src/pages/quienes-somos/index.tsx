@@ -4,7 +4,7 @@ import { LangContext } from "@/context/langContext";
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
 import TextImage from "@/components/Blocks/TextImage/TextImage";
-import CardBig from "@/components/Cards/CardBig/CardBig";
+import CardBig from "@/components/Cards/CardBig/BigImage";
 import BgImageText from "@/components/Blocks/BgImageText/BgImageText";
 
 import { images } from "@/data/images";
@@ -31,11 +31,7 @@ const QuienesSomosPage = () => {
     <PageLayout title="Quienes somos">
       <Hero images={images} />
 
-      <TextImage
-        content={content}
-        image={{ src: maiarc_test.src, text: "MAIARC" }}
-        theme="dark"
-      />
+      <TextImage content={content} image={{ src: maiarc_test.src, text: "MAIARC" }} theme="dark" />
 
       <div className="section-padding container flex gap-4">
         <CardBig

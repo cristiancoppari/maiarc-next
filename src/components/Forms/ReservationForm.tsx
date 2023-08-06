@@ -1,22 +1,16 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useContext } from "react";
-import { LangContext } from "@/context/langContext";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import DatePicker from "../DatePicker/DatePicker";
 import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import { ButtonBlack } from "../Buttons/ButtonBlack/ButtonBlack";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { LangContext } from "@/context/langContext";
 import { Input } from "@/components/ui/input";
+
+import DatePicker from "../DatePicker/DatePicker";
 import { Textarea } from "../ui/textarea";
+import { Btn } from "../Buttons/Button/Buttons";
 
 const formSchema = z.object({
   name: z
@@ -67,7 +61,7 @@ const formSchema = z.object({
 
 const ReservationForm = () => {
   const content = useContext(LangContext);
-  const c = content.contact;
+  const c = content.locale_file.contact;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -86,10 +80,7 @@ const ReservationForm = () => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="container space-y-8 text-start md:max-w-xl"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="container space-y-8 text-start md:max-w-xl">
         <div className="flex gap-4">
           <FormField
             control={form.control}
@@ -191,11 +182,7 @@ const ReservationForm = () => {
           )}
         />
 
-        <ButtonBlack
-          type="submit"
-          text={c.form.submit}
-          classes="block mx-auto"
-        />
+        <Btn type="submit" text={c.form.submit} classes="block mx-auto" />
       </form>
     </Form>
   );

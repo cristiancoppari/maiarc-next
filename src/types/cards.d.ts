@@ -3,7 +3,7 @@ import type { Daum2 } from "./api";
 interface Service {
   id: number | string;
   name: string;
-  image: string;
+  main_image: string;
   subtitle?: string;
   description?: string | null;
   images?: Daum2[] | null;

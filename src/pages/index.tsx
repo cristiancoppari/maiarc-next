@@ -1,124 +1,89 @@
 import type { Locale } from "@/types/locales";
-import type { Service } from "@/types/cards";
-import { fetchServices, fetchPremiumServices } from "@/lib/fetchers/fetchers";
+import type { Service, Villa } from "@/types/services";
+import type { LangContextType } from "@/context/langContext";
+import type { FormServiceData } from "@/components/Modals/ConsultationModal";
 
 import { useContext, useState } from "react";
+import { SwiperSlide } from "swiper/react";
+
+import { fetchServices, fetchPremiumServices, fetchVillas } from "@/lib/fetchers/fetchers";
 import { LangContext } from "@/context/langContext";
-
 import PageLayout from "@/components/ui/PageLayout";
-
 import Hero from "@/components/Sections/Heros/Hero";
 import Section from "@/components/Sections/Section";
-import CarouselServices from "@/components/Carousel/CarouselServices";
+import Carousel from "@/components/Carousel/Carousel";
+import ImageTitle from "@/components/Cards/ImageTitle";
+import { LinkBtn } from "@/components/Buttons/Button/Buttons";
 import BigGallery from "@/components/Galleries/BigGallery/BigGallery";
-import CarouselAccommodations from "@/components/Carousel/CarouselAccomodations";
 import InstagramGallery from "@/components/Galleries/InstagramGallery/InstagramGallery";
 import Newsletter from "@/components/Sections/Newsletter/Newsletter";
+import CardAccommodation from "@/components/Cards/CardAccommodation/CardAccommodation";
 import ConsultationModal from "@/components/Modals/ConsultationModal";
-import CarouselModal from "@/components/Modals/CarouselModal";
-
+// TODO: hacer que el hero sea administrable
 import { images } from "@/data/images";
 
-import villa_img from "@/assets/images/villa-1.png";
-
-const accommodation_cards = [
-  {
-    id: "1",
-    image: villa_img.src,
-    name: "Villa 1",
-    capacity: 10,
-    location: "España",
-  },
-  {
-    id: "2",
-    image: villa_img.src,
-    name: "Villa 2",
-    capacity: 11,
-    location: "Ibiza",
-  },
-  {
-    id: "3",
-    image: villa_img.src,
-    name: "Villa 3",
-    capacity: 12,
-    location: "Tulum",
-  },
-  {
-    id: "4",
-    image: villa_img.src,
-    name: "Villa 4",
-    capacity: 13,
-    location: "Miami",
-  },
-];
-
-// eslint-disable-next-line @typescript-eslint/require-await
 export const getServerSideProps = async ({ locale }: { locale: Locale }) => {
+  // Fetch data from Strapi API
   const services_data = await fetchServices(locale);
   const premium_services_data = await fetchPremiumServices(locale);
+  const villas_data = await fetchVillas();
 
   return {
     props: {
       services: services_data,
       premium_services: premium_services_data,
+      villas_data: villas_data,
     },
   };
 };
 
-export default function Home({
-  services,
-  premium_services,
-}: {
+interface HomeProps {
   services: Service[];
   premium_services: Service[];
-}) {
-  const [isConsultationModalOpen, setIsConsultationModalOpen] =
-    useState<boolean>(false);
-  const [isCarouselModalOpen, setIsCarouselModalOpen] =
-    useState<boolean>(false);
-  const [villaId, setVillaId] = useState<string>("");
+  villas_data: Villa[];
+}
 
-  console.log(premium_services);
+const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) => {
+  // Locale file
+  const { locale_file } = useContext(LangContext) as LangContextType;
 
-  const openModal = () => {
-    setIsConsultationModalOpen(true);
+  // Translated content from locale files
+  const translated_content = locale_file.home;
+
+  // Store the service id to open the consultation modal and show the correct data
+  const [serviceId, setServiceId] = useState<string>("");
+
+  // Consultation Modal
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState<boolean>(false);
+
+  // Handlers
+  const openConsultationModal = () => setIsConsultationModalOpen(true);
+  const closeConsultationModal = () => setIsConsultationModalOpen(false);
+
+  const selectServiceHandler = (id: string) => {
+    setServiceId(id);
   };
 
-  const openCarouselModal = () => {
-    console.log("clicked");
-    setIsCarouselModalOpen(true);
-  };
-
-  const selectVilla = (id: string) => {
-    setVillaId(id);
-  };
-
-  const closeCarouselModal = () => {
-    setIsCarouselModalOpen(false);
-  };
-
-  const closeConsultationModal = () => {
-    setIsConsultationModalOpen(false);
-  };
-
-  const content = useContext(LangContext);
-  const translated_content = content.home;
-  const villa = accommodation_cards.find((card) => card.id === villaId);
+  // Service to show in the modal according to the id
+  const service_to_show_in_modal = villas_data.find((service) => service.id === serviceId) as FormServiceData;
 
   return (
     <PageLayout title="MAIARC Concierge">
       <Hero images={images} />
 
-      <Section
-        title={content.home.title}
-        text={content.home.text}
-        classes="container"
-      >
-        <CarouselServices
-          cards={services}
-          cta={translated_content.services_gallery.cta}
-        />
+      <Section title={locale_file.home.title} text={locale_file.home.text} classes="container">
+        {/* Services Carousel */}
+        <Carousel>
+          {services.map((service) => (
+            <SwiperSlide key={service.id} className="p-4">
+              <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
+            </SwiperSlide>
+          ))}
+        </Carousel>
 
+        <LinkBtn link="/contacto" text={"Mas"} classes="my-16" />
+
+        {/* Premium Services */}
         <BigGallery services={premium_services} />
       </Section>
 
@@ -127,13 +92,20 @@ export default function Home({
         text={translated_content.accommodations.text}
         classes="bg-zinc-200"
       >
-        <CarouselAccommodations
-          elements={accommodation_cards}
-          cta={translated_content.accommodations.cta}
-          openModal={openModal}
-          selectVilla={selectVilla}
-          openCarouselModal={openCarouselModal}
-        />
+        {/* Services Carousel */}
+        <Carousel>
+          {villas_data.map((villa) => (
+            <SwiperSlide key={villa.id} className="p-4">
+              <CardAccommodation
+                card={villa}
+                handlers={{
+                  selectService: selectServiceHandler,
+                  openModal: openConsultationModal,
+                }}
+              />
+            </SwiperSlide>
+          ))}
+        </Carousel>
       </Section>
 
       <Section
@@ -149,13 +121,12 @@ export default function Home({
       <ConsultationModal
         isOpen={isConsultationModalOpen}
         closeModal={closeConsultationModal}
-        villa={!!villa ? villa : accommodation_cards[0]}
+        service={service_to_show_in_modal ?? ""}
       />
 
-      <CarouselModal
-        isOpen={isCarouselModalOpen}
-        closeModal={closeCarouselModal}
-      />
+      {/* <CarouselModal isOpen={isCarouselModalOpen} closeModal={closeCarouselModal} /> */}
     </PageLayout>
   );
-}
+};
+
+export default Home;

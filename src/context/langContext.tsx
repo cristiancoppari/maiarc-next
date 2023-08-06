@@ -1,19 +1,22 @@
+import type { Content } from "@/types/content";
+
 import { type ReactNode, createContext } from "react";
 import { useRouter } from "next/router";
-
-import type { Content } from "@/types/content";
 
 import { es } from "@/lang/es";
 import { en } from "@/lang/en";
 
-export const LangContext = createContext<Content>({} as Content);
-export const LangDispatchContext = createContext<React.Dispatch<string>>(
-  () => {},
-);
+export interface LangContextType {
+  locale_file: Content;
+  locale: string;
+}
 
-const LangContextProvider = ({ children }: { children: ReactNode }) => {
+export const LangContext = createContext<LangContextType>({} as LangContextType);
+export const LangDispatchContext = createContext<React.Dispatch<string>>(() => {});
+
+const LangContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const router = useRouter();
-  const { locale } = router;
+  const { locale = "es" } = router;
 
   let locale_file;
 
@@ -28,13 +31,7 @@ const LangContextProvider = ({ children }: { children: ReactNode }) => {
       locale_file = es;
   }
 
-  return (
-    <LangContext.Provider value={locale_file}>
-      {children}
-      {/* <LangDispatchContext.Provider value={{ changeLanguage }}>
-      </LangDispatchContext.Provider> */}
-    </LangContext.Provider>
-  );
+  return <LangContext.Provider value={{ locale_file, locale }}>{children}</LangContext.Provider>;
 };
 
 export default LangContextProvider;

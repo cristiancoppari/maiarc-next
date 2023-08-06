@@ -1,8 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { ButtonBlackLink } from "@/components/Buttons/ButtonBlack/ButtonBlack";
+import { LinkBtn } from "@/components/Buttons/Button/Buttons";
 
-const CardBig = ({ title, image, description, link, cta_label }: any) => {
+interface BigImage {
+  title: string;
+  image: string;
+  description: string;
+  link: string;
+  cta_label: string;
+}
+
+const BigImage: React.FC<BigImage> = ({ title, image, description, link, cta_label }) => {
   return (
     <div className="flex flex-col shadow-xl">
       <img src={image} alt="" className="mx-auto aspect-square w-full" />
@@ -12,12 +18,10 @@ const CardBig = ({ title, image, description, link, cta_label }: any) => {
           <p className="p mb-8">{description}</p>
         </div>
 
-        {!!cta_label && !!link && (
-          <ButtonBlackLink link={link} text={cta_label} />
-        )}
+        {!!cta_label && !!link && <LinkBtn link={link} text={cta_label} />}
       </div>
     </div>
   );
 };
 
-export default CardBig;
+export default BigImage;

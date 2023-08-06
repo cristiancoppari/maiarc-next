@@ -1,24 +1,21 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { Accommodation } from "@/types/services";
 
 import { Button } from "@/components/ui/button";
 
-const CardAccommodation = ({
-  card,
-  openModal,
-  selectVilla,
-  openCarouselModal,
-}: any) => {
+interface AccomodationProps {
+  card: Accommodation;
+  handlers: {
+    selectService: (id: string) => void;
+    openModal: () => void;
+  };
+}
+
+const CardAccommodation: React.FC<AccomodationProps> = ({ card, handlers }) => {
+  const { selectService, openModal } = handlers;
+
   return (
     <div className="shadow-xl">
-      <img
-        src={card.image}
-        alt=""
-        className="h-52 w-full object-cover"
-        onClick={openCarouselModal}
-      />
+      <img src={card.main_image} alt="" className="h-52 w-full object-cover" />
 
       <div className="bg-zinc-100 p-6 text-slate-900">
         <h4 className="h4 --font-lora mb-2 text-left">{card.name}</h4>
@@ -50,11 +47,7 @@ const CardAccommodation = ({
                 stroke="currentColor"
                 className="h-6 w-6"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -62,14 +55,17 @@ const CardAccommodation = ({
                 />
               </svg>
 
-              <p>{card.location}</p>
+              <p>
+                {card.destination} {card.location}
+              </p>
             </div>
           </div>
+
           <Button
             variant="link"
             onClick={() => {
-              selectVilla?.(card.id);
-              openModal?.();
+              selectService(card.id);
+              openModal();
             }}
           >
             Consultar

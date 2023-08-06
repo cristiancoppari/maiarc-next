@@ -5,9 +5,7 @@ const path = require("path");
 const config = {
   overrides: [
     {
-      extends: [
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      ],
+      extends: ["plugin:@typescript-eslint/recommended-requiring-type-checking"],
       files: ["*.ts", "*.tsx"],
       parserOptions: {
         project: path.join(__dirname, "tsconfig.json"),
@@ -30,6 +28,20 @@ const config = {
     ],
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     "@next/next/no-img-element": "off",
+    "import/order": [
+      "warn",
+      {
+        groups: ["type", "builtin", "object", "external", "internal", "parent", "sibling", "index"],
+        pathGroups: [
+          {
+            pattern: "~/**",
+            group: "external",
+            position: "after",
+          },
+        ],
+        "newlines-between": "always",
+      },
+    ],
   },
 };
 

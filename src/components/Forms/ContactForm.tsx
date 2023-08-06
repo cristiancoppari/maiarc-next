@@ -6,22 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import DatePicker from "../DatePicker/DatePicker";
 import * as z from "zod";
 
-import { ButtonBlack } from "../Buttons/ButtonBlack/ButtonBlack";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { ButtonBlack } from "../Buttons/Button/Buttons";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
 
@@ -93,10 +80,7 @@ const ContactForm = () => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="container space-y-8 text-start md:max-w-xl"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="container space-y-8 text-start md:max-w-xl">
         <FormField
           control={form.control}
           name="name"
@@ -145,9 +129,7 @@ const ContactForm = () => {
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue
-                      placeholder={c.form.destinations.placeholder}
-                    />
+                    <SelectValue placeholder={c.form.destinations.placeholder} />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -204,11 +186,7 @@ const ContactForm = () => {
           )}
         />
 
-        <ButtonBlack
-          type="submit"
-          text={c.form.submit}
-          classes="block mx-auto"
-        />
+        <ButtonBlack type="submit" text={c.form.submit} classes="block mx-auto" />
       </form>
     </Form>
   );

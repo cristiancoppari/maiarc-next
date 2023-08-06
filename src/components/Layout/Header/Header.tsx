@@ -54,38 +54,24 @@ function Header({ content }: Header) {
     <header className="header fixed left-0 top-0 z-10 w-full backdrop-blur-sm">
       <div className="bg-slate-100">
         <div className="container flex h-8 items-center justify-end gap-4">
-          <button
-            className={cn("uppercase", locale === "es" && "font-bold")}
-            onClick={() => changeLanguage("es")}
-          >
+          <button className={cn("uppercase", locale === "es" && "font-bold")} onClick={() => changeLanguage("es")}>
             ESPAÑOL
           </button>
           <span className="text-slate-900">l</span>
-          <button
-            className={cn("uppercase", locale === "en" && "font-bold")}
-            onClick={() => changeLanguage("en")}
-          >
+          <button className={cn("uppercase", locale === "en" && "font-bold")} onClick={() => changeLanguage("en")}>
             ENGLISH
           </button>
         </div>
       </div>
       <div className="bg-black opacity-80">
-        <div
-          className={cn(
-            "container mx-auto flex h-16 items-center justify-between md:justify-center",
-          )}
-        >
+        <div className={cn("container mx-auto flex h-16 items-center justify-between md:justify-center")}>
           {!isDesktop && (
             <Link href="/">
               <img src={logo.src} alt="" className="h-auto w-20" />
             </Link>
           )}
 
-          <Burger
-            classes="block md:hidden"
-            onClick={toggleMenu}
-            isOpen={isMenuOpen}
-          />
+          <Burger classes="block md:hidden" onClick={toggleMenu} isOpen={isMenuOpen} />
 
           <ul
             className={cn(
@@ -123,10 +109,7 @@ function Header({ content }: Header) {
                 );
               } else {
                 return (
-                  <li
-                    className="grid h-full place-items-center p-4 text-center md:p-0"
-                    key={link.label}
-                  >
+                  <li className="grid h-full place-items-center p-4 text-center md:p-0" key={link.label}>
                     <Link
                       href={link.href}
                       className="text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100"
@@ -146,10 +129,7 @@ function Header({ content }: Header) {
 
             {content.nav_links_right.map((link) => {
               return (
-                <li
-                  className="grid h-full place-items-center p-4 text-center md:p-0"
-                  key={link.label}
-                >
+                <li className="grid h-full place-items-center p-4 text-center md:p-0" key={link.label}>
                   <Link
                     href={link.href}
                     className="text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100"
