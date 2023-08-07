@@ -73,16 +73,21 @@ const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) 
 
       <Section title={locale_file.home.title} text={locale_file.home.text} classes="container">
         {/* Clickable Services */}
-        {services.map((service) => {
-          if (service.is_clickable) {
-            return (
-              <Link key={service.id} href={`/destinos/?service="${service.name}"`}>
-                <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
-              </Link>
-            );
-          }
-        })}
+        <h2 className="h2 mx-auto mb-8 uppercase md:w-11/12">Servicios principales</h2>
 
+        <div className="container mb-12 grid grid-cols-1 gap-8 px-4 md:grid-cols-3">
+          {services.map((service) => {
+            if (service.is_clickable) {
+              return (
+                <Link key={service.id} href={`/destinos/?service="${service.name}"`}>
+                  <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
+                </Link>
+              );
+            }
+          })}
+        </div>
+
+        <h2 className="h2 mx-auto mb-4 mt-24 uppercase md:w-11/12">Tambien contamos con:</h2>
         {/* Services Carousel */}
         <Carousel>
           {services.map((service) => {
