@@ -19,7 +19,6 @@ export const getServerSideProps = async () => {
 };
 
 const DestinationsPage: React.FC<{ destinations: Destination[] }> = ({ destinations }) => {
-  console.log(destinations);
   return (
     <PageLayout title="MAIARC Destinations">
       <Section title="Elegí tu destino" text="Encontra la vida de placer y lujo en nuestros destinos:">

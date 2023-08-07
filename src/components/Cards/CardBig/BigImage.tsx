@@ -4,8 +4,8 @@ interface BigImage {
   title: string;
   image: string;
   description: string;
-  link: string;
-  cta_label: string;
+  link?: string;
+  cta_label?: string;
 }
 
 const BigImage: React.FC<BigImage> = ({ title, image, description, link, cta_label }) => {
