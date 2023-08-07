@@ -4,6 +4,7 @@ import type { FormServiceData } from "@/components/Modals/ConsultationModal";
 
 import { useContext, useState } from "react";
 import { SwiperSlide } from "swiper/react";
+import Link from "next/link";
 
 import { fetchServices, fetchPremiumServices, fetchVillas } from "@/lib/fetchers/fetchers";
 import { LangContext } from "@/context/langContext";
@@ -71,13 +72,28 @@ const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) 
       <Hero images={images} />
 
       <Section title={locale_file.home.title} text={locale_file.home.text} classes="container">
+        {/* Clickable Services */}
+        {services.map((service) => {
+          if (service.is_clickable) {
+            return (
+              <Link key={service.id} href={`/destinos/?service="${service.name}"`}>
+                <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
+              </Link>
+            );
+          }
+        })}
+
         {/* Services Carousel */}
         <Carousel>
-          {services.map((service) => (
-            <SwiperSlide key={service.id} className="p-4">
-              <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
-            </SwiperSlide>
-          ))}
+          {services.map((service) => {
+            if (!service.is_clickable) {
+              return (
+                <SwiperSlide key={service.id} className="p-4">
+                  <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
+                </SwiperSlide>
+              );
+            }
+          })}
         </Carousel>
 
         <LinkBtn link="/contacto" text={"Mas"} classes="my-16" />

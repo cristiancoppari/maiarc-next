@@ -12,6 +12,7 @@ export interface Service {
   description?: string | null;
   main_image: string;
   images?: string[];
+  is_clickable?: boolean;
 }
 
 export interface Accommodation extends Service {

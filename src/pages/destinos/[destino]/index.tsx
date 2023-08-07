@@ -1,29 +1,21 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import type { Root } from "@/types/api";
+import type { Service } from "@/types/services";
 
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
 import Section from "@/components/Sections/Section";
+import ImageTitle from "@/components/Cards/ImageTitle";
 import { images } from "@/data/images";
+import { fetchServices } from "@/lib/fetchers/fetchers";
 
 interface Params {
   destino: string;
 }
 
 interface DestinoPageProps extends Params {
-  cards_services: any[];
+  services: Service[];
 }
 
-export const getServerSideProps = async ({
-  params,
-  locale,
-}: {
-  params: Params;
-  locale: string;
-  // eslint-disable-next-line @typescript-eslint/require-await
-}) => {
+export const getServerSideProps = async ({ params, locale }: { params: Params; locale: string }) => {
   // Get the params from the URL
   const { destino } = params;
 
@@ -34,30 +26,16 @@ export const getServerSideProps = async ({
   }
 
   try {
-    const res = await fetch(
-      `${process.env.API_URL}/services/?&locale=${locale}&fields[0]=name&populate[image][fields][0]=url&fields[2]=clickable`,
-    );
+    const services_data = await fetchServices(locale);
 
-    const data = (await res.json()) as Root;
-
-    // Get the clickables services
-    const data_filtered = data.data.filter((element) => {
-      return element.attributes.clickable;
-    });
-
-    const services = data_filtered.map((element): any => {
-      return {
-        id: element.id,
-        name: element.attributes.name,
-        image: element.attributes.image.data.attributes.url,
-        clickable: element.attributes.clickable,
-      };
+    const services = services_data.filter((element) => {
+      return element.is_clickable;
     });
 
     return {
       props: {
         destino,
-        cards_services: services,
+        services,
       },
     };
   } catch (error) {
@@ -65,7 +43,7 @@ export const getServerSideProps = async ({
   }
 };
 
-const DestinoPage = ({ destino }: DestinoPageProps) => {
+const DestinoPage = ({ destino, services }: DestinoPageProps) => {
   return (
     <PageLayout title={`${destino} - MAIARC`}>
       <Hero images={images} />
@@ -73,7 +51,15 @@ const DestinoPage = ({ destino }: DestinoPageProps) => {
       <Section
         title={`Maiarc en ${destino}`}
         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, mollitia. Non quaerat quisquam voluptatibus quam perspiciatis molestiae officia dignissimos doloremque!"
-      ></Section>
+      >
+        <div className="container grid grid-cols-1 gap-8 md:grid-cols-3">
+          {services.map((service) => (
+            <button key={service.id} onClick={() => console.log(service.name)}>
+              <ImageTitle classes="capitalize" title={service.name} image={service.main_image} />
+            </button>
+          ))}
+        </div>
+      </Section>
     </PageLayout>
   );
 };

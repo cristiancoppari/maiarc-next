@@ -11,6 +11,7 @@ export interface Daum {
 export interface Attributes {
   name: string;
   description?: string;
+  is_clickable: boolean;
   main_image: MainImage;
 }
 

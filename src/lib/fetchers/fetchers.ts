@@ -8,7 +8,7 @@ import type { Service, Villa, Destination } from "@/types/services";
 export const fetchServices = async (locale: string): Promise<Service[]> => {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/services/?&locale=${locale}&fields[0]=name&populate[main_image][fields][0]=url&populate[images][fields][0]=url&fields=description`,
+      `${process.env.API_URL}/services/?&locale=${locale}&fields[0]=name&populate[main_image][fields][0]=url&populate[images][fields][0]=url&fields=description&fields=is_clickable`,
     );
 
     const data = (await res.json()) as ApiResponseServices;
@@ -19,6 +19,7 @@ export const fetchServices = async (locale: string): Promise<Service[]> => {
         name: element.attributes.name,
         main_image: element.attributes.main_image?.data.attributes.url,
         description: element.attributes.description ?? null,
+        is_clickable: element.attributes.is_clickable,
       };
     });
 
