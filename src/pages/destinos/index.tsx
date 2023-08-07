@@ -28,7 +28,7 @@ const DestinationsPage: React.FC<{ destinations: Destination[] }> = ({ destinati
       <Section title="Elegí tu destino" text="Encontra la vida de placer y lujo en nuestros destinos:">
         <div className="container grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {destinations.map((destination) => (
-            <Link href={`/destinos/${destination.slug}/?service=${service}`} key={destination.id}>
+            <Link href={`/destinos/${destination.slug}/${service ? "?service=" + service : ""}`} key={destination.id}>
               <ImageTitle classes="capitalize" title={destination.name} image={destination.main_image} />
             </Link>
           ))}

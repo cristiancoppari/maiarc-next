@@ -2,7 +2,10 @@ import type { Root as ApiResponseServices } from "@/types/api-services";
 import type { Root as ApiResponsePremiumServices } from "@/types/api-premium-services";
 import type { Root as ApiResponseVilla } from "@/types/api-villas";
 import type { Root as ApiResponseDestination } from "@/types/api-destinations";
-import type { Service, Villa, Destination } from "@/types/services";
+import type { Root as ApiResponseYatch } from "@/types/api-yatches";
+import type { Root as ApiResponseHotel } from "@/types/api-hotels";
+import type { Root as ApiResponsePremiumVehicle } from "@/types/api-premium-vehicles";
+import type { Service, Villa, Destination, Yatch, Hotel, PremiumVehicle } from "@/types/services";
 
 // Get all services filtered by locale
 export const fetchServices = async (locale: string): Promise<Service[]> => {
@@ -106,6 +109,95 @@ export const fetchDestinations = async (): Promise<Destination[]> => {
     });
 
     return destinations;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Hubo un error");
+  }
+};
+
+export const fetchYatchs = async (): Promise<Yatch[]> => {
+  try {
+    const res = await fetch(
+      `${process.env.API_URL}/yatches/?fields[0]=name&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name&fields=capacity`,
+    );
+
+    const data = (await res.json()) as ApiResponseYatch;
+
+    const yatchs = data.data.map((element): Yatch => {
+      return {
+        id: element.id,
+        name: element.attributes.name,
+        main_image: element.attributes.main_image.data.attributes.url,
+        images: element.attributes.images.data.map((image) => {
+          return image.attributes.url;
+        }),
+        destination: element.attributes.destination.data.attributes.name,
+        location: element.attributes.location ?? null,
+        capacity: element.attributes.capacity,
+      };
+    });
+
+    return yatchs;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Hubo un error");
+  }
+};
+
+export const fetchHotels = async (): Promise<Hotel[]> => {
+  try {
+    const res = await fetch(
+      `${process.env.API_URL}/hotels/?fields=name&fields=includes_breakfast&fields=stars&fields=capacity&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name?locale=all`,
+    );
+
+    const data = (await res.json()) as ApiResponseHotel;
+
+    const hotels = data.data.map((element): Hotel => {
+      return {
+        id: element.id,
+        name: element.attributes.name,
+        main_image: element.attributes.main_image.data.attributes.url,
+        images: element.attributes.images.data.map((image) => {
+          return image.attributes.url;
+        }),
+        destination: element.attributes.destination.data.attributes.name,
+        capacity: element.attributes.capacity,
+        stars: element.attributes.stars,
+        location: element.attributes.location,
+      };
+    });
+
+    return hotels;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Hubo un error");
+  }
+};
+
+export const fetchPremiumVehicles = async (): Promise<PremiumVehicle[]> => {
+  try {
+    const res = await fetch(
+      `${process.env.API_URL}/premium-vehicles/?fields=name&fields=type&fields=capacity&fields=transmission&fields=type&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name`,
+    );
+
+    const data = (await res.json()) as ApiResponsePremiumVehicle;
+
+    const vehicles = data.data.map((element): PremiumVehicle => {
+      return {
+        id: element.id,
+        name: element.attributes.name,
+        main_image: element.attributes.main_image.data.attributes.url,
+        images: element.attributes.images.data.map((image) => {
+          return image.attributes.url;
+        }),
+        destination: element.attributes.destination.data.attributes.name,
+        capacity: element.attributes.capacity,
+        type: element.attributes.type,
+        transmission: element.attributes.transmission,
+      };
+    });
+
+    return vehicles;
   } catch (error) {
     console.error(error);
     throw new Error("Hubo un error");

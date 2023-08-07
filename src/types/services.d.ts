@@ -17,7 +17,7 @@ export interface Service {
 
 export interface Accommodation extends Service {
   destination: string;
-  location: string;
+  location: string | null;
   capacity: number;
   images: string[];
 }
@@ -37,14 +37,18 @@ export interface Apartment extends Accommodation {
 }
 
 export interface PremiumVehicle extends Service {
+  destination: string;
   images: string[];
   capacity: number;
-  type: "coupe" | "sedan" | "suv" | "van" | "luxury";
-  transmision: "automatic" | "manual";
+  type: string;
+  transmission: string;
+  // type: "coupe" | "sedan" | "suv" | "van" | "luxury";
+  // transmision: "A/T" | "M/T";
 }
 
 export interface Yatch extends Service {
-  location: string;
+  destination: string;
+  location: string | null;
   capacity: number;
   images: string[];
 }

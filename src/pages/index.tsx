@@ -17,7 +17,7 @@ import { LinkBtn } from "@/components/Buttons/Button/Buttons";
 import BigGallery from "@/components/Galleries/BigGallery/BigGallery";
 import InstagramGallery from "@/components/Galleries/InstagramGallery/InstagramGallery";
 import Newsletter from "@/components/Sections/Newsletter/Newsletter";
-import CardAccommodation from "@/components/Cards/CardAccommodation/CardAccommodation";
+import CardAccommodation from "@/components/Cards/CardSlides/CardAccommodation";
 import ConsultationModal from "@/components/Modals/ConsultationModal";
 // TODO: hacer que el hero sea administrable
 import { images } from "@/data/images";
@@ -79,7 +79,7 @@ const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) 
           {services.map((service) => {
             if (service.is_clickable) {
               return (
-                <Link key={service.id} href={`/destinos/?service="${service.name}"`}>
+                <Link key={service.id} href={`/destinos/?service=${service.name}`}>
                   <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
                 </Link>
               );
@@ -112,20 +112,22 @@ const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) 
         text={translated_content.accommodations.text}
         classes="bg-zinc-200"
       >
-        {/* Services Carousel */}
-        <Carousel>
-          {villas_data.map((villa) => (
-            <SwiperSlide key={villa.id} className="p-4">
-              <CardAccommodation
-                card={villa}
-                handlers={{
-                  selectService: selectServiceHandler,
-                  openModal: openConsultationModal,
-                }}
-              />
-            </SwiperSlide>
-          ))}
-        </Carousel>
+        <div className="container">
+          {/* Services Carousel */}
+          <Carousel>
+            {villas_data.map((villa) => (
+              <SwiperSlide key={villa.id} className="p-4">
+                <CardAccommodation
+                  card={villa}
+                  handlers={{
+                    selectService: selectServiceHandler,
+                    openModal: openConsultationModal,
+                  }}
+                />
+              </SwiperSlide>
+            ))}
+          </Carousel>
+        </div>
       </Section>
 
       <Section
