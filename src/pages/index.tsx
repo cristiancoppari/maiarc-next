@@ -1,6 +1,5 @@
 import type { Locale } from "@/types/locales";
 import type { Service, Villa } from "@/types/services";
-import type { LangContextType } from "@/context/langContext";
 import type { FormServiceData } from "@/components/Modals/ConsultationModal";
 
 import { useContext, useState } from "react";
@@ -45,13 +44,13 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) => {
   // Locale file
-  const { locale_file } = useContext(LangContext) as LangContextType;
+  const { locale_file } = useContext(LangContext);
 
   // Translated content from locale files
   const translated_content = locale_file.home;
 
   // Store the service id to open the consultation modal and show the correct data
-  const [serviceId, setServiceId] = useState<string>("");
+  const [serviceId, setServiceId] = useState<string | number>("");
 
   // Consultation Modal
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState<boolean>(false);
@@ -60,7 +59,7 @@ const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) 
   const openConsultationModal = () => setIsConsultationModalOpen(true);
   const closeConsultationModal = () => setIsConsultationModalOpen(false);
 
-  const selectServiceHandler = (id: string) => {
+  const selectServiceHandler = (id: string | number) => {
     setServiceId(id);
   };
 

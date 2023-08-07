@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 interface AccomodationProps {
   card: Accommodation;
   handlers: {
-    selectService: (id: string) => void;
+    selectService: (id: string | number) => void;
     openModal: () => void;
   };
 }

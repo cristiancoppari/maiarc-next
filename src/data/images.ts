@@ -2,7 +2,6 @@ import img_desktop_xl from "@/assets/images/hero-home.jpeg";
 import img_desktop from "@/assets/images/hero-home.jpeg";
 import img_tablet from "@/assets/images/hero-home.jpeg";
 import img_mobile from "@/assets/images/hero-home.jpeg";
-
 import service_villas_img from "@/assets/images/servicios-villas-de-lujo.png";
 import servive_wellness_img from "@/assets/images/servicios-bienestar.png";
 import service_chefs_img from "@/assets/images/servicios-chef.png";

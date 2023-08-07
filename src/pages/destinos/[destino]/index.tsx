@@ -3,14 +3,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Root } from "@/types/api";
 
-import { useState } from "react";
-
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
 import Section from "@/components/Sections/Section";
-
 import { images } from "@/data/images";
-import CarouselServices from "@/components/Carousel/CarouselServices";
 
 interface Params {
   destino: string;
@@ -31,12 +27,7 @@ export const getServerSideProps = async ({
   // Get the params from the URL
   const { destino } = params;
 
-  if (
-    destino !== "tulum" &&
-    destino !== "miami" &&
-    destino !== "ibiza" &&
-    destino !== "punta-del-este"
-  ) {
+  if (destino !== "tulum" && destino !== "miami" && destino !== "ibiza" && destino !== "punta-del-este") {
     return {
       notFound: true,
     };
@@ -74,13 +65,7 @@ export const getServerSideProps = async ({
   }
 };
 
-const DestinoPage = ({ destino, cards_services }: DestinoPageProps) => {
-  const [service, setService] = useState<string>("");
-
-  const setServiceHandler = (service: string) => {
-    setService(service);
-  };
-
+const DestinoPage = ({ destino }: DestinoPageProps) => {
   return (
     <PageLayout title={`${destino} - MAIARC`}>
       <Hero images={images} />
@@ -88,22 +73,7 @@ const DestinoPage = ({ destino, cards_services }: DestinoPageProps) => {
       <Section
         title={`Maiarc en ${destino}`}
         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, mollitia. Non quaerat quisquam voluptatibus quam perspiciatis molestiae officia dignissimos doloremque!"
-      >
-        <CarouselServices
-          cards={cards_services}
-          clickHandler={setServiceHandler}
-        />
-
-        {/* TODO: esto esta hardcodeado */}
-        {!!service && (
-          <Section title={service}>
-            <CarouselServices
-              cards={cards_services}
-              clickHandler={setServiceHandler}
-            />
-          </Section>
-        )}
-      </Section>
+      ></Section>
     </PageLayout>
   );
 };

@@ -1,16 +1,15 @@
 import { useContext } from "react";
-import { LangContext } from "@/context/langContext";
 
+import { LangContext } from "@/context/langContext";
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
 import Section from "@/components/Sections/Section";
 import ContactForm from "@/components/Forms/ContactForm";
-
 import { images } from "@/data/images";
 
 const ContactoPage = () => {
   const content = useContext(LangContext);
-  const c = content.contact;
+  const c = content.locale_file.contact;
 
   return (
     <PageLayout title={c.title}>

@@ -1,4 +1,5 @@
 import type { ITextImage } from "@/types/TextImage";
+
 import { cn } from "@/lib/utils";
 
 const TextImage = ({ content, image, theme }: ITextImage) => {

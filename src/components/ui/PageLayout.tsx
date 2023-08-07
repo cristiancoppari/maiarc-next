@@ -1,5 +1,3 @@
-import type { LangContextType } from "@/context/langContext";
-
 import Head from "next/head";
 import { useContext } from "react";
 
@@ -14,7 +12,7 @@ interface PageLayoutProps {
 }
 
 function PageLayout({ children, title }: PageLayoutProps) {
-  const { locale_file } = useContext(LangContext) as LangContextType;
+  const { locale_file } = useContext(LangContext);
 
   return (
     <>

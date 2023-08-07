@@ -1,14 +1,13 @@
 import type { NavLinks, DropdownLink } from "@/types/content";
+
 import { useState } from "react";
 import { useRouter } from "next/router";
-import useDesktop from "@/hooks/useDesktop";
-
+import { motion } from "framer-motion";
 import Link from "next/link";
 
-import { motion } from "framer-motion";
+import useDesktop from "@/hooks/useDesktop";
 import { cn } from "@/lib/utils";
 import Burger from "@/components/Buttons/Burger/Burger";
-
 import logo from "@/assets/images/logo-gray.png";
 
 interface Header {

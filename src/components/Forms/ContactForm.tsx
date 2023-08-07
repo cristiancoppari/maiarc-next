@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useContext } from "react";
-import { LangContext } from "@/context/langContext";
+import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import DatePicker from "../DatePicker/DatePicker";
-import * as z from "zod";
 
-import { ButtonBlack } from "../Buttons/Button/Buttons";
+import { LangContext } from "@/context/langContext";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+
+import { Btn } from "../Buttons/Button/Buttons";
 import { Textarea } from "../ui/textarea";
+import DatePicker from "../DatePicker/DatePicker";
 
 const formSchema = z.object({
   name: z
@@ -61,7 +62,7 @@ const formSchema = z.object({
 
 const ContactForm = () => {
   const content = useContext(LangContext);
-  const c = content.contact;
+  const c = content.locale_file.contact;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -186,7 +187,7 @@ const ContactForm = () => {
           )}
         />
 
-        <ButtonBlack type="submit" text={c.form.submit} classes="block mx-auto" />
+        <Btn type="submit" text={c.form.submit} classes="block mx-auto" />
       </form>
     </Form>
   );

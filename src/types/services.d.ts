@@ -1,5 +1,12 @@
+export interface Destination {
+  id: string | number;
+  name: string;
+  main_image: string;
+  slug: string;
+}
+
 export interface Service {
-  id: string;
+  id: string | number;
   name: string;
   subtitle?: string;
   description?: string | null;

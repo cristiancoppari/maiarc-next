@@ -1,7 +1,8 @@
 import type { Root as ApiResponseServices } from "@/types/api-services";
 import type { Root as ApiResponsePremiumServices } from "@/types/api-premium-services";
 import type { Root as ApiResponseVilla } from "@/types/api-villas";
-import type { Service, Villa } from "@/types/services";
+import type { Root as ApiResponseDestination } from "@/types/api-destinations";
+import type { Service, Villa, Destination } from "@/types/services";
 
 // Get all services filtered by locale
 export const fetchServices = async (locale: string): Promise<Service[]> => {
@@ -80,6 +81,30 @@ export const fetchVillas = async (): Promise<Villa[]> => {
     });
 
     return villas;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Hubo un error");
+  }
+};
+
+export const fetchDestinations = async (): Promise<Destination[]> => {
+  try {
+    const res = await fetch(
+      `${process.env.API_URL}/destinations/?fields=name&populate[main_image][fields]=url&fields=slug`,
+    );
+
+    const data = (await res.json()) as ApiResponseDestination;
+
+    const destinations = data.data.map((element): Destination => {
+      return {
+        id: element.id,
+        name: element.attributes.name,
+        main_image: element.attributes.main_image.data.attributes.url,
+        slug: element.attributes.slug,
+      };
+    });
+
+    return destinations;
   } catch (error) {
     console.error(error);
     throw new Error("Hubo un error");
