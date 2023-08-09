@@ -53,7 +53,10 @@ export interface Yatch extends Service {
   images: string[];
 }
 
-export interface SuperYatch extends Yatch {
+export interface SuperYatch extends Service {
+  location: string | null;
+  capacity: number;
+  images: string[];
   cabins: number;
 }
 

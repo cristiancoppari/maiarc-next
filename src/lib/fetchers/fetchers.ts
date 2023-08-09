@@ -3,9 +3,10 @@ import type { Root as ApiResponsePremiumServices } from "@/types/api-premium-ser
 import type { Root as ApiResponseVilla } from "@/types/api-villas";
 import type { Root as ApiResponseDestination } from "@/types/api-destinations";
 import type { Root as ApiResponseYatch } from "@/types/api-yatches";
+import type { Root as ApiResponseSuperYatch } from "@/types/api-super-yatches";
 import type { Root as ApiResponseHotel } from "@/types/api-hotels";
 import type { Root as ApiResponsePremiumVehicle } from "@/types/api-premium-vehicles";
-import type { Service, Villa, Destination, Yatch, Hotel, PremiumVehicle } from "@/types/services";
+import type { Service, Villa, Destination, Yatch, Hotel, PremiumVehicle, SuperYatch } from "@/types/services";
 
 // Get all services filtered by locale
 export const fetchServices = async (locale: string): Promise<Service[]> => {
@@ -36,7 +37,7 @@ export const fetchServices = async (locale: string): Promise<Service[]> => {
 export const fetchPremiumServices = async (locale: string): Promise<Service[]> => {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/premium-services/?&locale=${locale}&fields[0]=name&populate[main_image][fields][0]=url&populate[images][fields][0]=url&fields=description`,
+      `${process.env.API_URL}/premium-services/?locale=${locale}&fields[0]=name&populate[main_image][fields][0]=url&populate[images][fields][0]=url&fields=description`,
     );
 
     const data = (await res.json()) as ApiResponsePremiumServices;
@@ -138,6 +139,35 @@ export const fetchYatchs = async (): Promise<Yatch[]> => {
     });
 
     return yatchs;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Hubo un error");
+  }
+};
+
+export const fetchSuperYatches = async (): Promise<SuperYatch[]> => {
+  try {
+    const res = await fetch(
+      `${process.env.API_URL}/super-yatches/?fields[0]=name&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name&fields=capacity`,
+    );
+
+    const data = (await res.json()) as ApiResponseSuperYatch;
+
+    const super_yatches = data.data.map((element): SuperYatch => {
+      return {
+        id: element.id,
+        name: element.attributes.name,
+        main_image: element.attributes.main_image.data.attributes.url,
+        images: element.attributes.images.data.map((image) => {
+          return image.attributes.url;
+        }),
+        location: element.attributes.location ?? null,
+        capacity: element.attributes.capacity ?? null,
+        cabins: element.attributes.cabins ?? null,
+      };
+    });
+
+    return super_yatches;
   } catch (error) {
     console.error(error);
     throw new Error("Hubo un error");

@@ -81,6 +81,7 @@ export const getServerSideProps = async ({ params, locale }: { params: Params; l
       },
     };
   } catch (error) {
+    console.error(error);
     throw new Error("Hubo un error");
   }
 };

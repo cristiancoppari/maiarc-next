@@ -1,14 +1,23 @@
-import type { ITextImage } from "@/types/TextImage";
-
 import { cn } from "@/lib/utils";
 
-const TextImage = ({ content, image, theme }: ITextImage) => {
+interface ITextImage {
+  content: JSX.Element;
+  image: {
+    src: string;
+    text: string;
+  };
+  theme?: "light" | "dark";
+  direction?: "left" | "right";
+}
+
+const TextImage = ({ content, image, theme, direction }: ITextImage) => {
   return (
-    <div className={cn("section-padding", theme === "dark" && "bg-gray-800")}>
+    <div className={cn("section-padding", theme === "dark" && "bg-neutral-800", theme === "light" && "bg-zinc-100")}>
       <div
         className={cn(
           "container flex flex-col gap-12 px-0 md:flex-row md:items-center",
           theme === "dark" && "text-zinc-100",
+          direction === "left" && "md:flex-row-reverse",
         )}
       >
         <div className="right flex-1">{content}</div>
