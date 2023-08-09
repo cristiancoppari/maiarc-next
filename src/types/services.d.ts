@@ -31,9 +31,10 @@ export interface Hotel extends Accommodation {
   stars: number;
 }
 
-export interface Apartment extends Accommodation {
-  rooms: number;
-  sq_foot: number;
+export interface RealEstateItem extends Service {
+  location: string;
+  bathrooms?: number;
+  // rooms: number;
 }
 
 export interface PremiumVehicle extends Service {

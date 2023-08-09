@@ -11,7 +11,7 @@ export const es = {
         },
         {
           type: "dropdown",
-          label: "Los destinos",
+          label: "Destinos",
           href: "/destinos",
           items: [
             {
@@ -216,8 +216,7 @@ export const es = {
       ],
     },
     section_2: {
-      title:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, assumenda!",
+      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, assumenda!",
       subtitle: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       texts: [
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, assumenda!",

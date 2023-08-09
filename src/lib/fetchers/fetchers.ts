@@ -7,6 +7,7 @@ import type { Root as ApiResponseSuperYatch } from "@/types/api-super-yatches";
 import type { Root as ApiResponseHotel } from "@/types/api-hotels";
 import type { Root as ApiResponsePremiumVehicle } from "@/types/api-premium-vehicles";
 import type { Root as ApiResponseUniqueExperience } from "@/types/api-unique-experiences";
+import type { Root as ApiResponseRealEstates } from "@/types/api-real-estates";
 import type {
   Service,
   Villa,
@@ -16,6 +17,7 @@ import type {
   PremiumVehicle,
   SuperYatch,
   UniqueExperience,
+  RealEstateItem,
 } from "@/types/services";
 
 // Get all services filtered by locale
@@ -267,6 +269,34 @@ export const fetchUniqueExperiences = async (locale: string): Promise<UniqueExpe
     console.log(unique_experiences);
 
     return unique_experiences;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Hubo un error");
+  }
+};
+
+export const fetchRealEstates = async (): Promise<RealEstateItem[]> => {
+  try {
+    const res = await fetch(
+      `${process.env.API_URL}/real-estates/?fields=name&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&fields=bathrooms`,
+    );
+
+    const data = (await res.json()) as ApiResponseRealEstates;
+
+    const real_estate_data = data.data.map((element): RealEstateItem => {
+      return {
+        id: element.id,
+        name: element.attributes.name,
+        main_image: element.attributes.main_image.data.attributes.url,
+        images: element.attributes.images.data.map((image) => {
+          return image.attributes.url;
+        }),
+        location: element.attributes.location ?? null,
+        bathrooms: element.attributes.bathrooms ?? null,
+      };
+    });
+
+    return real_estate_data;
   } catch (error) {
     console.error(error);
     throw new Error("Hubo un error");
