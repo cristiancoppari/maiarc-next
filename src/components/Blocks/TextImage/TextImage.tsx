@@ -6,7 +6,7 @@ interface ITextImage {
     src: string;
     text: string;
   };
-  theme?: "light" | "dark";
+  theme?: string;
   direction?: "left" | "right";
 }
 

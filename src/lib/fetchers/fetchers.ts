@@ -8,6 +8,7 @@ import type { Root as ApiResponseHotel } from "@/types/api-hotels";
 import type { Root as ApiResponsePremiumVehicle } from "@/types/api-premium-vehicles";
 import type { Root as ApiResponseUniqueExperience } from "@/types/api-unique-experiences";
 import type { Root as ApiResponseRealEstates } from "@/types/api-real-estates";
+import type { Root as ApiResponseAboutUsPage } from "@/types/api-about-us";
 import type {
   Service,
   Villa,
@@ -297,6 +298,45 @@ export const fetchRealEstates = async (): Promise<RealEstateItem[]> => {
     });
 
     return real_estate_data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Hubo un error");
+  }
+};
+
+export const fetchAboutUsPage = async (locale: string) => {
+  try {
+    const res = await fetch(`${process.env.API_URL}/about-us/?populate=deep&locale=${locale}`);
+
+    const data = (await res.json()) as ApiResponseAboutUsPage;
+
+    const about_us_page_data = {
+      section_1: {
+        title: data.data.attributes.section_1.title,
+        text: data.data.attributes.section_1.text,
+        style: data.data.attributes.section_1.style,
+        image: data.data.attributes.section_1.image,
+        main_image: data.data.attributes.section_1.main_image.data.attributes.url,
+      },
+      block_1: {
+        title: data.data.attributes.block_1.title,
+        text: data.data.attributes.block_1.text,
+        main_image: data.data.attributes.block_1.main_image.data.attributes.url,
+      },
+      block_2: {
+        title: data.data.attributes.block_2.title,
+        text: data.data.attributes.block_2.text,
+        main_image: data.data.attributes.block_2.main_image.data.attributes.url,
+      },
+      block_with_background: {
+        title_1: data.data.attributes.block_with_background.title_1,
+        title_2: data.data.attributes.block_with_background.title_2,
+        text: data.data.attributes.block_with_background.text,
+        background_image: data.data.attributes.block_with_background.background_image.data.attributes.url,
+      },
+    };
+
+    return about_us_page_data;
   } catch (error) {
     console.error(error);
     throw new Error("Hubo un error");

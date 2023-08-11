@@ -1,31 +1,36 @@
-import { useContext } from "react";
+import type { AboutUsPage } from "@/types/pages";
 
-import { LangContext } from "@/context/langContext";
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
 import TextImage from "@/components/Blocks/TextImage/TextImage";
 import BigImage from "@/components/Cards/CardBig/BigImage";
 import BgImageText from "@/components/Blocks/BgImageText/BgImageText";
+import { fetchAboutUsPage } from "@/lib/fetchers/fetchers";
 import { images } from "@/data/images";
-import maiarc_test from "@/assets/images/maiarc-test.webp";
 
-const QuienesSomosPage = () => {
-  // Get language content
-  const lang_content = useContext(LangContext);
+export const getServerSideProps = async ({ locale }: { locale: string }) => {
+  // Fetch data from Strapi API
+  const about_us_page_data = await fetchAboutUsPage(locale);
 
-  // Get section content
-  const section_1 = lang_content.locale_file.who_we_are.section_1;
-  const section_2 = lang_content.locale_file.who_we_are.section_2;
+  return {
+    props: {
+      about_us_page: about_us_page_data,
+    },
+  };
+};
+
+interface QuienesSomosProps {
+  about_us_page: AboutUsPage;
+}
+
+const QuienesSomosPage: React.FC<QuienesSomosProps> = ({ about_us_page }) => {
+  const c = about_us_page;
 
   const content = (
     <>
-      <h2 className="h2 mb-8">{section_1.title}</h2>
+      <h2 className="h2 mb-8">{c.section_1.title}</h2>
 
-      <div className="space-y-2">
-        {section_1.texts.map((text, index) => (
-          <p key={index}>{text}</p>
-        ))}
-      </div>
+      <p>{c.section_1.text}</p>
     </>
   );
 
@@ -33,27 +38,19 @@ const QuienesSomosPage = () => {
     <PageLayout title="Quienes somos">
       <Hero images={images} />
 
-      <TextImage content={content} image={{ src: maiarc_test.src, text: "MAIARC" }} theme="dark" />
+      <TextImage content={content} image={{ src: c.section_1.main_image, text: "MAIARC" }} theme={c.section_1.style} />
 
       <div className="section-padding container flex gap-4">
-        <BigImage
-          title="Misión"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Quo, quibusdam. Quisquam, voluptatum. Quo, quibusdam."
-          image={maiarc_test.src}
-        />
+        <BigImage title={c.block_1.title} description={c.block_1.text} image={c.block_1.main_image} />
 
-        <BigImage
-          title="Misión"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Quo, quibusdam. Quisquam, voluptatum. Quo, quibusdam."
-          image={maiarc_test.src}
-        />
+        <BigImage title={c.block_2.title} description={c.block_2.text} image={c.block_2.main_image} />
       </div>
 
       <BgImageText
-        title={section_2.title}
-        subtitle={section_2.subtitle}
-        bg_image={maiarc_test.src}
-        texts={section_2.texts}
+        title={c.block_with_background.title_1}
+        subtitle={c.block_with_background.title_2}
+        bg_image={c.block_with_background.background_image}
+        text={c.block_with_background.text}
       />
     </PageLayout>
   );
