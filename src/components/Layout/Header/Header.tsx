@@ -9,6 +9,7 @@ import useDesktop from "@/hooks/useDesktop";
 import { cn } from "@/lib/utils";
 import Burger from "@/components/Buttons/Burger/Burger";
 import logo from "@/assets/images/logo-gray.png";
+import Arrow from "@/components/Arrow/Arrow";
 
 interface Header {
   content: {
@@ -88,7 +89,10 @@ function Header({ content }: Header) {
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                   >
-                    {link.label}
+                    <div className={cn(router.pathname === "/destinos" && "--active")}>
+                      <span>{link.label}</span>
+                      <Arrow classes="w-14 block mx-auto mt-1 arrow" />
+                    </div>
                     <motion.ul
                       className="top-full flex flex-col items-center bg-black md:absolute md:items-start"
                       variants={dropdownVariants}
@@ -97,10 +101,19 @@ function Header({ content }: Header) {
                     >
                       {(link as DropdownLink).items.map((item) => (
                         <li
-                          className="w-max px-4 py-2 text-sm font-light uppercase text-slate-300 opacity-80 transition-all duration-300 ease-in-out hover:text-slate-100"
+                          className="w-40 px-4 py-2 text-sm font-light uppercase text-slate-300 opacity-80 transition-all duration-300 ease-in-out hover:text-slate-100"
                           key={item.label}
                         >
-                          <Link href={item.href}>{item.label}</Link>
+                          <Link
+                            href={item.href}
+                            className={cn(
+                              "nav-link grid place-items-center",
+                              `/${router.query.destino as string}` === `/${item.href.split("/")[2]}` && "--active",
+                            )}
+                          >
+                            <span>{item.label}</span>
+                            <Arrow classes="w-14 block mx-auto mt-1 arrow" />
+                          </Link>
                         </li>
                       ))}
                     </motion.ul>
@@ -111,9 +124,13 @@ function Header({ content }: Header) {
                   <li className="grid h-full place-items-center p-4 text-center md:p-0" key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100"
+                      className={cn(
+                        "nav-link text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100",
+                        router.pathname === link.href && "--active",
+                      )}
                     >
-                      {link.label}
+                      <span>{link.label}</span>
+                      <Arrow classes="w-14 block mx-auto mt-1 arrow" />
                     </Link>
                   </li>
                 );
@@ -131,9 +148,13 @@ function Header({ content }: Header) {
                 <li className="grid h-full place-items-center p-4 text-center md:p-0" key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100"
+                    className={cn(
+                      "nav-link text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100",
+                      router.pathname === link.href && "--active",
+                    )}
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+                    <Arrow classes="w-14 block mx-auto mt-1 arrow" />
                   </Link>
                 </li>
               );
