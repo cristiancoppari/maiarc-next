@@ -6,7 +6,6 @@ import TextImage from "@/components/Blocks/TextImage/TextImage";
 import BigImage from "@/components/Cards/CardBig/BigImage";
 import BgImageText from "@/components/Blocks/BgImageText/BgImageText";
 import { fetchAboutUsPage } from "@/lib/fetchers/fetchers";
-import { images } from "@/data/images";
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => {
   // Fetch data from Strapi API
@@ -36,7 +35,7 @@ const QuienesSomosPage: React.FC<QuienesSomosProps> = ({ about_us_page }) => {
 
   return (
     <PageLayout title="Quienes somos">
-      <Hero images={images} />
+      <Hero images={c.images} />
 
       <TextImage content={content} image={{ src: c.section_1.main_image, text: "MAIARC" }} theme={c.section_1.style} />
 

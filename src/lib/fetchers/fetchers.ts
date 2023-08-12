@@ -314,6 +314,9 @@ export const fetchAboutUsPage = async (locale: string) => {
     const data = (await res.json()) as ApiResponseAboutUsPage;
 
     const about_us_page_data = {
+      images: data.data.attributes.images.images.data.map((image) => {
+        return image.attributes.url;
+      }),
       section_1: {
         title: data.data.attributes.section_1.title,
         text: data.data.attributes.section_1.text,

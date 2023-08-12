@@ -18,6 +18,7 @@ export interface Attributes {
   block_1: Block1;
   block_2: Block2;
   block_with_background: BlockWithBackground;
+  images: Images;
   localizations: Localizations;
 }
 
@@ -59,20 +60,7 @@ export interface Attributes2 {
 }
 
 export interface Formats {
-  small: Small;
   thumbnail: Thumbnail;
-}
-
-export interface Small {
-  ext: string;
-  url: string;
-  hash: string;
-  mime: string;
-  name: string;
-  path: any;
-  size: number;
-  width: number;
-  height: number;
 }
 
 export interface Thumbnail {
@@ -123,7 +111,20 @@ export interface Attributes3 {
 }
 
 export interface Formats2 {
+  small: Small;
   thumbnail: Thumbnail2;
+}
+
+export interface Small {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
 }
 
 export interface Thumbnail2 {
@@ -174,7 +175,20 @@ export interface Attributes4 {
 }
 
 export interface Formats3 {
+  small: Small2;
   thumbnail: Thumbnail3;
+}
+
+export interface Small2 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
 }
 
 export interface Thumbnail3 {
@@ -241,7 +255,12 @@ export interface Thumbnail4 {
   height: number;
 }
 
-export interface Localizations {
+export interface Images {
+  id: number;
+  images: Images2;
+}
+
+export interface Images2 {
   data: Daum[];
 }
 
@@ -251,6 +270,63 @@ export interface Daum {
 }
 
 export interface Attributes6 {
+  name: string;
+  alternativeText: any;
+  caption: any;
+  width: number;
+  height: number;
+  formats: Formats5;
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: any;
+  provider: string;
+  provider_metadata: any;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Formats5 {
+  small?: Small3;
+  thumbnail: Thumbnail5;
+}
+
+export interface Small3 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Thumbnail5 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Localizations {
+  data: Daum2[];
+}
+
+export interface Daum2 {
+  id: number;
+  attributes: Attributes7;
+}
+
+export interface Attributes7 {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

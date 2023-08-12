@@ -1,7 +1,7 @@
 import type { Service } from "./services";
 
 export interface AboutUsPage {
-  hero: string[];
+  images: string[];
   section_1: {
     title: string;
     text: string;
