@@ -1,4 +1,5 @@
 import type { Hotel, PremiumVehicle, Service, Villa, Yatch } from "@/types/services";
+import type { DestinoPage as IDestinoPage } from "@/types/pages";
 
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -9,7 +10,14 @@ import Hero from "@/components/Sections/Heros/Hero";
 import Section from "@/components/Sections/Section";
 import ImageTitle from "@/components/Cards/ImageTitle";
 import { images } from "@/data/images";
-import { fetchHotels, fetchPremiumVehicles, fetchServices, fetchVillas, fetchYatchs } from "@/lib/fetchers/fetchers";
+import {
+  fetchDestinoPage,
+  fetchHotels,
+  fetchPremiumVehicles,
+  fetchServices,
+  fetchVillas,
+  fetchYatchs,
+} from "@/lib/fetchers/fetchers";
 import Carousel from "@/components/Carousel/Carousel";
 import CardAccommodation from "@/components/Cards/CardSlides/CardAccommodation";
 import CardYatch from "@/components/Cards/CardSlides/CardYatch";
@@ -26,6 +34,7 @@ interface DestinoPageProps extends Params {
   yatchs: Yatch[];
   hotels: Hotel[];
   vehicles: PremiumVehicle[];
+  destino_page_data: IDestinoPage;
 }
 
 export const getServerSideProps = async ({ params, locale }: { params: Params; locale: string }) => {
@@ -44,6 +53,7 @@ export const getServerSideProps = async ({ params, locale }: { params: Params; l
     const yatchs_data = await fetchYatchs();
     const hotels_data = await fetchHotels();
     const vehicles_data = await fetchPremiumVehicles();
+    const destino_page_data = await fetchDestinoPage(locale);
 
     // Filter the services to show only the clickable ones
     const services = services_data.filter((element) => {
@@ -78,6 +88,7 @@ export const getServerSideProps = async ({ params, locale }: { params: Params; l
         yatchs,
         hotels,
         vehicles,
+        destino_page_data,
       },
     };
   } catch (error) {
@@ -86,9 +97,19 @@ export const getServerSideProps = async ({ params, locale }: { params: Params; l
   }
 };
 
-const DestinoPage: React.FC<DestinoPageProps> = ({ destino, services, villas, yatchs, hotels, vehicles }) => {
+const DestinoPage: React.FC<DestinoPageProps> = ({
+  destino,
+  services,
+  villas,
+  yatchs,
+  hotels,
+  vehicles,
+  destino_page_data,
+}) => {
   const router = useRouter();
   const service = router.query.service as string;
+
+  const c = destino_page_data;
 
   // Section to show
   const [section, setSection] = useState<string>(service);
@@ -118,10 +139,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({ destino, services, villas, ya
     <PageLayout title={`${destino} - MAIARC`}>
       <Hero images={images} />
 
-      <Section
-        title={`Maiarc en ${destino}`}
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, mollitia. Non quaerat quisquam voluptatibus quam perspiciatis molestiae officia dignissimos doloremque!"
-      >
+      <Section title={`${c.title} ${destino}`} text={c.text}>
         {/* Cards with the services that acts like a filter */}
         <div className="container grid grid-cols-1 gap-8 md:grid-cols-3">
           {services.map((service) => (

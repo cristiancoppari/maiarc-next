@@ -71,3 +71,8 @@ export interface DestinosPage {
     text: string;
   };
 }
+
+export interface DestinoPage {
+  title: string;
+  text: string;
+}

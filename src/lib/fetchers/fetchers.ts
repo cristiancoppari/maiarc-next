@@ -12,6 +12,7 @@ import type { Root as ApiResponseAboutUsPage } from "@/types/api-about-us";
 import type { Root as ApiResponseHomePage } from "@/types/api-home";
 import type { Root as ApiResponseContactPage } from "@/types/api-contact";
 import type { Root as ApiResponseDestinosPage } from "@/types/api-destinos";
+import type { Root as ApiResponseDestinoPage } from "@/types/api-destino";
 import type {
   Service,
   Villa,
@@ -439,6 +440,24 @@ export const fetchDestinosPage = async (locale: string) => {
     };
 
     return destinos_page;
+  } catch (error) {
+    console.error(error);
+    // throw new Error("Hubo un error");
+  }
+};
+
+export const fetchDestinoPage = async (locale: string) => {
+  try {
+    const res = await fetch(`${process.env.API_URL}/destino-page/?populate=deep&locale=${locale}`);
+
+    const data = (await res.json()) as ApiResponseDestinoPage;
+
+    const destino_page = {
+      title: data.data.attributes.title,
+      text: data.data.attributes.text,
+    };
+
+    return destino_page;
   } catch (error) {
     console.error(error);
     // throw new Error("Hubo un error");
