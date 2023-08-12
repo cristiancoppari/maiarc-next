@@ -12,7 +12,7 @@ const ZOHO_PASS = process.env.ZOHO_PASS;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
   const transporter: nodemailer.Transporter<SMTPTransport.SentMessageInfo> = nodemailer.createTransport({
-    host: "smtp.zoho.eu",
+    host: "smtp.zoho.com",
     port: 465,
     secure: true, // use SSL
     auth: {
