@@ -54,3 +54,13 @@ export interface HomePage {
     text: string;
   };
 }
+
+export interface ContactoPage {
+  hero: {
+    images: string[];
+  };
+  block_1: {
+    title: string;
+    text: string;
+  };
+}

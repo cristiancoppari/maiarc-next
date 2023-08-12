@@ -10,6 +10,7 @@ import type { Root as ApiResponseUniqueExperience } from "@/types/api-unique-exp
 import type { Root as ApiResponseRealEstates } from "@/types/api-real-estates";
 import type { Root as ApiResponseAboutUsPage } from "@/types/api-about-us";
 import type { Root as ApiResponseHomePage } from "@/types/api-home";
+import type { Root as ApiResponseContactPage } from "@/types/api-contact";
 import type {
   Service,
   Villa,
@@ -395,5 +396,32 @@ export const fetchHomePage = async (locale: string) => {
   } catch (error) {
     console.error(error);
     throw new Error("Hubo un error");
+  }
+};
+
+export const fetchContactPage = async (locale: string) => {
+  try {
+    const res = await fetch(`${process.env.API_URL}/contact-page/?populate=deep&locale=${locale}`);
+
+    const data = (await res.json()) as ApiResponseContactPage;
+
+    console.log(data);
+
+    const contact_page = {
+      hero: {
+        images: data.data.attributes.hero.images.data.map((image) => {
+          return image.attributes.url;
+        }),
+      },
+      block_1: {
+        title: data.data.attributes.block_1.title,
+        text: data.data.attributes.block_1.text,
+      },
+    };
+
+    return contact_page;
+  } catch (error) {
+    console.error(error);
+    // throw new Error("Hubo un error");
   }
 };
