@@ -24,8 +24,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   const mailOptions = {
     from: ZOHO_USER,
-    to: "julieta93fraga@gmail.com",
-    subject: "MAIARC Concierge - Nuevo mensaje de contacto",
+    to: "cristian.coppari@gmail.com", // test
+    subject: "MAIARC Concierge ⚜️ - Nuevo mensaje de contacto",
     html: `
         <p>Este es un nuevo mensaje de contacto de MAIARC Concierge<p>
         <p>Este es un correo de prueba mandado desde la web.</p>
