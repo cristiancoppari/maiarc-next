@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   });
 
   const mailOptions = {
-    from: ZOHO_USER, // sender address
+    from: ZOHO_USER,
     to: "julieta93fraga@gmail.com",
     subject: "MAIARC Concierge - Nuevo mensaje de contacto",
     html: `
