@@ -1,25 +1,25 @@
 import type { UniqueExperience } from "@/types/services";
+import type { PremiumServicePage } from "@/types/pages";
 
 import { SwiperSlide } from "swiper/react";
 
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
 import TextImage from "@/components/Blocks/TextImage/TextImage";
-import maiarc_test from "@/assets/images/maiarc-test.webp";
-import { fetchUniqueExperiences } from "@/lib/fetchers/fetchers";
+import { fetchPremiumServicePage, fetchUniqueExperiences } from "@/lib/fetchers/fetchers";
 import Section from "@/components/Sections/Section";
 import Carousel from "@/components/Carousel/Carousel";
-// Hacer administrable
-import { images } from "@/data/images";
 import CardUniqueExperience from "@/components/Cards/CardSlides/CardUniqueExperience";
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => {
   try {
     const unique_experiences_data = await fetchUniqueExperiences(locale);
+    const unique_experiences_page_data = await fetchPremiumServicePage(locale, "unique-experience");
 
     return {
       props: {
         unique_experiences_data,
+        unique_experiences_page_data,
       },
     };
   } catch (error) {
@@ -29,19 +29,28 @@ export const getServerSideProps = async ({ locale }: { locale: string }) => {
 
 interface UniqueExperienceProps {
   unique_experiences_data: UniqueExperience[];
+  unique_experiences_page_data: PremiumServicePage;
 }
 
-const SuperYatesPage: React.FC<UniqueExperienceProps> = ({ unique_experiences_data: unique_experiences }) => {
-  const content = (
+const SuperYatesPage: React.FC<UniqueExperienceProps> = ({ unique_experiences_data, unique_experiences_page_data }) => {
+  const c = unique_experiences_page_data;
+
+  const content_block_1 = (
     <>
-      <h2 className="h2 mb-8">Titulo</h2>
+      <h2 className="h2 mb-8">{c.block_1.title}</h2>
 
       <div className="space-y-2">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil necessitatibus nisi rem beatae incidunt
-          assumenda non atque pariatur architecto ratione nulla quod magni praesentium, voluptates voluptatum sequi
-          officiis iste. Temporibus sit fugit non quisquam unde illo quis suscipit cum.
-        </p>
+        <p>{c.block_1.text}</p>
+      </div>
+    </>
+  );
+
+  const content_block_2 = (
+    <>
+      <h2 className="h2 mb-8">{c.block_2.title}</h2>
+
+      <div className="space-y-2">
+        <p>{c.block_2.text}</p>
       </div>
     </>
   );
@@ -56,16 +65,26 @@ const SuperYatesPage: React.FC<UniqueExperienceProps> = ({ unique_experiences_da
 
   return (
     <PageLayout title="super-yates">
-      <Hero images={images} />
+      <Hero images={c.hero.images} />
 
-      <TextImage content={content} image={{ src: maiarc_test.src, text: "MAIARC" }} />
+      <TextImage
+        content={content_block_1}
+        image={{ src: c.block_1.main_image, text: "MAIARC" }}
+        theme={c.block_1.style}
+        direction={c.block_1.image}
+      />
 
-      <TextImage content={content} image={{ src: maiarc_test.src, text: "MAIARC" }} theme="light" direction="left" />
+      <TextImage
+        content={content_block_2}
+        image={{ src: c.block_2.main_image, text: "MAIARC" }}
+        theme={c.block_2.style}
+        direction={c.block_2.image}
+      />
 
       <Section classes="container" noPadding>
         {/* Yatch Carousel */}
         <Carousel>
-          {unique_experiences.map((experience) => (
+          {unique_experiences_data.map((experience) => (
             <SwiperSlide key={experience.id} className="p-4">
               <CardUniqueExperience
                 card={experience}

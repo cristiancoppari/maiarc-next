@@ -7,7 +7,7 @@ interface ITextImage {
     text: string;
   };
   theme?: string;
-  direction?: "left" | "right";
+  direction?: string;
 }
 
 const TextImage = ({ content, image, theme, direction }: ITextImage) => {

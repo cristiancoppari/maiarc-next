@@ -76,3 +76,23 @@ export interface DestinoPage {
   title: string;
   text: string;
 }
+
+export interface PremiumServicePage {
+  hero: {
+    images: string[];
+  };
+  block_1: {
+    title: string;
+    text: string;
+    style: string;
+    image: string;
+    main_image: string;
+  };
+  block_2: {
+    title: string;
+    text: string;
+    style: string;
+    image: string;
+    main_image: string;
+  };
+}
