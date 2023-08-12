@@ -79,7 +79,7 @@ const SuperYatesPage: React.FC<SuperYatesPageProps> = ({ super_yatches_data, sup
       />
 
       <Section classes="container" noPadding>
-        {/* Yatch Carousel */}
+        {/* Super Yatches Carousel */}
         <Carousel>
           {super_yatches_data.map((yatch) => (
             <SwiperSlide key={yatch.id} className="p-4">
