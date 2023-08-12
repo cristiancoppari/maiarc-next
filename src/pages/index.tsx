@@ -6,6 +6,7 @@ import type { HomePage } from "@/types/pages";
 import { useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
 
 import { fetchVillas, fetchHomePage } from "@/lib/fetchers/fetchers";
 import PageLayout from "@/components/ui/PageLayout";
@@ -69,7 +70,11 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
         {/* Clickable Services */}
         <h2 className="h2 mx-auto mb-6 uppercase md:w-11/12">{c.services_block.title}</h2>
 
-        {!!c.services_block.text && <p className="p mb-8">{c.services_block.text}</p>}
+        {!!c.services_block.text && (
+          <div className="p mb-8">
+            <ReactMarkdown>{c.services_block.text}</ReactMarkdown>
+          </div>
+        )}
 
         <div className="container mb-12 grid grid-cols-1 gap-8 px-4 md:grid-cols-3">
           {c.services_block.services.map((service) => {

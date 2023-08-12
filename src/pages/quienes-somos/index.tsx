@@ -1,5 +1,7 @@
 import type { AboutUsPage } from "@/types/pages";
 
+import ReactMarkdown from "react-markdown";
+
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
 import TextImage from "@/components/Blocks/TextImage/TextImage";
@@ -29,7 +31,7 @@ const QuienesSomosPage: React.FC<QuienesSomosProps> = ({ about_us_page }) => {
     <>
       <h2 className="h2 mb-8">{c.section_1.title}</h2>
 
-      <p>{c.section_1.text}</p>
+      <ReactMarkdown>{c.section_1.text}</ReactMarkdown>
     </>
   );
 

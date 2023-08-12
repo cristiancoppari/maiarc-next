@@ -2,6 +2,7 @@ import type { PremiumServicePage } from "@/types/pages";
 import type { RealEstateItem } from "@/types/services";
 
 import { SwiperSlide } from "swiper/react";
+import ReactMarkdown from "react-markdown";
 
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
@@ -39,9 +40,7 @@ const RealEstatePage: React.FC<RealEstatePageProps> = ({ real_estate_data, real_
     <>
       <h2 className="h2 mb-8">{c.block_1.title}</h2>
 
-      <div className="space-y-2">
-        <p>{c.block_1.text}</p>
-      </div>
+      <ReactMarkdown>{c.block_1.text}</ReactMarkdown>
     </>
   );
 
@@ -49,9 +48,7 @@ const RealEstatePage: React.FC<RealEstatePageProps> = ({ real_estate_data, real_
     <>
       <h2 className="h2 mb-8">{c.block_2.title}</h2>
 
-      <div className="space-y-2">
-        <p>{c.block_2.text}</p>
-      </div>
+      <ReactMarkdown>{c.block_2.text}</ReactMarkdown>
     </>
   );
 
