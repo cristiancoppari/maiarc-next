@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import Link from "next/link";
 
-import { fetchServices, fetchPremiumServices, fetchVillas } from "@/lib/fetchers/fetchers";
+import { fetchServices, fetchPremiumServices, fetchVillas, fetchHomePage } from "@/lib/fetchers/fetchers";
 import { LangContext } from "@/context/langContext";
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
@@ -27,6 +27,9 @@ export const getServerSideProps = async ({ locale }: { locale: Locale }) => {
   const services_data = await fetchServices(locale);
   const premium_services_data = await fetchPremiumServices(locale);
   const villas_data = await fetchVillas();
+  const home_page_data = await fetchHomePage(locale);
+
+  // console.log(home_page_data);
 
   return {
     props: {

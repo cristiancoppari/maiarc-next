@@ -9,6 +9,7 @@ import type { Root as ApiResponsePremiumVehicle } from "@/types/api-premium-vehi
 import type { Root as ApiResponseUniqueExperience } from "@/types/api-unique-experiences";
 import type { Root as ApiResponseRealEstates } from "@/types/api-real-estates";
 import type { Root as ApiResponseAboutUsPage } from "@/types/api-about-us";
+import type { Root as ApiResponseHomePage } from "@/types/api-home";
 import type {
   Service,
   Villa,
@@ -337,6 +338,64 @@ export const fetchAboutUsPage = async (locale: string) => {
     };
 
     return about_us_page_data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Hubo un error");
+  }
+};
+
+export const fetchHomePage = async (locale: string) => {
+  try {
+    const res = await fetch(`${process.env.API_URL}/home-page/?populate=deep&locale=${locale}`);
+
+    const data = (await res.json()) as ApiResponseHomePage;
+
+    const home_page = {
+      hero: {
+        images: data.data.attributes.hero.images.data.map((image) => {
+          return image.attributes.url;
+        }),
+      },
+      services_block: {
+        title: data.data.attributes.services_block.title,
+        text: data.data.attributes.services_block.text,
+        services: data.data.attributes.services_block.services.data.map((service): Service => {
+          return {
+            id: service.id,
+            name: service.attributes.name,
+            main_image: service.attributes.main_image.data.attributes.url,
+            description: service.attributes.description,
+            is_clickable: service.attributes.is_clickable,
+          };
+        }),
+      },
+      premium_services_block: {
+        premium_services: data.data.attributes.premium_services_block.items.data.map((item) => {
+          return {
+            id: item.id,
+            name: item.attributes.name,
+            main_image: item.attributes.main_image.data.attributes.url,
+            description: item.attributes.description,
+          };
+        }),
+      },
+      accomodations_block: {
+        title: data.data.attributes.accommodations_block.title,
+        text: data.data.attributes.accommodations_block.text,
+      },
+      community_block: {
+        title: data.data.attributes.community_block.title,
+        text: data.data.attributes.community_block.text,
+      },
+      newsletter_block: {
+        title: data.data.attributes.newsletter_block.title,
+        text: data.data.attributes.newsletter_block.text,
+      },
+    };
+
+    console.log(JSON.stringify(home_page, null, 2));
+
+    return home_page;
   } catch (error) {
     console.error(error);
     throw new Error("Hubo un error");
