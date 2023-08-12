@@ -456,6 +456,20 @@ export const fetchDestinoPage = async (locale: string) => {
     const destino_page = {
       title: data.data.attributes.title,
       text: data.data.attributes.text,
+      hero_images: {
+        ibiza: data.data.attributes.images_ibiza.data.map((image) => {
+          return image.attributes.url;
+        }),
+        tulum: data.data.attributes.images_tulum.data.map((image) => {
+          return image.attributes.url;
+        }),
+        miami: data.data.attributes.images_miami.data.map((image) => {
+          return image.attributes.url;
+        }),
+        "punta-del-este": data.data.attributes.images_punta_del_este.data.map((image) => {
+          return image.attributes.url;
+        }),
+      },
     };
 
     return destino_page;

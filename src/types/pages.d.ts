@@ -75,6 +75,13 @@ export interface DestinosPage {
 export interface DestinoPage {
   title: string;
   text: string;
+  hero_images: {
+    [key: string]: string[];
+    ibiza: string[];
+    tulum: string[];
+    "punta-del-este": string[];
+    miami: string[];
+  };
 }
 
 export interface PremiumServicePage {

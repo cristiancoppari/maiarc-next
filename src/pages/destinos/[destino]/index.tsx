@@ -9,7 +9,6 @@ import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
 import Section from "@/components/Sections/Section";
 import ImageTitle from "@/components/Cards/ImageTitle";
-import { images } from "@/data/images";
 import {
   fetchDestinoPage,
   fetchHotels,
@@ -137,7 +136,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
 
   return (
     <PageLayout title={`${destino} - MAIARC`}>
-      <Hero images={images} />
+      <Hero images={c.hero_images[destino]} />
 
       <Section title={`${c.title} ${destino}`} text={c.text}>
         {/* Cards with the services that acts like a filter */}
