@@ -17,8 +17,6 @@ export const getServerSideProps = async () => {
   try {
     const super_yatches_data = await fetchSuperYatches();
 
-    console.log(super_yatches_data);
-
     return {
       props: {
         super_yatches_data,

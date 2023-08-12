@@ -268,8 +268,6 @@ export const fetchUniqueExperiences = async (locale: string): Promise<UniqueExpe
       };
     });
 
-    console.log(unique_experiences);
-
     return unique_experiences;
   } catch (error) {
     console.error(error);
@@ -379,7 +377,7 @@ export const fetchHomePage = async (locale: string) => {
           };
         }),
       },
-      accomodations_block: {
+      accommodations_block: {
         title: data.data.attributes.accommodations_block.title,
         text: data.data.attributes.accommodations_block.text,
       },
@@ -392,8 +390,6 @@ export const fetchHomePage = async (locale: string) => {
         text: data.data.attributes.newsletter_block.text,
       },
     };
-
-    console.log(JSON.stringify(home_page, null, 2));
 
     return home_page;
   } catch (error) {

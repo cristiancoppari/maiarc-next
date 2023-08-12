@@ -1,4 +1,4 @@
-import { Service } from "./services";
+import type { Service } from "./services";
 
 export interface AboutUsPage {
   hero: string[];
@@ -39,13 +39,7 @@ export interface HomePage {
   premium_services_block: {
     title: string;
     text: string;
-    premium_services: {
-      title: string;
-      image: string;
-      description: string;
-      link?: string;
-      cta_label?: string;
-    }[];
+    premium_services: Service[];
   };
   accommodations_block: {
     title: string;

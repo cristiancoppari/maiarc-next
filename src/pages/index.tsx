@@ -1,13 +1,13 @@
 import type { Locale } from "@/types/locales";
 import type { Service, Villa } from "@/types/services";
 import type { FormServiceData } from "@/components/Modals/ConsultationModal";
+import type { HomePage } from "@/types/pages";
 
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import Link from "next/link";
 
-import { fetchServices, fetchPremiumServices, fetchVillas, fetchHomePage } from "@/lib/fetchers/fetchers";
-import { LangContext } from "@/context/langContext";
+import { fetchVillas, fetchHomePage } from "@/lib/fetchers/fetchers";
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
 import Section from "@/components/Sections/Section";
@@ -19,23 +19,17 @@ import InstagramGallery from "@/components/Galleries/InstagramGallery/InstagramG
 import Newsletter from "@/components/Sections/Newsletter/Newsletter";
 import CardAccommodation from "@/components/Cards/CardSlides/CardAccommodation";
 import ConsultationModal from "@/components/Modals/ConsultationModal";
-// TODO: hacer que el hero sea administrable
-import { images } from "@/data/images";
 
 export const getServerSideProps = async ({ locale }: { locale: Locale }) => {
   // Fetch data from Strapi API
-  const services_data = await fetchServices(locale);
-  const premium_services_data = await fetchPremiumServices(locale);
   const villas_data = await fetchVillas();
   const home_page_data = await fetchHomePage(locale);
 
-  // console.log(home_page_data);
-
   return {
     props: {
-      services: services_data,
-      premium_services: premium_services_data,
+      // services: services_data,
       villas_data: villas_data,
+      home_page_data,
     },
   };
 };
@@ -44,14 +38,11 @@ interface HomeProps {
   services: Service[];
   premium_services: Service[];
   villas_data: Villa[];
+  home_page_data: HomePage;
 }
 
-const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) => {
-  // Locale file
-  const { locale_file } = useContext(LangContext);
-
-  // Translated content from locale files
-  const translated_content = locale_file.home;
+const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
+  const c = home_page_data;
 
   // Store the service id to open the consultation modal and show the correct data
   const [serviceId, setServiceId] = useState<string | number>("");
@@ -72,14 +63,16 @@ const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) 
 
   return (
     <PageLayout title="MAIARC Concierge">
-      <Hero images={images} />
+      <Hero images={c.hero.images} />
 
-      <Section title={locale_file.home.title} text={locale_file.home.text} classes="container">
+      <Section title={c.services_block.title} text={c.services_block.text} classes="container">
         {/* Clickable Services */}
-        <h2 className="h2 mx-auto mb-8 uppercase md:w-11/12">Servicios principales</h2>
+        <h2 className="h2 mx-auto mb-6 uppercase md:w-11/12">{c.services_block.title}</h2>
+
+        {!!c.services_block.text && <p className="p mb-8">{c.services_block.text}</p>}
 
         <div className="container mb-12 grid grid-cols-1 gap-8 px-4 md:grid-cols-3">
-          {services.map((service) => {
+          {c.services_block.services.map((service) => {
             if (service.is_clickable) {
               return (
                 <Link key={service.id} href={`/destinos/?service=${service.name}`}>
@@ -93,7 +86,7 @@ const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) 
         <h2 className="h2 mx-auto mb-4 mt-24 uppercase md:w-11/12">Tambien contamos con:</h2>
         {/* Services Carousel */}
         <Carousel>
-          {services.map((service) => {
+          {c.services_block.services.map((service) => {
             if (!service.is_clickable) {
               return (
                 <SwiperSlide key={service.id} className="p-4">
@@ -107,14 +100,10 @@ const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) 
         <LinkBtn link="/contacto" text={"Mas"} classes="my-16" />
 
         {/* Premium Services */}
-        <BigGallery services={premium_services} />
+        <BigGallery services={c.premium_services_block.premium_services} />
       </Section>
 
-      <Section
-        title={translated_content.accommodations.title}
-        text={translated_content.accommodations.text}
-        classes="bg-zinc-200"
-      >
+      <Section title={c.accommodations_block.title} text={c.accommodations_block.text} classes="bg-zinc-200">
         <div className="container">
           {/* Services Carousel */}
           <Carousel>
@@ -133,15 +122,11 @@ const Home: React.FC<HomeProps> = ({ services, premium_services, villas_data }) 
         </div>
       </Section>
 
-      <Section
-        title={translated_content.instagram_gallery.title}
-        text={translated_content.instagram_gallery.text}
-        classes="container"
-      >
+      <Section title={c.community_block.title} text={c.community_block.text} classes="container">
         <InstagramGallery />
       </Section>
 
-      <Newsletter content={translated_content.newsletter} />
+      <Newsletter title={c.newsletter_block.title} text={c.newsletter_block.text} />
 
       <ConsultationModal
         isOpen={isConsultationModalOpen}
