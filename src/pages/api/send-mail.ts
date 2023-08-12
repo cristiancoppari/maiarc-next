@@ -8,7 +8,8 @@ type ResponseData = {
 };
 
 const ZOHO_USER = process.env.ZOHO_USER;
-const ZOHO_PASS = process.env.ZOHO_PASS;
+// const ZOHO_PASS = process.env.ZOHO_PASS;
+const ZOHO_APP_PASS = process.env.ZOHO_APP_PASS;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
   const transporter: nodemailer.Transporter<SMTPTransport.SentMessageInfo> = nodemailer.createTransport({
@@ -17,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     secure: true, // use SSL
     auth: {
       user: ZOHO_USER,
-      pass: ZOHO_PASS,
+      pass: ZOHO_APP_PASS,
     },
   });
 
