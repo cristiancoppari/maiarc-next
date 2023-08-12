@@ -1,4 +1,5 @@
 import type { Destination } from "@/types/services";
+import type { DestinosPage } from "@/types/pages";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,26 +7,35 @@ import { useRouter } from "next/router";
 import Section from "@/components/Sections/Section";
 import ImageTitle from "@/components/Cards/ImageTitle";
 import PageLayout from "@/components/ui/PageLayout";
-import { fetchDestinations } from "@/lib/fetchers/fetchers";
+import { fetchDestinations, fetchDestinosPage } from "@/lib/fetchers/fetchers";
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({ locale }: { locale: string }) => {
   // Fetch data from Strapi API
   const destinations_data = await fetchDestinations();
+  const destinos_page_data = await fetchDestinosPage(locale);
 
   return {
     props: {
       destinations: destinations_data,
+      destinos_page_data,
     },
   };
 };
 
-const DestinationsPage: React.FC<{ destinations: Destination[] }> = ({ destinations }) => {
+interface DestinationsPageProps {
+  destinations: Destination[];
+  destinos_page_data: DestinosPage;
+}
+
+const DestinationsPage: React.FC<DestinationsPageProps> = ({ destinations, destinos_page_data }) => {
   const router = useRouter();
   const service = router.query.service as string;
 
+  const c = destinos_page_data;
+
   return (
     <PageLayout title="MAIARC Destinations">
-      <Section title="Elegí tu destino" text="Encontra la vida de placer y lujo en nuestros destinos:">
+      <Section title={c.block_1.title} text={c.block_1.text}>
         <div className="container grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {destinations.map((destination) => (
             <Link href={`/destinos/${destination.slug}/${service ? "?service=" + service : ""}`} key={destination.id}>

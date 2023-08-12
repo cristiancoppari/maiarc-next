@@ -11,6 +11,7 @@ import type { Root as ApiResponseRealEstates } from "@/types/api-real-estates";
 import type { Root as ApiResponseAboutUsPage } from "@/types/api-about-us";
 import type { Root as ApiResponseHomePage } from "@/types/api-home";
 import type { Root as ApiResponseContactPage } from "@/types/api-contact";
+import type { Root as ApiResponseDestinosPage } from "@/types/api-destinos";
 import type {
   Service,
   Villa,
@@ -405,8 +406,6 @@ export const fetchContactPage = async (locale: string) => {
 
     const data = (await res.json()) as ApiResponseContactPage;
 
-    console.log(data);
-
     const contact_page = {
       hero: {
         images: data.data.attributes.hero.images.data.map((image) => {
@@ -420,6 +419,26 @@ export const fetchContactPage = async (locale: string) => {
     };
 
     return contact_page;
+  } catch (error) {
+    console.error(error);
+    // throw new Error("Hubo un error");
+  }
+};
+
+export const fetchDestinosPage = async (locale: string) => {
+  try {
+    const res = await fetch(`${process.env.API_URL}/destinos-page/?populate=deep&locale=${locale}`);
+
+    const data = (await res.json()) as ApiResponseDestinosPage;
+
+    const destinos_page = {
+      block_1: {
+        title: data.data.attributes.block_1.title,
+        text: data.data.attributes.block_1.text,
+      },
+    };
+
+    return destinos_page;
   } catch (error) {
     console.error(error);
     // throw new Error("Hubo un error");

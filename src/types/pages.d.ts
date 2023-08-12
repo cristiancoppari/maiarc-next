@@ -64,3 +64,10 @@ export interface ContactoPage {
     text: string;
   };
 }
+
+export interface DestinosPage {
+  block_1: {
+    title: string;
+    text: string;
+  };
+}
