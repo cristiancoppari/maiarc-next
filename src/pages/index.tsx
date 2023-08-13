@@ -25,7 +25,6 @@ export const getServerSideProps = async ({ locale }: { locale: Locale }) => {
 
   return {
     props: {
-      // services: services_data,
       villas_data: villas_data,
       home_page_data,
     },

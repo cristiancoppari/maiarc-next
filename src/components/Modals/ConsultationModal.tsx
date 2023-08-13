@@ -8,7 +8,6 @@ import ReservationForm from "../Forms/ReservationForm";
 interface ConsultationModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  service: Villa | undefined;
 }
 
 const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModal, service }) => {

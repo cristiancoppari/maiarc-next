@@ -14,6 +14,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineFreeBreakfast } from "react-icons/md";
 import { TbManualGearbox } from "react-icons/tb";
 
+import { useModalStore } from "@/state/modalStore";
 import { Button } from "@/components/ui/button";
 
 interface CardSlideProps {
@@ -26,6 +27,7 @@ interface CardSlideProps {
 }
 
 const CardSlide: React.FC<CardSlideProps> = ({ service }) => {
+  const { openModal } = useModalStore();
   return (
     <div className="shadow-xl">
       <img src={service.main_image} alt="" className="h-52 w-full object-cover" />
@@ -92,7 +94,7 @@ const CardSlide: React.FC<CardSlideProps> = ({ service }) => {
           <Button
             variant="link"
             onClick={() => {
-              console.log("clicked");
+              openModal();
             }}
             className="p-0"
           >
