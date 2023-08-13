@@ -14,6 +14,7 @@ export interface Attributes {
   bathrooms: number;
   main_image: MainImage;
   images: Images;
+  uuid: string;
 }
 
 export interface MainImage {

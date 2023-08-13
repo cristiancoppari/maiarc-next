@@ -82,7 +82,7 @@ export const fetchPremiumServices = async (locale: string): Promise<Service[]> =
 export const fetchVillas = async (): Promise<Villa[]> => {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/villas/?fields=name&fields=locale&fields=capacity&fields=rooms&fields=includes_breakfast&populate[main_image][fields]=url&populate[images][fields]=url&fields=location&populate[destination][fields]=name`,
+      `${process.env.API_URL}/villas/?fields=name&fields=locale&fields=capacity&fields=rooms&fields=includes_breakfast&populate[main_image][fields]=url&populate[images][fields]=url&fields=location&populate[destination][fields]=name&fields=uuid`,
     );
 
     const data = (await res.json()) as ApiResponseVilla;
@@ -100,6 +100,7 @@ export const fetchVillas = async (): Promise<Villa[]> => {
         rooms: element.attributes.rooms,
         capacity: element.attributes.capacity,
         includes_breakfast: element.attributes.includes_breakfast,
+        uuid: element.attributes.uuid,
       };
     });
 
@@ -137,7 +138,7 @@ export const fetchDestinations = async (): Promise<Destination[]> => {
 export const fetchYatchs = async (): Promise<Yatch[]> => {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/yatches/?fields[0]=name&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name&fields=capacity`,
+      `${process.env.API_URL}/yatches/?fields[0]=name&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name&fields=capacity&fields=uuid`,
     );
 
     const data = (await res.json()) as ApiResponseYatch;
@@ -153,6 +154,7 @@ export const fetchYatchs = async (): Promise<Yatch[]> => {
         destination: element.attributes.destination.data.attributes.name,
         location: element.attributes.location ?? null,
         capacity: element.attributes.capacity,
+        uuid: element.attributes.uuid,
       };
     });
 
@@ -166,7 +168,7 @@ export const fetchYatchs = async (): Promise<Yatch[]> => {
 export const fetchSuperYatches = async (): Promise<SuperYatch[]> => {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/super-yatches/?fields[0]=name&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name&fields=capacity`,
+      `${process.env.API_URL}/super-yatches/?fields[0]=name&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name&fields=capacity&fields=uuid`,
     );
 
     const data = (await res.json()) as ApiResponseSuperYatch;
@@ -182,6 +184,7 @@ export const fetchSuperYatches = async (): Promise<SuperYatch[]> => {
         location: element.attributes.location ?? null,
         capacity: element.attributes.capacity ?? null,
         cabins: element.attributes.cabins ?? null,
+        uuid: element.attributes.uuid,
       };
     });
 
@@ -195,7 +198,7 @@ export const fetchSuperYatches = async (): Promise<SuperYatch[]> => {
 export const fetchHotels = async (): Promise<Hotel[]> => {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/hotels/?fields=name&fields=includes_breakfast&fields=stars&fields=capacity&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name?locale=all`,
+      `${process.env.API_URL}/hotels/?fields=name&fields=includes_breakfast&fields=stars&fields=capacity&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name?locale=all&fields=uuid`,
     );
 
     const data = (await res.json()) as ApiResponseHotel;
@@ -212,6 +215,7 @@ export const fetchHotels = async (): Promise<Hotel[]> => {
         capacity: element.attributes.capacity,
         stars: element.attributes.stars,
         location: element.attributes.location,
+        uuid: element.attributes.uuid,
       };
     });
 
@@ -225,7 +229,7 @@ export const fetchHotels = async (): Promise<Hotel[]> => {
 export const fetchPremiumVehicles = async (): Promise<PremiumVehicle[]> => {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/premium-vehicles/?fields=name&fields=type&fields=capacity&fields=transmission&fields=type&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name`,
+      `${process.env.API_URL}/premium-vehicles/?fields=name&fields=type&fields=capacity&fields=transmission&fields=type&populate[main_image][fields]=url&populate[images][fields]=url&populate[destination][fields]=name&fields=uuid`,
     );
 
     const data = (await res.json()) as ApiResponsePremiumVehicle;
@@ -242,6 +246,7 @@ export const fetchPremiumVehicles = async (): Promise<PremiumVehicle[]> => {
         capacity: element.attributes.capacity,
         type: element.attributes.type,
         transmission: element.attributes.transmission,
+        uuid: element.attributes.uuid,
       };
     });
 
@@ -255,7 +260,7 @@ export const fetchPremiumVehicles = async (): Promise<PremiumVehicle[]> => {
 export const fetchUniqueExperiences = async (locale: string): Promise<UniqueExperience[]> => {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/unique-experiences/?locale=${locale}&fields=locale&&fields[0]=name&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&fields=description`,
+      `${process.env.API_URL}/unique-experiences/?locale=${locale}&fields=locale&&fields[0]=name&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&fields=description&fields=uuid`,
     );
 
     const data = (await res.json()) as ApiResponseUniqueExperience;
@@ -269,6 +274,7 @@ export const fetchUniqueExperiences = async (locale: string): Promise<UniqueExpe
         //   return image;
         // }),
         location: element.attributes.location ?? null,
+        uuid: element.attributes.uuid,
       };
     });
 
@@ -282,7 +288,7 @@ export const fetchUniqueExperiences = async (locale: string): Promise<UniqueExpe
 export const fetchRealEstates = async (): Promise<RealEstateItem[]> => {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/real-estates/?fields=name&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&fields=bathrooms`,
+      `${process.env.API_URL}/real-estates/?fields=name&fields=location&populate[main_image][fields]=url&populate[images][fields]=url&fields=bathrooms&fields=uuid`,
     );
 
     const data = (await res.json()) as ApiResponseRealEstates;
@@ -297,6 +303,7 @@ export const fetchRealEstates = async (): Promise<RealEstateItem[]> => {
         }),
         location: element.attributes.location ?? null,
         bathrooms: element.attributes.bathrooms ?? null,
+        uuid: element.attributes.uuid,
       };
     });
 

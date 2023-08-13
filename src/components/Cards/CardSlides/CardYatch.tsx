@@ -41,7 +41,7 @@ const CardYatch: React.FC<YatchProps> = ({ card, handlers }) => {
           <Button
             variant="link"
             onClick={() => {
-              selectService(card.id);
+              selectService(card.uuid);
               openModal();
             }}
           >

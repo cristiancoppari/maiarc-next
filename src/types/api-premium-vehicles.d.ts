@@ -16,6 +16,7 @@ export interface Attributes {
   main_image: MainImage;
   images: Images;
   destination: Destination;
+  uuid: string;
 }
 
 export interface MainImage {

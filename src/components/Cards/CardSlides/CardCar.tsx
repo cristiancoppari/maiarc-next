@@ -52,7 +52,7 @@ const CardCar: React.FC<PremiumVehicleProps> = ({ card, handlers }) => {
             variant="link"
             className="p-0"
             onClick={() => {
-              selectService(card.id);
+              selectService(card.uuid);
               openModal();
             }}
           >

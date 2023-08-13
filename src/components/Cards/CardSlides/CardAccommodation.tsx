@@ -54,7 +54,7 @@ const CardAccommodation: React.FC<AccomodationProps> = ({ card, handlers }) => {
           <Button
             variant="link"
             onClick={() => {
-              selectService(card.id);
+              selectService(card.uuid);
               openModal();
             }}
             className="p-0"

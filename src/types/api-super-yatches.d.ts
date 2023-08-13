@@ -15,6 +15,7 @@ export interface Attributes {
   cabins: number;
   main_image: MainImage;
   images: Images;
+  uuid: string;
 }
 
 export interface MainImage {

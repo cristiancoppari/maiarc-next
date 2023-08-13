@@ -60,7 +60,7 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
   };
 
   // Service to show in the modal according to the id
-  const service_to_show_in_modal = villas_data.find((service) => service.id === serviceId) as FormServiceData;
+  const service_to_show_in_modal = villas_data.find((service) => service.uuid === serviceId) as FormServiceData;
 
   return (
     <PageLayout title="MAIARC Concierge">

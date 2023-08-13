@@ -33,7 +33,7 @@ const CardYatch: React.FC<UniqueExperienceProps> = ({ card, handlers }) => {
           <Button
             variant="link"
             onClick={() => {
-              selectService(card.id);
+              selectService(card.uuid);
               openModal();
             }}
           >
