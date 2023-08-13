@@ -4,26 +4,13 @@ import { Fragment } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from "swiper/modules";
 
-import villa_img from "@/assets/images/villa-1.png";
-
-const images = [
-  villa_img.src,
-  villa_img.src,
-  villa_img.src,
-  villa_img.src,
-  villa_img.src,
-  villa_img.src,
-];
-
 interface ConsultationModalProps {
   isOpen: boolean;
   closeModal: () => void;
+  images: string[];
 }
 
-const CarouselModal: React.FC<ConsultationModalProps> = ({
-  isOpen,
-  closeModal,
-}) => {
+const CarouselModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModal, images }) => {
   // const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (

@@ -10,7 +10,7 @@ import TextImage from "@/components/Blocks/TextImage/TextImage";
 import { fetchPremiumServicePage, fetchUniqueExperiences } from "@/lib/fetchers/fetchers";
 import Section from "@/components/Sections/Section";
 import Carousel from "@/components/Carousel/Carousel";
-import CardUniqueExperience from "@/components/Cards/CardSlides/CardUniqueExperience";
+import CardSlide from "@/components/Cards/CardSlides/CardSlide";
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => {
   try {
@@ -52,14 +52,6 @@ const SuperYatesPage: React.FC<UniqueExperienceProps> = ({ unique_experiences_da
     </>
   );
 
-  const selectServiceHandler = () => {
-    console.log("selectServiceHandler");
-  };
-
-  const openConsultationModal = () => {
-    console.log("openConsultationModal");
-  };
-
   return (
     <PageLayout title="super-yates">
       <Hero images={c.hero.images} />
@@ -83,13 +75,7 @@ const SuperYatesPage: React.FC<UniqueExperienceProps> = ({ unique_experiences_da
         <Carousel>
           {unique_experiences_data.map((experience) => (
             <SwiperSlide key={experience.id} className="p-4">
-              <CardUniqueExperience
-                card={experience}
-                handlers={{
-                  selectService: selectServiceHandler,
-                  openModal: openConsultationModal,
-                }}
-              />
+              <CardSlide service={experience} />
             </SwiperSlide>
           ))}
         </Carousel>

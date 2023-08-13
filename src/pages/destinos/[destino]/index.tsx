@@ -18,10 +18,7 @@ import {
   fetchYatchs,
 } from "@/lib/fetchers/fetchers";
 import Carousel from "@/components/Carousel/Carousel";
-import CardAccommodation from "@/components/Cards/CardSlides/CardAccommodation";
-import CardYatch from "@/components/Cards/CardSlides/CardYatch";
-import CardCar from "@/components/Cards/CardSlides/CardCar";
-import ConsultationModal, { type FormServiceData } from "@/components/Modals/ConsultationModal";
+import CardSlide from "@/components/Cards/CardSlides/CardSlide";
 
 interface Params {
   destino: string;
@@ -113,26 +110,9 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
   // Section to show
   const [section, setSection] = useState<string>(service);
 
-  // Store the service id to open the consultation modal and show the correct data
-  const [serviceId, setServiceId] = useState<string | number>("");
-
-  // Consultation Modal
-  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState<boolean>(false);
-
-  // Handlers
-  const openConsultationModal = () => setIsConsultationModalOpen(true);
-  const closeConsultationModal = () => setIsConsultationModalOpen(false);
-
-  const selectServiceHandler = (id: string | number) => {
-    setServiceId(id);
-  };
-
   const selectSectionHandler = (section: string) => {
     setSection(section);
   };
-
-  // Service to show in the modal according to the id
-  const service_to_show_in_modal = villas.find((service) => service.id === serviceId) as FormServiceData;
 
   return (
     <PageLayout title={`${destino} - MAIARC`}>
@@ -155,13 +135,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
           <Carousel>
             {villas.map((villa) => (
               <SwiperSlide key={villa.id} className="p-4">
-                <CardAccommodation
-                  card={villa}
-                  handlers={{
-                    selectService: selectServiceHandler,
-                    openModal: openConsultationModal,
-                  }}
-                />
+                <CardSlide service={villa} />
               </SwiperSlide>
             ))}
           </Carousel>
@@ -170,13 +144,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
           <Carousel>
             {hotels.map((hotel) => (
               <SwiperSlide key={hotel.id} className="p-4">
-                <CardAccommodation
-                  card={hotel}
-                  handlers={{
-                    selectService: selectServiceHandler,
-                    openModal: openConsultationModal,
-                  }}
-                />
+                <CardSlide service={hotel} />
               </SwiperSlide>
             ))}
           </Carousel>
@@ -189,13 +157,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
           <Carousel>
             {yatchs.map((yatch) => (
               <SwiperSlide key={yatch.id} className="p-4">
-                <CardYatch
-                  card={yatch}
-                  handlers={{
-                    selectService: selectServiceHandler,
-                    openModal: openConsultationModal,
-                  }}
-                />
+                <CardSlide service={yatch} />
               </SwiperSlide>
             ))}
           </Carousel>
@@ -208,24 +170,12 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
           <Carousel>
             {vehicles.map((vehicle) => (
               <SwiperSlide key={vehicle.id} className="p-4">
-                <CardCar
-                  card={vehicle}
-                  handlers={{
-                    selectService: selectServiceHandler,
-                    openModal: openConsultationModal,
-                  }}
-                />
+                <CardSlide service={vehicle} />
               </SwiperSlide>
             ))}
           </Carousel>
         </Section>
       )}
-
-      <ConsultationModal
-        isOpen={isConsultationModalOpen}
-        closeModal={closeConsultationModal}
-        service={service_to_show_in_modal ?? ""}
-      />
     </PageLayout>
   );
 };

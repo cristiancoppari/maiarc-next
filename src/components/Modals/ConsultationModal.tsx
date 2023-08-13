@@ -1,19 +1,14 @@
+import type { Villa } from "@/types/services";
+
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
 import ReservationForm from "../Forms/ReservationForm";
 
-export interface FormServiceData {
-  id: string;
-  name: string;
-  destination: string;
-  capacity: number;
-}
-
 interface ConsultationModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  service: FormServiceData;
+  service: Villa | undefined;
 }
 
 const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModal, service }) => {
@@ -45,7 +40,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModa
             >
               <Dialog.Panel className="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all md:w-max">
                 <div className="container mb-8 flex justify-between gap-4 md:max-w-xl">
-                  <p className="font-bold">{service.name}</p>
+                  <p className="font-bold">{service?.name}</p>
                   <div className="flex items-center gap-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +58,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModa
                       />
                     </svg>
 
-                    <p>{service.destination}</p>
+                    <p>{service?.destination}</p>
                   </div>
                 </div>
 

@@ -1,9 +1,7 @@
 import type { Locale } from "@/types/locales";
 import type { Service, Villa } from "@/types/services";
-import type { FormServiceData } from "@/components/Modals/ConsultationModal";
 import type { HomePage } from "@/types/pages";
 
-import { useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
@@ -18,8 +16,7 @@ import { LinkBtn } from "@/components/Buttons/Button/Buttons";
 import BigGallery from "@/components/Galleries/BigGallery/BigGallery";
 import InstagramGallery from "@/components/Galleries/InstagramGallery/InstagramGallery";
 import Newsletter from "@/components/Sections/Newsletter/Newsletter";
-import CardAccommodation from "@/components/Cards/CardSlides/CardAccommodation";
-import ConsultationModal from "@/components/Modals/ConsultationModal";
+import CardSlide from "@/components/Cards/CardSlides/CardSlide";
 
 export const getServerSideProps = async ({ locale }: { locale: Locale }) => {
   // Fetch data from Strapi API
@@ -44,23 +41,6 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
   const c = home_page_data;
-
-  // Store the service id to open the consultation modal and show the correct data
-  const [serviceId, setServiceId] = useState<string | number>("");
-
-  // Consultation Modal
-  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState<boolean>(false);
-
-  // Handlers
-  const openConsultationModal = () => setIsConsultationModalOpen(true);
-  const closeConsultationModal = () => setIsConsultationModalOpen(false);
-
-  const selectServiceHandler = (id: string | number) => {
-    setServiceId(id);
-  };
-
-  // Service to show in the modal according to the id
-  const service_to_show_in_modal = villas_data.find((service) => service.uuid === serviceId) as FormServiceData;
 
   return (
     <PageLayout title="MAIARC Concierge">
@@ -114,13 +94,7 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
           <Carousel>
             {villas_data.map((villa) => (
               <SwiperSlide key={villa.id} className="p-4">
-                <CardAccommodation
-                  card={villa}
-                  handlers={{
-                    selectService: selectServiceHandler,
-                    openModal: openConsultationModal,
-                  }}
-                />
+                <CardSlide service={villa} />
               </SwiperSlide>
             ))}
           </Carousel>
@@ -132,14 +106,6 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
       </Section>
 
       <Newsletter title={c.newsletter_block.title} text={c.newsletter_block.text} />
-
-      <ConsultationModal
-        isOpen={isConsultationModalOpen}
-        closeModal={closeConsultationModal}
-        service={service_to_show_in_modal ?? ""}
-      />
-
-      {/* <CarouselModal isOpen={isCarouselModalOpen} closeModal={closeCarouselModal} /> */}
     </PageLayout>
   );
 };

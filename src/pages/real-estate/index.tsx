@@ -10,7 +10,7 @@ import TextImage from "@/components/Blocks/TextImage/TextImage";
 import { fetchPremiumServicePage, fetchRealEstates } from "@/lib/fetchers/fetchers";
 import Section from "@/components/Sections/Section";
 import Carousel from "@/components/Carousel/Carousel";
-import CardUniqueExperience from "@/components/Cards/CardSlides/CardUniqueExperience";
+import CardSlide from "@/components/Cards/CardSlides/CardSlide";
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => {
   try {
@@ -52,14 +52,6 @@ const RealEstatePage: React.FC<RealEstatePageProps> = ({ real_estate_data, real_
     </>
   );
 
-  const selectServiceHandler = () => {
-    console.log("selectServiceHandler");
-  };
-
-  const openConsultationModal = () => {
-    console.log("openConsultationModal");
-  };
-
   return (
     <PageLayout title="super-yates">
       <Hero images={c.hero.images} />
@@ -83,13 +75,7 @@ const RealEstatePage: React.FC<RealEstatePageProps> = ({ real_estate_data, real_
         <Carousel>
           {real_estate_data.map((real_estate) => (
             <SwiperSlide key={real_estate.id} className="p-4">
-              <CardUniqueExperience
-                card={real_estate}
-                handlers={{
-                  selectService: selectServiceHandler,
-                  openModal: openConsultationModal,
-                }}
-              />
+              <CardSlide service={real_estate} />
             </SwiperSlide>
           ))}
         </Carousel>
