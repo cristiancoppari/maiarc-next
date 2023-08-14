@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 import { Swiper } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Carousel: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
@@ -12,7 +12,7 @@ const Carousel: React.FC<{ children: ReactNode }> = ({ children }) => {
         clickable: true,
         el: ".custom-pagination",
       }}
-      modules={[Autoplay, Pagination]}
+      modules={[Autoplay, Pagination, Navigation]}
       // autoplay={{
       //   delay: 3000,
       //   disableOnInteraction: false,

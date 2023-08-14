@@ -88,7 +88,7 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
       </Section>
 
       <Section title={c.accommodations_block.title} text={c.accommodations_block.text} classes="bg-zinc-200">
-        <div className="container">
+        <div className="container p-0">
           {/* Services Carousel */}
           <Carousel>
             {villas_data.map((villa) => (

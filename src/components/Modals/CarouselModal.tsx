@@ -1,16 +1,14 @@
 // import { useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Thumbs } from "swiper/modules";
 
 interface ConsultationModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  images: string[];
+  children: React.ReactNode;
 }
 
-const CarouselModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModal, images }) => {
+const CarouselModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModal, children }) => {
   // const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
@@ -40,26 +38,7 @@ const CarouselModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModal, i
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full transform overflow-hidden rounded-2xl bg-transparent p-6 text-left align-middle transition-all md:w-max">
-                <Swiper modules={[Thumbs]} slidesPerView={1}>
-                  {images.map((image, index) => (
-                    <SwiperSlide key={index}>
-                      <img src={image} alt="" className="h-full w-full" />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-
-                {/* <Swiper
-                  modules={[Thumbs]}
-                  slidesPerView={4}
-                  watchSlidesProgress
-                  onSwiper={setThumbsSwiper}
-                >
-                  {images.map((image, index) => (
-                    <SwiperSlide key={index + 1}>
-                      <img src={image} alt="" />
-                    </SwiperSlide>
-                  ))}
-                </Swiper> */}
+                {children}
               </Dialog.Panel>
             </Transition.Child>
           </div>

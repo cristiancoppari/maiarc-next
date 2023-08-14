@@ -1,4 +1,13 @@
-import type { Villa } from "@/types/services";
+import type {
+  Accommodation,
+  Hotel,
+  Villa,
+  SuperYatch,
+  Yatch,
+  PremiumVehicle,
+  RealEstateItem,
+  UniqueExperience,
+} from "@/types/services";
 
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
@@ -8,9 +17,10 @@ import ReservationForm from "../Forms/ReservationForm";
 interface ConsultationModalProps {
   isOpen: boolean;
   closeModal: () => void;
+  item: Villa | Hotel | Yatch | SuperYatch | Accommodation | PremiumVehicle | RealEstateItem | UniqueExperience;
 }
 
-const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModal, service }) => {
+const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModal, item }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -39,7 +49,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModa
             >
               <Dialog.Panel className="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all md:w-max">
                 <div className="container mb-8 flex justify-between gap-4 md:max-w-xl">
-                  <p className="font-bold">{service?.name}</p>
+                  <p className="font-bold">{item.name}</p>
                   <div className="flex items-center gap-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +67,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModa
                       />
                     </svg>
 
-                    <p>{service?.destination}</p>
+                    {"destination" in item && <p className="capitalize">{item.destination}</p>}
                   </div>
                 </div>
 
