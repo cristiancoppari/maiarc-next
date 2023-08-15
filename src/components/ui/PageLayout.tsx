@@ -19,6 +19,7 @@ function PageLayout({ children, title }: PageLayoutProps) {
       <Head>
         <link rel="icon" href="/logo-black.png" />
         <title>{title}</title>
+        <meta name="description" content="MAIARC Concierge." />
       </Head>
 
       <div>
