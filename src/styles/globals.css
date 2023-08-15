@@ -143,6 +143,24 @@ Used in service cards
   @apply text-zinc-100;
 }
 
+.normal-carousel .swiper-button-prev,
+.normal-carousel .swiper-button-next {
+  @apply w-11 rounded-full border border-black bg-zinc-100 text-black;
+}
+
+.normal-carousel .swiper-button-prev::after,
+.normal-carousel .swiper-button-next::after {
+  @apply text-2xl;
+}
+
+.normal-carousel .swiper-button-next {
+  @apply right-8;
+}
+
+.normal-carousel .swiper-button-prev {
+  @apply left-8;
+}
+
 /* Change the color of the inactive dots */
 .modal-bullets .swiper-pagination-bullet {
   @apply bg-zinc-200 !important;

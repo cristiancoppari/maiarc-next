@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { LangContext } from "@/context/langContext";
 import { Input } from "@/components/ui/input";
 
@@ -91,7 +91,7 @@ const ReservationForm = () => {
                 <FormControl>
                   <Input placeholder={c.form.name.placeholder} {...field} />
                 </FormControl>
-                <FormMessage />
+                {/* <FormMessage /> */}
               </FormItem>
             )}
           />
@@ -104,7 +104,7 @@ const ReservationForm = () => {
                 <FormControl>
                   <Input placeholder={c.form.name.placeholder} {...field} />
                 </FormControl>
-                <FormMessage />
+                {/* <FormMessage /> */}
               </FormItem>
             )}
           />
@@ -119,7 +119,7 @@ const ReservationForm = () => {
                 <FormControl>
                   <Input placeholder={c.form.phone.label} {...field} />
                 </FormControl>
-                <FormMessage />
+                {/* <FormMessage /> */}
               </FormItem>
             )}
           />
@@ -133,7 +133,7 @@ const ReservationForm = () => {
                 <FormControl>
                   <Input placeholder={c.form.phone.label} {...field} />
                 </FormControl>
-                <FormMessage />
+                {/* <FormMessage /> */}
               </FormItem>
             )}
           />
@@ -149,7 +149,7 @@ const ReservationForm = () => {
                 <FormControl>
                   <DatePicker field={field} />
                 </FormControl>
-                <FormMessage />
+                {/* <FormMessage /> */}
               </FormItem>
             )}
           />
@@ -162,7 +162,7 @@ const ReservationForm = () => {
                 <FormControl>
                   <DatePicker field={field} />
                 </FormControl>
-                <FormMessage />
+                {/* <FormMessage /> */}
               </FormItem>
             )}
           />
@@ -177,7 +177,7 @@ const ReservationForm = () => {
               <FormControl>
                 <Textarea placeholder={c.form.name.placeholder} {...field} />
               </FormControl>
-              <FormMessage />
+              {/* <FormMessage /> */}
             </FormItem>
           )}
         />

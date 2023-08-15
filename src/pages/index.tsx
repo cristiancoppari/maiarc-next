@@ -4,7 +4,7 @@ import type { HomePage } from "@/types/pages";
 
 import { SwiperSlide } from "swiper/react";
 import Link from "next/link";
-import ReactMarkdown from "react-markdown";
+// import ReactMarkdown from "react-markdown";
 
 import { fetchVillas, fetchHomePage } from "@/lib/fetchers/fetchers";
 import PageLayout from "@/components/ui/PageLayout";
@@ -47,13 +47,13 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
 
       <Section title={c.services_block.title} text={c.services_block.text} classes="container">
         {/* Clickable Services */}
-        <h2 className="h2 mx-auto mb-6 uppercase md:w-11/12">{c.services_block.title}</h2>
+        {/* <h2 className="h2 mx-auto mb-6 uppercase md:w-11/12">{c.services_block.title}</h2>
 
         {!!c.services_block.text && (
           <div className="p mb-8">
             <ReactMarkdown>{c.services_block.text}</ReactMarkdown>
           </div>
-        )}
+        )} */}
 
         <div className="container mb-12 grid grid-cols-1 gap-8 px-4 md:grid-cols-3">
           {c.services_block.services.map((service) => {
@@ -67,13 +67,12 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
           })}
         </div>
 
-        <h2 className="h2 mx-auto mb-4 mt-24 uppercase md:w-11/12">Tambien contamos con:</h2>
         {/* Services Carousel */}
         <Carousel>
           {c.services_block.services.map((service) => {
             if (!service.is_clickable) {
               return (
-                <SwiperSlide key={service.id} className="p-4">
+                <SwiperSlide key={service.id} className="px-4 pb-12">
                   <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
                 </SwiperSlide>
               );

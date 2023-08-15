@@ -12,11 +12,12 @@ const Carousel: React.FC<{ children: ReactNode }> = ({ children }) => {
         clickable: true,
         el: ".custom-pagination",
       }}
+      navigation={true}
       modules={[Autoplay, Pagination, Navigation]}
-      // autoplay={{
-      //   delay: 3000,
-      //   disableOnInteraction: false,
-      // }}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
       breakpoints={{
         640: {
           slidesPerView: 2,
@@ -25,6 +26,7 @@ const Carousel: React.FC<{ children: ReactNode }> = ({ children }) => {
           slidesPerView: 3,
         },
       }}
+      className="normal-carousel"
     >
       {children}
 

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { LangContext } from "@/context/langContext";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 
@@ -91,7 +91,7 @@ const ContactForm = () => {
               <FormControl>
                 <Input placeholder={c.form.name.placeholder} {...field} />
               </FormControl>
-              <FormMessage />
+              {/* <FormMessage /> */}
             </FormItem>
           )}
         />
@@ -104,7 +104,7 @@ const ContactForm = () => {
               <FormControl>
                 <Input placeholder={c.form.name.placeholder} {...field} />
               </FormControl>
-              <FormMessage />
+              {/* <FormMessage /> */}
             </FormItem>
           )}
         />
@@ -117,7 +117,7 @@ const ContactForm = () => {
               <FormControl>
                 <Input placeholder={c.form.phone.label} {...field} />
               </FormControl>
-              <FormMessage />
+              {/* <FormMessage /> */}
             </FormItem>
           )}
         />
@@ -139,7 +139,7 @@ const ContactForm = () => {
                   <SelectItem value="tulum">Tulum</SelectItem>
                 </SelectContent>
               </Select>
-              <FormMessage />
+              {/* <FormMessage /> */}
             </FormItem>
           )}
         />
@@ -154,7 +154,7 @@ const ContactForm = () => {
                 <FormControl>
                   <DatePicker field={field} />
                 </FormControl>
-                <FormMessage />
+                {/* <FormMessage /> */}
               </FormItem>
             )}
           />
@@ -167,7 +167,7 @@ const ContactForm = () => {
                 <FormControl>
                   <DatePicker field={field} />
                 </FormControl>
-                <FormMessage />
+                {/* <FormMessage /> */}
               </FormItem>
             )}
           />
@@ -182,7 +182,7 @@ const ContactForm = () => {
               <FormControl>
                 <Textarea placeholder={c.form.name.placeholder} {...field} />
               </FormControl>
-              <FormMessage />
+              {/* <FormMessage /> */}
             </FormItem>
           )}
         />
