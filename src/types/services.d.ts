@@ -16,7 +16,7 @@ export interface Service {
 }
 
 export interface Accommodation extends Service {
-  service_type: "accommodation";
+  service_type?: "accommodation";
   destination: string;
   location: string | null;
   capacity: number;
@@ -25,20 +25,20 @@ export interface Accommodation extends Service {
 }
 
 export interface Villa extends Accommodation {
-  service_type: "villa";
+  service_type?: "villa";
   rooms: number;
   includes_breakfast: boolean;
   uuid: string;
 }
 
 export interface Hotel extends Accommodation {
-  service_type: "hotel";
+  service_type?: "hotel";
   stars: number;
   uuid: string;
 }
 
 export interface RealEstateItem extends Service {
-  service_type: "real_estate";
+  service_type?: "real_estate";
   location: string;
   bathrooms?: number;
   uuid: string;
@@ -47,7 +47,7 @@ export interface RealEstateItem extends Service {
 }
 
 export interface PremiumVehicle extends Service {
-  service_type: "premium_vehicle";
+  service_type?: "premium_vehicle";
   destination: string;
   images: string[];
   capacity: number;
@@ -59,7 +59,7 @@ export interface PremiumVehicle extends Service {
 }
 
 export interface Yatch extends Service {
-  service_type: "yatch";
+  service_type?: "yatch";
   destination: string;
   location: string | null;
   capacity: number;
@@ -68,7 +68,7 @@ export interface Yatch extends Service {
 }
 
 export interface SuperYatch extends Service {
-  service_type: "super_yatch";
+  service_type?: "super_yatch";
   location: string | null;
   capacity: number;
   images: string[];
@@ -77,7 +77,7 @@ export interface SuperYatch extends Service {
 }
 
 export interface UniqueExperience extends Service {
-  service_type: "unique_experience";
+  service_type?: "unique_experience";
   location: string;
   uuid: string;
 }
