@@ -125,10 +125,14 @@ export const es = {
   },
   ctas: {
     consultation: "Consultar",
+    subscription: "Suscribirse",
   },
   card: {
     included: "Incluido",
     not_included: "No incluido",
+  },
+  newsletter: {
+    placeholder: "Ingresa tu email",
   },
 };
 

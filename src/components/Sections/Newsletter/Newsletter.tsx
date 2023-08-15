@@ -1,4 +1,7 @@
 import ReactMarkdown from "react-markdown";
+import { useContext } from "react";
+
+import { LangContext } from "@/context/langContext";
 
 import { Button } from "../../ui/button";
 
@@ -8,6 +11,9 @@ interface NewsletterProps {
 }
 
 const Newsletter = ({ title, text }: NewsletterProps) => {
+  const content = useContext(LangContext);
+  const c = content.locale_file;
+
   return (
     <section className="bg-zinc-800 py-8">
       <div className="container md:w-3/4">
@@ -17,9 +23,9 @@ const Newsletter = ({ title, text }: NewsletterProps) => {
         </div>
 
         <div className="mx-auto flex flex-col justify-center gap-4 sm:flex-row">
-          <input type="text" className="w-full rounded-full p-2 px-4" placeholder="Ingresá tu correo electrónico" />
+          <input type="text" className="w-full rounded-full p-2 px-4" placeholder={`${c.newsletter.placeholder}`} />
           <Button variant="outline" className="rounded-full px-12 uppercase">
-            Traducir
+            {c.ctas.subscription}
           </Button>
         </div>
       </div>
