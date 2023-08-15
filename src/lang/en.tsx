@@ -1,5 +1,3 @@
-import maiarc_test from "@/assets/images/maiarc-test.webp";
-
 export const en = {
   header: {
     content: {
@@ -64,91 +62,7 @@ export const en = {
   footer: {
     content: "Privacy Policy and Legal Notices",
   },
-  home: {
-    title:
-      "Where luxury and exclusivity come to life. Discover our range of exclusive services with a single click",
-    text: "We offer unique services in Tulum, Ibiza, Miami and the most exclusive destinations worldwide. We design personalized experiences to turn your expectations into unforgettable experiences.",
-    services_gallery: {
-      cards: [
-        {
-          title: "Luxury Villas",
-        },
-        {
-          title: "Yatchs",
-        },
-        {
-          title: "Premium Vehicles",
-        },
-        {
-          title: "Private Flights",
-        },
-        {
-          title: "Event production",
-        },
-        {
-          title: "Wellness",
-        },
-        {
-          title: "Reservations",
-        },
-        {
-          title: "Events",
-        },
-        {
-          title: "Tours",
-        },
-        {
-          title: "Security",
-        },
-        {
-          title: "Chefs",
-        },
-        {
-          title: "VIP Tables",
-        },
-        {
-          title: "Transfers",
-        },
-      ],
-      cta: "Contact",
-    },
-    big_gallery: {
-      cards: [
-        {
-          title: "Luxury Villas",
-          description:
-            "We offer you the most exclusive villas in the world. Enjoy the best destinations with the highest quality services and the most exclusive amenities.",
-          cta_label: "More",
-        },
-        {
-          title: "Super Yachts",
-          description:
-            "We offer you the most exclusive villas in the world. Enjoy the best destinations with the highest quality services and the most exclusive amenities.",
-          cta_label: "More",
-        },
-      ],
-    },
-    accommodations: {
-      title: "Accommodations",
-      text: "We offer you the most exclusive villas in the world. Enjoy the best destinations with the highest quality services and the most exclusive amenities.",
-      cta: {
-        label: "More",
-        href: "/experiencias-unicas",
-      },
-    },
-    instagram_gallery: {
-      title: "Our community",
-      text: "Be part! Follow us on Instagram @maiarc.concierge.",
-    },
-    newsletter: {
-      title: "Inspire yourself",
-      text: "Subscribe to the newsletter and be the first to find out about the latest news and experiences we have to offer you within the global luxury.",
-      cta: "Subscribe",
-    },
-  },
   contact: {
-    title: "Contact",
-    text: "We are here to help you. Contact us and we will get back to you as soon as possible.",
     form: {
       name: {
         label: "Name",
@@ -209,50 +123,12 @@ export const en = {
       submit: "Send",
     },
   },
-  who_we_are: {
-    section_1: {
-      title: "Who we are",
-      texts: [
-        "We are a luxury concierge company that offers exclusive services in Tulum, Ibiza, Miami, and the most exclusive destinations globally.",
-        "Our goal is to provide unique and personalized experiences to our clients, so they can enjoy the best destinations in the world.",
-        "We have a team of highly trained professionals to provide a service of excellence and quality.",
-      ],
-    },
-    section_2: {
-      title:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, assumenda!",
-      subtitle: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      texts: [
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, assumenda!",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quaerat quidem numquam nulla architecto nesciunt assumenda dolorem necessitatibus, deserunt ducimus?",
-      ],
-    },
+  ctas: {
+    consultation: "More",
   },
-  destinations: {
-    title: "Destinations",
-    text: "We offer you the most exclusive villas in the world. Enjoy the best destinations with the highest quality services and the most exclusive amenities.",
-    cards: [
-      {
-        title: "Tulum",
-        image: maiarc_test.src,
-        href: "/destinos/tulum",
-      },
-      {
-        title: "Ibiza",
-        image: maiarc_test.src,
-        href: "/destinos/ibiza",
-      },
-      {
-        title: "Miami",
-        image: maiarc_test.src,
-        href: "/destinos/miami",
-      },
-      {
-        title: "Punta del Este",
-        image: maiarc_test.src,
-        href: "/destinos/punta-del-este",
-      },
-    ],
+  card: {
+    included: "Included",
+    not_included: "Not included",
   },
 };
 

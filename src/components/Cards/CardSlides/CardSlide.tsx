@@ -9,7 +9,7 @@ import type {
   UniqueExperience,
 } from "@/types/services";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { BsCarFrontFill, BsPeople } from "react-icons/bs";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineFreeBreakfast } from "react-icons/md";
@@ -17,6 +17,7 @@ import { TbManualGearbox } from "react-icons/tb";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 
+import { LangContext } from "@/context/langContext";
 import ConsultationModal from "@/components/Modals/ConsultationModal";
 import CarouselModal from "@/components/Modals/CarouselModal";
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,9 @@ interface CardSlideProps {
 }
 
 const CardSlide: React.FC<CardSlideProps> = ({ service }) => {
+  const content = useContext(LangContext);
+  const c = content.locale_file;
+
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
   const [isCarouselModalOpen, setIsCarouselModalOpen] = useState(false);
 
@@ -93,7 +97,7 @@ const CardSlide: React.FC<CardSlideProps> = ({ service }) => {
                 <div className="flex items-center gap-2">
                   <MdOutlineFreeBreakfast className="h-6 w-6" />
 
-                  <p className="text-sm">Incluido</p>
+                  <p className="text-sm">{c.card.included}</p>
                 </div>
               )}
 
@@ -123,7 +127,7 @@ const CardSlide: React.FC<CardSlideProps> = ({ service }) => {
               }}
               className="p-0"
             >
-              Consultar
+              {c.ctas.consultation}
             </Button>
           </div>
         </div>

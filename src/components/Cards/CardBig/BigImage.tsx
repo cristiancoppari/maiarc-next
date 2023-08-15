@@ -13,7 +13,7 @@ const BigImage: React.FC<BigImage> = ({ title, image, description, link, cta_lab
     <div className="flex flex-col shadow-xl">
       <img src={image} alt="" className="mx-auto aspect-square w-full" />
       <div className="relative flex h-full flex-col items-center justify-between p-4 md:p-8">
-        <div>
+        <div className="text-center">
           <h3 className="h3 --font-lora mb-4 font-medium">- {title} -</h3>
           <p className="p mb-8">{description}</p>
         </div>
