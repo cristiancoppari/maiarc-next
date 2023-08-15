@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
@@ -59,11 +60,11 @@ const formSchema = z.object({
     }),
 });
 
-const ReservationForm = () => {
+const ReservationForm = ({ name, destination }: { name: string; destination: string }) => {
   const content = useContext(LangContext);
   const c = content.locale_file.contact;
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<z.infer<typeof formSchema> & { [key: string]: string }>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -74,8 +75,9 @@ const ReservationForm = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  function onSubmit(values: z.infer<typeof formSchema> & { [key: string]: string }) {
+    values.service = name ?? "";
+    values.destination = destination ?? "";
   }
 
   return (

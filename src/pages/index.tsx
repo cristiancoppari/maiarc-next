@@ -4,8 +4,10 @@ import type { HomePage } from "@/types/pages";
 
 import { SwiperSlide } from "swiper/react";
 import Link from "next/link";
-// import ReactMarkdown from "react-markdown";
+import { useContext } from "react";
 
+// import ReactMarkdown from "react-markdown";
+import { LangContext } from "@/context/langContext";
 import { fetchVillas, fetchHomePage } from "@/lib/fetchers/fetchers";
 import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
@@ -40,21 +42,14 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
   const c = home_page_data;
+  const content = useContext(LangContext);
+  const locale_content = content.locale_file;
 
   return (
     <PageLayout title="MAIARC Concierge">
       <Hero images={c.hero.images} />
 
       <Section title={c.services_block.title} text={c.services_block.text} classes="container">
-        {/* Clickable Services */}
-        {/* <h2 className="h2 mx-auto mb-6 uppercase md:w-11/12">{c.services_block.title}</h2>
-
-        {!!c.services_block.text && (
-          <div className="p mb-8">
-            <ReactMarkdown>{c.services_block.text}</ReactMarkdown>
-          </div>
-        )} */}
-
         <div className="container mb-12 grid grid-cols-1 gap-8 px-4 md:grid-cols-3">
           {c.services_block.services.map((service) => {
             if (service.is_clickable) {
@@ -80,7 +75,7 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
           })}
         </Carousel>
 
-        <LinkBtn link="/contacto" text={"Mas"} classes="my-16" />
+        <LinkBtn link="/contacto" text={locale_content.ctas.more} classes="my-16" />
 
         {/* Premium Services */}
         <BigGallery services={c.premium_services_block.premium_services} />

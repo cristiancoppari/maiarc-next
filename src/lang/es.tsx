@@ -124,6 +124,7 @@ export const es = {
     },
   },
   ctas: {
+    more: "Más información",
     consultation: "Consultar",
     subscription: "Suscribirse",
   },
