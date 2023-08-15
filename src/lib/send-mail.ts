@@ -10,8 +10,8 @@ export interface IFormData {
   email: string;
   phone: string;
   message: string;
-  date_from: string;
-  date_to: string;
+  date_start: string;
+  date_end: string;
   service: string;
 }
 
@@ -28,17 +28,17 @@ export default async function sendMail(data: IFormData) {
 
   const mailOptions = {
     from: ZOHO_USER,
-    to: "iara@maiarconcierge.com",
+    to: "cristian.coppari@gmail.com",
     subject: "MAIARC Concierge ⚜️ - Nuevo mensaje de contacto",
     html: `
-        <h1>Nuevo contacto:<h1>
+        <h1>Nuevo contacto:</h1>
         <p>Nombre: ${data.name}</p>
         <p>Email: ${data.email}</p>
         <p>Teléfono: ${data.phone}</p>
         <p>Mensaje: ${data.message}</p>
-        <p>Servicio: ${data.service}</p>
-        <p>Fecha de entrada: ${data.date_from}</p>
-        <p>Fecha de salida: ${data.date_to}</p>
+        <p>Servicio: ${data.service ?? "no ingresado"}</p>
+        <p>Fecha de entrada: ${data.date_start ?? "no ingresado"}</p>
+        <p>Fecha de salida: ${data.date_end ?? "no ingresado"}</p>
       `,
   };
 

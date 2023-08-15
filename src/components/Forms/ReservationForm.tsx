@@ -75,9 +75,17 @@ const ReservationForm = ({ name, destination }: { name: string; destination: str
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema> & { [key: string]: string }) {
+  async function onSubmit(values: z.infer<typeof formSchema> & { [key: string]: string }) {
     values.service = name ?? "";
     values.destination = destination ?? "";
+
+    await fetch("/api/send-mail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
   }
 
   return (
