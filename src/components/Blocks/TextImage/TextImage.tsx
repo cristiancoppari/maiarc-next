@@ -22,7 +22,7 @@ const TextImage = ({ content, image, theme, direction }: ITextImage) => {
       >
         <div className="right flex-1">{content}</div>
         <div className="image flex-1">
-          <img src={image.src} alt="" />
+          <img src={image.src} alt="" className="w-full" />
         </div>
       </div>
     </div>
