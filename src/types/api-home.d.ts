@@ -20,7 +20,8 @@ export interface Attributes {
   accommodations_block: AccommodationsBlock;
   community_block: CommunityBlock;
   newsletter_block: NewsletterBlock;
-  localizations: Localizations3;
+  clickable_services: ClickableServices;
+  localizations: Localizations4;
 }
 
 export interface Hero {
@@ -107,8 +108,6 @@ export interface Attributes3 {
   updatedAt: string;
   publishedAt: string;
   locale: string;
-  description?: string;
-  is_clickable: boolean;
   main_image: MainImage;
   localizations: Localizations;
 }
@@ -142,7 +141,20 @@ export interface Attributes4 {
 }
 
 export interface Formats2 {
+  small?: Small2;
   thumbnail: Thumbnail2;
+}
+
+export interface Small2 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
 }
 
 export interface Thumbnail2 {
@@ -172,8 +184,6 @@ export interface Attributes5 {
   updatedAt: string;
   publishedAt: string;
   locale: string;
-  description?: string;
-  is_clickable: boolean;
 }
 
 export interface PremiumServicesBlock {
@@ -231,11 +241,11 @@ export interface Attributes7 {
 }
 
 export interface Formats3 {
+  small?: Small3;
   thumbnail: Thumbnail3;
-  small?: Small2;
 }
 
-export interface Thumbnail3 {
+export interface Small3 {
   ext: string;
   url: string;
   hash: string;
@@ -247,7 +257,7 @@ export interface Thumbnail3 {
   height: number;
 }
 
-export interface Small2 {
+export interface Thumbnail3 {
   ext: string;
   url: string;
   hash: string;
@@ -288,11 +298,11 @@ export interface Attributes8 {
 }
 
 export interface Formats4 {
+  small?: Small4;
   thumbnail: Thumbnail4;
-  small?: Small3;
 }
 
-export interface Thumbnail4 {
+export interface Small4 {
   ext: string;
   url: string;
   hash: string;
@@ -304,7 +314,7 @@ export interface Thumbnail4 {
   height: number;
 }
 
-export interface Small3 {
+export interface Thumbnail4 {
   ext: string;
   url: string;
   hash: string;
@@ -352,7 +362,7 @@ export interface NewsletterBlock {
   text: string;
 }
 
-export interface Localizations3 {
+export interface ClickableServices {
   data: Daum7[];
 }
 
@@ -362,6 +372,99 @@ export interface Daum7 {
 }
 
 export interface Attributes10 {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  main_image: MainImage3;
+  localizations: Localizations3;
+}
+
+export interface MainImage3 {
+  data: Data4;
+}
+
+export interface Data4 {
+  id: number;
+  attributes: Attributes11;
+}
+
+export interface Attributes11 {
+  name: string;
+  alternativeText: any;
+  caption: any;
+  width: number;
+  height: number;
+  formats: Formats5;
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: any;
+  provider: string;
+  provider_metadata: any;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Formats5 {
+  thumbnail: Thumbnail5;
+  small?: Small5;
+}
+
+export interface Thumbnail5 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Small5 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Localizations3 {
+  data: Daum8[];
+}
+
+export interface Daum8 {
+  id: number;
+  attributes: Attributes12;
+}
+
+export interface Attributes12 {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+}
+
+export interface Localizations4 {
+  data: Daum9[];
+}
+
+export interface Daum9 {
+  id: number;
+  attributes: Attributes13;
+}
+
+export interface Attributes13 {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

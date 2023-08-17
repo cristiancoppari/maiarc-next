@@ -51,27 +51,23 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
 
       <Section title={c.services_block.title} text={c.services_block.text} classes="container">
         <div className="container mb-12 grid grid-cols-1 gap-8 px-4 md:grid-cols-3">
-          {c.services_block.services.map((service) => {
-            if (service.is_clickable) {
-              return (
-                <Link key={service.id} href={`/destinos/?service=${service.name}`}>
-                  <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
-                </Link>
-              );
-            }
+          {c.clickable_services.map((service) => {
+            return (
+              <Link key={service.id} href={`/destinos/?service=${service.name}`}>
+                <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
+              </Link>
+            );
           })}
         </div>
 
         {/* Services Carousel */}
         <Carousel>
           {c.services_block.services.map((service) => {
-            if (!service.is_clickable) {
-              return (
-                <SwiperSlide key={service.id} className="px-4 pb-12">
-                  <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
-                </SwiperSlide>
-              );
-            }
+            return (
+              <SwiperSlide key={service.id} className="px-4 pb-12">
+                <ImageTitle image={service.main_image} title={service.name} subtitle={service.subtitle} />
+              </SwiperSlide>
+            );
           })}
         </Carousel>
 

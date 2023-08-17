@@ -12,11 +12,11 @@ import { Button } from "../../ui/button";
 const social: Array<{ icon: string; link: string }> = [
   {
     icon: (icon_fb as SvgImport).src,
-    link: "https://www.facebook.com",
+    link: "https://www.facebook.com/maiarc",
   },
   {
     icon: (icon_ig as SvgImport).src,
-    link: "https://www.instagram.com",
+    link: "https://www.instagram.com/maiarc",
   },
   {
     icon: (icon_wpp as SvgImport).src,
@@ -30,7 +30,7 @@ interface Footer {
 
 const Footer = ({ content }: Footer) => {
   return (
-    <footer className="flex flex-col items-center py-12">
+    <footer className="mt-8 flex flex-col items-center pb-12">
       <img src={logo.src} alt="" className="mb-14 w-32" />
 
       <p className="mb-2 uppercase">Tulum | Ibiza | Miami | Punta del Este</p>

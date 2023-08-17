@@ -130,12 +130,12 @@ Used in service cards
 
 /* Change the color of the inactive dots */
 .swiper-pagination-bullet {
-  @apply bg-zinc-500 !important;
+  @apply h-4 w-4 border-2 bg-zinc-900 opacity-80 !important;
 }
 
 /* Change the color of the active dot */
 .swiper-pagination-bullet-active {
-  @apply bg-black !important;
+  @apply h-4 w-4 bg-black !important;
 }
 
 .swiper-button-prev,

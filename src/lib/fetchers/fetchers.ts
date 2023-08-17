@@ -368,6 +368,13 @@ export const fetchHomePage = async (locale: string) => {
           return image.attributes.url;
         }),
       },
+      clickable_services: data.data.attributes.clickable_services.data.map((service): Service => {
+        return {
+          id: service.id,
+          name: service.attributes.name,
+          main_image: service.attributes.main_image.data.attributes.url,
+        };
+      }),
       services_block: {
         title: data.data.attributes.services_block.title,
         text: data.data.attributes.services_block.text,
@@ -376,8 +383,6 @@ export const fetchHomePage = async (locale: string) => {
             id: service.id,
             name: service.attributes.name,
             main_image: service.attributes.main_image.data.attributes.url,
-            description: service.attributes.description,
-            is_clickable: service.attributes.is_clickable,
           };
         }),
       },

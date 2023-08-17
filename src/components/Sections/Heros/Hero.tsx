@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 
 interface HeroProps {
   images: string[];
@@ -13,9 +13,10 @@ const Hero: React.FC<HeroProps> = ({ images }) => {
           dynamicBullets: true,
           clickable: true,
         }}
-        modules={[Pagination, Autoplay]}
+        effect="fade"
+        modules={[Pagination, Autoplay, EffectFade]}
         autoplay={{
-          delay: 2000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         className="h-full"

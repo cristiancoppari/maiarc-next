@@ -31,6 +31,7 @@ export interface HomePage {
   hero: {
     images: string[];
   };
+  clickable_services: Service[];
   services_block: {
     title: string;
     text: string;

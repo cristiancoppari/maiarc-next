@@ -64,7 +64,7 @@ function Header({ content }: Header) {
         </div>
       </div>
       <div className="bg-black opacity-80">
-        <div className={cn("container mx-auto flex h-16 items-center justify-between md:justify-center")}>
+        <div className={cn("container mx-auto flex h-16 items-center justify-between md:h-24 md:justify-center")}>
           {!isDesktop && (
             <Link href="/">
               <img src={logo.src} alt="" className="h-auto w-20" />
@@ -84,7 +84,7 @@ function Header({ content }: Header) {
               if (link.type === "dropdown") {
                 return (
                   <li
-                    className="relative grid place-items-center text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100 md:h-full"
+                    className="relative grid place-items-center p-4 text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100 md:h-full md:p-0 md:pt-4"
                     key={link.label}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
@@ -121,7 +121,7 @@ function Header({ content }: Header) {
                 );
               } else {
                 return (
-                  <li className="grid h-full place-items-center p-4 text-center md:p-0" key={link.label}>
+                  <li className="grid place-items-center p-4 text-center md:p-0 md:pt-4" key={link.label}>
                     <Link
                       href={link.href}
                       className={cn(
@@ -145,7 +145,7 @@ function Header({ content }: Header) {
 
             {content.nav_links_right.map((link) => {
               return (
-                <li className="grid h-full place-items-center p-4 text-center md:p-0" key={link.label}>
+                <li className="grid place-items-center p-4 text-center md:p-0 md:pt-4" key={link.label}>
                   <Link
                     href={link.href}
                     className={cn(
