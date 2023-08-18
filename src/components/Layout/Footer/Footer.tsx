@@ -12,11 +12,11 @@ import { Button } from "../../ui/button";
 const social: Array<{ icon: string; link: string }> = [
   {
     icon: (icon_fb as SvgImport).src,
-    link: "https://www.facebook.com/maiarc",
+    link: "https://www.facebook.com/maiarc.concierge",
   },
   {
     icon: (icon_ig as SvgImport).src,
-    link: "https://www.instagram.com/maiarc",
+    link: "https://www.instagram.com/maiarc.concierge",
   },
   {
     icon: (icon_wpp as SvgImport).src,
