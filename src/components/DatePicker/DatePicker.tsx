@@ -17,8 +17,8 @@ type DatePickerProps = {
           phone: string;
           email: string;
           destinations: string;
-          date_start: Date;
-          date_end: Date;
+          date_start: Date | undefined;
+          date_end: Date | undefined;
         },
         "date_end"
       >
@@ -29,8 +29,8 @@ type DatePickerProps = {
           phone: string;
           email: string;
           destinations: string;
-          date_start: Date;
-          date_end: Date;
+          date_start: Date | undefined;
+          date_end: Date | undefined;
         },
         "date_start"
       >;

@@ -39,9 +39,9 @@ export interface Hotel extends Accommodation {
 
 export interface RealEstateItem extends Service {
   service_type?: "real_estate";
+  destination: "";
   location: string;
   bathrooms?: number;
-  uuid: string;
   uuid: string;
   // rooms: number;
 }

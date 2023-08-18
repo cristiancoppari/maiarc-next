@@ -75,8 +75,9 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModa
                 </div>
 
                 {/* Reservation Form */}
-                {"destination" in item && "location" in item && (
-                  <ReservationForm name={item.name} destination={item.destination} />
+                {"destination" in item && <ReservationForm name={item.name} destination={item.destination} />}
+                {"location" in item && (
+                  <ReservationForm name={item.name} destination={!!item.location ? item.location : ""} />
                 )}
               </Dialog.Panel>
             </Transition.Child>

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 
 import { LangContext } from "@/context/langContext";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
@@ -52,12 +53,16 @@ const formSchema = z.object({
     .min(1, {
       message: "Tienes que ingresar un destino",
     }),
-  date_start: z.date({
-    required_error: "Tienes que ingresar una fecha",
-  }),
-  date_end: z.date({
-    required_error: "Tienes que ingresar una fecha",
-  }),
+  date_start: z
+    .date({
+      required_error: "Tienes que ingresar una fecha",
+    })
+    .optional(),
+  date_end: z
+    .date({
+      required_error: "Tienes que ingresar una fecha",
+    })
+    .optional(),
 });
 
 const ContactForm = () => {
@@ -75,14 +80,22 @@ const ContactForm = () => {
     },
   });
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await fetch("/api/send-mail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    toast.promise(
+      fetch("/api/send-mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      }),
+      {
+        loading: "Enviando mail...",
+        success: "Tu mensaje ha sido enviado",
+        error: "Hubo un error al enviar tu mensaje",
       },
-      body: JSON.stringify(values),
-    });
+    );
   }
 
   return (

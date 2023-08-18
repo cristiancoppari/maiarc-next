@@ -304,6 +304,7 @@ export const fetchRealEstates = async (): Promise<RealEstateItem[]> => {
         location: element.attributes.location ?? null,
         bathrooms: element.attributes.bathrooms ?? null,
         uuid: element.attributes.uuid,
+        destination: "",
       };
     });
 
