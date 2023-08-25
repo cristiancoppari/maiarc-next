@@ -9,14 +9,7 @@ import PageLayout from "@/components/ui/PageLayout";
 import Hero from "@/components/Sections/Heros/Hero";
 import Section from "@/components/Sections/Section";
 import ImageTitle from "@/components/Cards/ImageTitle";
-import {
-  fetchDestinoPage,
-  fetchHotels,
-  fetchPremiumVehicles,
-  fetchServices,
-  fetchVillas,
-  fetchYatchs,
-} from "@/lib/fetchers/fetchers";
+import { fetchDestinoPage, fetchHotels, fetchPremiumVehicles, fetchVillas, fetchYatchs } from "@/lib/fetchers/fetchers";
 import Carousel from "@/components/Carousel/Carousel";
 import CardSlide from "@/components/Cards/CardSlides/CardSlide";
 
@@ -44,7 +37,6 @@ export const getServerSideProps = async ({ params, locale }: { params: Params; l
   }
 
   try {
-    const services_data = await fetchServices(locale);
     const villas_data = await fetchVillas();
     const yatchs_data = await fetchYatchs();
     const hotels_data = await fetchHotels();
@@ -52,8 +44,12 @@ export const getServerSideProps = async ({ params, locale }: { params: Params; l
     const destino_page_data = await fetchDestinoPage(locale);
 
     // Filter the services to show only the clickable ones
-    const services = services_data.filter((element) => {
-      return element.is_clickable;
+    const services = destino_page_data?.services.map((service) => {
+      return {
+        id: service.id,
+        name: service.name,
+        main_image: service.main_image,
+      };
     });
 
     // Filter the villas to match the destination
