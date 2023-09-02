@@ -11,6 +11,7 @@ import { fetchPremiumServicePage, fetchRealEstates } from "@/lib/fetchers/fetche
 import Section from "@/components/Sections/Section";
 import Carousel from "@/components/Carousel/Carousel";
 import CardSlide from "@/components/Cards/CardSlides/CardSlide";
+import { LinkBtn } from "@/components/Buttons/Button/Buttons";
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => {
   try {
@@ -21,6 +22,7 @@ export const getServerSideProps = async ({ locale }: { locale: string }) => {
       props: {
         real_estate_data,
         real_estate_page_data,
+        locale,
       },
     };
   } catch (error) {
@@ -31,9 +33,10 @@ export const getServerSideProps = async ({ locale }: { locale: string }) => {
 interface RealEstatePageProps {
   real_estate_data: RealEstateItem[];
   real_estate_page_data: PremiumServicePage;
+  locale: string;
 }
 
-const RealEstatePage: React.FC<RealEstatePageProps> = ({ real_estate_data, real_estate_page_data }) => {
+const RealEstatePage: React.FC<RealEstatePageProps> = ({ real_estate_data, real_estate_page_data, locale }) => {
   const c = real_estate_page_data;
 
   const content_block_1 = (
@@ -80,6 +83,8 @@ const RealEstatePage: React.FC<RealEstatePageProps> = ({ real_estate_data, real_
           ))}
         </Carousel>
       </Section>
+
+      <LinkBtn link={"/contacto"} text={locale === "es" ? "Contactanos" : "Contact us"} classes="mt-12" />
     </PageLayout>
   );
 };

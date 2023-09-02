@@ -11,6 +11,7 @@ import { fetchPremiumServicePage, fetchSuperYatches } from "@/lib/fetchers/fetch
 import Section from "@/components/Sections/Section";
 import Carousel from "@/components/Carousel/Carousel";
 import CardSlide from "@/components/Cards/CardSlides/CardSlide";
+import { LinkBtn } from "@/components/Buttons/Button/Buttons";
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => {
   try {
@@ -21,6 +22,7 @@ export const getServerSideProps = async ({ locale }: { locale: string }) => {
       props: {
         super_yatches_data,
         super_yatches_page_data,
+        locale,
       },
     };
   } catch (error) {
@@ -31,9 +33,10 @@ export const getServerSideProps = async ({ locale }: { locale: string }) => {
 interface SuperYatesPageProps {
   super_yatches_data: SuperYatch[];
   super_yatches_page_data: PremiumServicePage;
+  locale: string;
 }
 
-const SuperYatesPage: React.FC<SuperYatesPageProps> = ({ super_yatches_data, super_yatches_page_data }) => {
+const SuperYatesPage: React.FC<SuperYatesPageProps> = ({ super_yatches_data, super_yatches_page_data, locale }) => {
   const c = super_yatches_page_data;
 
   const content_block_1 = (
@@ -79,6 +82,8 @@ const SuperYatesPage: React.FC<SuperYatesPageProps> = ({ super_yatches_data, sup
             </SwiperSlide>
           ))}
         </Carousel>
+
+        <LinkBtn link={"/contacto"} text={locale === "es" ? "Contactanos" : "Contact us"} classes="mt-12" />
       </Section>
     </PageLayout>
   );

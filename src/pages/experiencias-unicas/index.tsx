@@ -11,6 +11,7 @@ import { fetchPremiumServicePage, fetchUniqueExperiences } from "@/lib/fetchers/
 import Section from "@/components/Sections/Section";
 import Carousel from "@/components/Carousel/Carousel";
 import CardSlide from "@/components/Cards/CardSlides/CardSlide";
+import { LinkBtn } from "@/components/Buttons/Button/Buttons";
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => {
   try {
@@ -21,6 +22,7 @@ export const getServerSideProps = async ({ locale }: { locale: string }) => {
       props: {
         unique_experiences_data,
         unique_experiences_page_data,
+        locale,
       },
     };
   } catch (error) {
@@ -31,9 +33,14 @@ export const getServerSideProps = async ({ locale }: { locale: string }) => {
 interface UniqueExperienceProps {
   unique_experiences_data: UniqueExperience[];
   unique_experiences_page_data: PremiumServicePage;
+  locale: string;
 }
 
-const SuperYatesPage: React.FC<UniqueExperienceProps> = ({ unique_experiences_data, unique_experiences_page_data }) => {
+const SuperYatesPage: React.FC<UniqueExperienceProps> = ({
+  unique_experiences_data,
+  unique_experiences_page_data,
+  locale,
+}) => {
   const c = unique_experiences_page_data;
 
   const content_block_1 = (
@@ -80,6 +87,8 @@ const SuperYatesPage: React.FC<UniqueExperienceProps> = ({ unique_experiences_da
           ))}
         </Carousel>
       </Section>
+
+      <LinkBtn link={"/contacto"} text={locale === "es" ? "Contactanos" : "Contact us"} classes="mt-12" />
     </PageLayout>
   );
 };
