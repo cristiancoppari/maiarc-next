@@ -63,6 +63,13 @@ const formSchema = z.object({
       required_error: "Tienes que ingresar una fecha",
     })
     .optional(),
+  prefix: z
+    .string({
+      required_error: "Tienes que ingresar un nombre",
+    })
+    .min(1, {
+      message: "Tienes que ingresar un nombre",
+    }),
 });
 
 const ContactForm = () => {
@@ -77,6 +84,7 @@ const ContactForm = () => {
       email: "",
       message: "",
       destinations: "",
+      prefix: "",
     },
   });
 
@@ -127,19 +135,35 @@ const ContactForm = () => {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>{c.form.phone.label}</FormLabel>
-              <FormControl>
-                <Input placeholder={c.form.phone.label} {...field} />
-              </FormControl>
-              {/* <FormMessage /> */}
-            </FormItem>
-          )}
-        />
+        <div className="flex gap-4">
+          <FormField
+            control={form.control}
+            name="prefix"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>{c.form.prefix.label}</FormLabel>
+                <FormControl>
+                  <Input placeholder={c.form.prefix.label} {...field} />
+                </FormControl>
+                {/* <FormMessage /> */}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>{c.form.phone.label}</FormLabel>
+                <FormControl>
+                  <Input placeholder={c.form.phone.label} {...field} />
+                </FormControl>
+                {/* <FormMessage /> */}
+              </FormItem>
+            )}
+          />
+        </div>
         <FormField
           control={form.control}
           name="destinations"
@@ -156,6 +180,7 @@ const ContactForm = () => {
                   <SelectItem value="ibiza">Ibiza</SelectItem>
                   <SelectItem value="miami">Miami</SelectItem>
                   <SelectItem value="tulum">Tulum</SelectItem>
+                  <SelectItem value="punta del este">Punta del Este</SelectItem>
                 </SelectContent>
               </Select>
               {/* <FormMessage /> */}
@@ -182,7 +207,7 @@ const ContactForm = () => {
             name="date_end"
             render={({ field }) => (
               <FormItem className="flex w-full flex-col">
-                <FormLabel>{c.form.date_start.label}</FormLabel>
+                <FormLabel>{c.form.date_end.label}</FormLabel>
                 <FormControl>
                   <DatePicker field={field} />
                 </FormControl>

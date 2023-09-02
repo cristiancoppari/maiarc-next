@@ -80,6 +80,14 @@ export const en = {
           pattern: "You have to enter more than 1 character",
         },
       },
+      prefix: {
+        label: "Country code",
+        placeholder: "+54",
+        error: {
+          required: "Tienes que ingresar una fecha",
+          pattern: "Tienes que ingresar una fecha válida",
+        },
+      },
       email: {
         label: "Email",
         placeholder: "juan.carlos@gmail.com",

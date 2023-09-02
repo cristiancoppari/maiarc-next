@@ -84,7 +84,7 @@ function Header({ content }: Header) {
               if (link.type === "dropdown") {
                 return (
                   <li
-                    className="relative grid place-items-center p-4 text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100 md:h-full md:p-0 md:pt-4"
+                    className="relative grid place-items-center p-4 text-sm font-light uppercase text-slate-200 transition-all duration-300 ease-in-out hover:text-slate-100 md:h-full md:p-0 md:pt-4"
                     key={link.label}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
@@ -101,7 +101,7 @@ function Header({ content }: Header) {
                     >
                       {(link as DropdownLink).items.map((item) => (
                         <li
-                          className="w-40 px-4 py-2 text-sm font-light uppercase text-slate-300 opacity-80 transition-all duration-300 ease-in-out hover:text-slate-100"
+                          className="w-40 px-4 py-2 text-sm font-light uppercase text-slate-200 opacity-80 transition-all duration-300 ease-in-out hover:text-slate-100"
                           key={item.label}
                         >
                           <Link
@@ -125,7 +125,7 @@ function Header({ content }: Header) {
                     <Link
                       href={link.href}
                       className={cn(
-                        "nav-link text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100",
+                        "nav-link text-sm font-light uppercase text-slate-200 transition-all duration-300 ease-in-out hover:text-slate-100",
                         router.pathname === link.href && "--active",
                       )}
                     >
@@ -149,7 +149,7 @@ function Header({ content }: Header) {
                   <Link
                     href={link.href}
                     className={cn(
-                      "nav-link text-sm font-light uppercase text-slate-300 transition-all duration-300 ease-in-out hover:text-slate-100",
+                      "nav-link text-sm font-light uppercase text-slate-200 transition-all duration-300 ease-in-out hover:text-slate-100",
                       router.pathname === link.href && "--active",
                     )}
                   >

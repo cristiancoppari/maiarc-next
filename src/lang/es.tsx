@@ -120,6 +120,14 @@ export const es = {
           pattern: "Tienes que ingresar una fecha válida",
         },
       },
+      prefix: {
+        label: "Código de país",
+        placeholder: "+54",
+        error: {
+          required: "Tienes que ingresar una fecha",
+          pattern: "Tienes que ingresar una fecha válida",
+        },
+      },
       submit: "Enviar",
     },
   },

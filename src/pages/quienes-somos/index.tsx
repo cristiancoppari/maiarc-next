@@ -41,7 +41,7 @@ const QuienesSomosPage: React.FC<QuienesSomosProps> = ({ about_us_page }) => {
 
       <TextImage content={content} image={{ src: c.section_1.main_image, text: "MAIARC" }} theme={c.section_1.style} />
 
-      <div className="section-padding container flex gap-4">
+      <div className="section-padding container grid grid-cols-1 gap-4 md:grid-cols-2">
         <BigImage title={c.block_1.title} description={c.block_1.text} image={c.block_1.main_image} />
 
         <BigImage title={c.block_2.title} description={c.block_2.text} image={c.block_2.main_image} />

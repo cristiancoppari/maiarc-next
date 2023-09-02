@@ -114,7 +114,7 @@ export const fetchVillas = async (): Promise<Villa[]> => {
 export const fetchDestinations = async (): Promise<Destination[]> => {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/destinations/?fields=name&populate[main_image][fields]=url&fields=slug`,
+      `${process.env.API_URL}/destinations/?fields=name&populate[main_image][fields]=url&fields=slug&fields=order`,
     );
 
     const data = (await res.json()) as ApiResponseDestination;
@@ -125,6 +125,7 @@ export const fetchDestinations = async (): Promise<Destination[]> => {
         name: element.attributes.name,
         main_image: element.attributes.main_image.data.attributes.url,
         slug: element.attributes.slug,
+        order: element.attributes.order,
       };
     });
 
@@ -475,7 +476,12 @@ export const fetchDestinoPage = async (locale: string) => {
 
     const destino_page = {
       title: data.data.attributes.title,
-      text: data.data.attributes.text,
+      texts: {
+        miami: data.data.attributes.miami_text,
+        ibiza: data.data.attributes.ibiza_text,
+        tulum: data.data.attributes.tulum_text,
+        "punta-del-este": data.data.attributes.pde_text,
+      },
       services: clickable_services_data.data.map((service): Service => {
         return {
           id: service.id,

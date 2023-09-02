@@ -37,11 +37,13 @@ const DestinationsPage: React.FC<DestinationsPageProps> = ({ destinations, desti
     <PageLayout title="MAIARC Destinations">
       <Section title={c.block_1.title} text={c.block_1.text} classes={"mt-24"}>
         <div className="container grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {destinations.map((destination) => (
-            <Link href={`/destinos/${destination.slug}/${service ? "?service=" + service : ""}`} key={destination.id}>
-              <ImageTitle classes="capitalize" title={destination.name} image={destination.main_image} />
-            </Link>
-          ))}
+          {destinations
+            .sort((a, b) => a.order - b.order)
+            .map((destination) => (
+              <Link href={`/destinos/${destination.slug}/${service ? "?service=" + service : ""}`} key={destination.id}>
+                <ImageTitle classes="capitalize" title={destination.name} image={destination.main_image} />
+              </Link>
+            ))}
         </div>
       </Section>
     </PageLayout>

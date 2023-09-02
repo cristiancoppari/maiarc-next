@@ -114,7 +114,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
     <PageLayout title={`${destino} - MAIARC`}>
       <Hero images={c.hero_images[destino]} />
 
-      <Section title={`${c.title} ${destino}`} text={c.text}>
+      <Section title={`${c.title} ${destino}`} text={c.texts[destino]}>
         {/* Cards with the services that acts like a filter */}
         <div className="container grid grid-cols-1 gap-8 md:grid-cols-3">
           {services.map((service) => (

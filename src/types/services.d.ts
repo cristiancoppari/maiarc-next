@@ -3,6 +3,7 @@ export interface Destination {
   name: string;
   main_image: string;
   slug: string;
+  order: number;
 }
 
 export interface Service {

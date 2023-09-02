@@ -12,6 +12,10 @@ export interface Data {
 export interface Attributes {
   title: string;
   text: string;
+  miami_text: string;
+  pde_text: string;
+  tulum_text: string;
+  ibiza_text: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

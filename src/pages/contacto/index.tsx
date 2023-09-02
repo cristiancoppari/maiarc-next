@@ -1,7 +1,7 @@
 import type { ContactoPage as IContactPage } from "@/types/pages";
 
 import PageLayout from "@/components/ui/PageLayout";
-import Hero from "@/components/Sections/Heros/Hero";
+// import Hero from "@/components/Sections/Heros/Hero";
 import Section from "@/components/Sections/Section";
 import ContactForm from "@/components/Forms/ContactForm";
 import { fetchContactPage } from "@/lib/fetchers/fetchers";
@@ -26,9 +26,9 @@ const ContactoPage: React.FC<ContactoPageProps> = ({ contact_page_data }) => {
 
   return (
     <PageLayout title={"Contacto"}>
-      <Hero images={c.hero.images} />
+      {/* <Hero images={c.hero.images} /> */}
 
-      <Section title={c.block_1.title} text={c.block_1.text}>
+      <Section title={c.block_1.title} text={c.block_1.text} classes="mt-28">
         <ContactForm />
       </Section>
     </PageLayout>

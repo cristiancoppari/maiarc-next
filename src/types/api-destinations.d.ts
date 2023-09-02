@@ -12,6 +12,7 @@ export interface Attributes {
   name: string;
   slug: string;
   main_image: MainImage;
+  order: number;
 }
 
 export interface MainImage {

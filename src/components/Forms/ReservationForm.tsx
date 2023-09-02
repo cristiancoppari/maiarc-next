@@ -77,7 +77,7 @@ const ReservationForm = ({ name, destination }: { name: string; destination: str
       phone: "",
       email: "",
       message: "",
-      persons: "",
+      prefix: "",
     },
   });
 
@@ -135,12 +135,12 @@ const ReservationForm = ({ name, destination }: { name: string; destination: str
         <div className="flex gap-4">
           <FormField
             control={form.control}
-            name="phone"
+            name="prefix"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>{c.form.phone.label}</FormLabel>
+                <FormLabel>{c.form.prefix.label}</FormLabel>
                 <FormControl>
-                  <Input placeholder={c.form.phone.label} {...field} />
+                  <Input placeholder={c.form.prefix.label} {...field} />
                 </FormControl>
                 {/* <FormMessage /> */}
               </FormItem>
@@ -149,7 +149,7 @@ const ReservationForm = ({ name, destination }: { name: string; destination: str
 
           <FormField
             control={form.control}
-            name="persons"
+            name="phone"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>{c.form.phone.label}</FormLabel>
@@ -181,7 +181,7 @@ const ReservationForm = ({ name, destination }: { name: string; destination: str
             name="date_end"
             render={({ field }) => (
               <FormItem className="flex w-full flex-col">
-                <FormLabel>{c.form.date_start.label}</FormLabel>
+                <FormLabel>{c.form.date_end.label}</FormLabel>
                 <FormControl>
                   <DatePicker field={field} />
                 </FormControl>

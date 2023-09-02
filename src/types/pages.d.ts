@@ -76,6 +76,9 @@ export interface DestinosPage {
 export interface DestinoPage {
   title: string;
   text: string;
+  texts: {
+    [key: string]: string;
+  };
   hero_images: {
     [key: string]: string[];
     ibiza: string[];
