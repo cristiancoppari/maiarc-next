@@ -82,9 +82,9 @@ const RealEstatePage: React.FC<RealEstatePageProps> = ({ real_estate_data, real_
             </SwiperSlide>
           ))}
         </Carousel>
-      </Section>
 
-      <LinkBtn link={"/contacto"} text={locale === "es" ? "Contactanos" : "Contact us"} classes="mt-12" />
+        <LinkBtn link={"/contacto"} text={locale === "es" ? "Contactanos" : "Contact us"} classes="mt-12" />
+      </Section>
     </PageLayout>
   );
 };

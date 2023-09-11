@@ -86,9 +86,9 @@ const SuperYatesPage: React.FC<UniqueExperienceProps> = ({
             </SwiperSlide>
           ))}
         </Carousel>
-      </Section>
 
-      <LinkBtn link={"/contacto"} text={locale === "es" ? "Contactanos" : "Contact us"} classes="mt-12" />
+        <LinkBtn link={"/contacto"} text={locale === "es" ? "Contactanos" : "Contact us"} classes="mt-12" />
+      </Section>
     </PageLayout>
   );
 };

@@ -8,6 +8,7 @@ import type {
   RealEstateItem,
   UniqueExperience,
 } from "@/types/services";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
@@ -48,6 +49,12 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModa
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all md:w-max">
+                <div className="flex justify-end">
+                  <button className="focus:outline-none" onClick={closeModal}>
+                    <XMarkIcon className="h-6 w-6 text-slate-900" />
+                  </button>
+                </div>
+
                 <div className="container mb-8 flex justify-between gap-4 md:max-w-xl">
                   <p className="font-bold">{item.name}</p>
 

@@ -14,13 +14,13 @@ export const es = {
           items: [
             {
               type: "link",
-              label: "Tulum",
-              href: "/destinos/tulum",
+              label: "Ibiza",
+              href: "/destinos/ibiza",
             },
             {
               type: "link",
-              label: "Miami",
-              href: "/destinos/miami",
+              label: "Tulum",
+              href: "/destinos/tulum",
             },
             {
               type: "link",
@@ -29,8 +29,8 @@ export const es = {
             },
             {
               type: "link",
-              label: "Ibiza",
-              href: "/destinos/ibiza",
+              label: "Miami",
+              href: "/destinos/miami",
             },
           ],
         },

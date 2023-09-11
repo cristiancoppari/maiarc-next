@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
@@ -38,6 +38,11 @@ const CarouselModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModal, c
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full transform overflow-hidden rounded-2xl bg-transparent p-6 text-left align-middle transition-all md:w-max">
+                <div className="flex justify-end">
+                  <button className="focus:outline-none" onClick={closeModal}>
+                    <XMarkIcon className="h-12 w-12 text-slate-200" />
+                  </button>
+                </div>
                 {children}
               </Dialog.Panel>
             </Transition.Child>

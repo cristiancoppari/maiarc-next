@@ -33,9 +33,9 @@ const Footer = ({ content }: Footer) => {
     <footer className="mt-8 flex flex-col items-center pb-12">
       <img src={logo.src} alt="" className="mb-14 w-32" />
 
-      <p className="mb-2 uppercase">Tulum | Ibiza | Miami | Punta del Este</p>
+      <p className="mb-2 uppercase"> Ibiza | Tulum | Miami | Punta del Este</p>
 
-      <p className="mb-4 uppercase">welcome.guests@maiarc.com | 12345678</p>
+      <p className="mb-4 uppercase">contact@maiarconcierge.com | +52 984 186 9125</p>
 
       <div>
         <Button variant="link" asChild>

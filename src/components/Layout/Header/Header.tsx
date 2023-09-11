@@ -63,7 +63,7 @@ function Header({ content }: Header) {
           </button>
         </div>
       </div>
-      <div className="bg-black opacity-80">
+      <div className="bg-black/90">
         <div className={cn("container mx-auto flex h-16 items-center justify-between md:h-24 md:justify-center")}>
           {!isDesktop && (
             <Link href="/">

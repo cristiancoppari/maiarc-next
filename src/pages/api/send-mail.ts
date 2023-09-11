@@ -7,7 +7,7 @@ type ResponseData = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     await sendMail(req.body as IFormData);
     res.status(200).json({ message: "Email sent!" });
