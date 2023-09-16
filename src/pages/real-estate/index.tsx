@@ -56,7 +56,7 @@ const RealEstatePage: React.FC<RealEstatePageProps> = ({ real_estate_data, real_
   );
 
   return (
-    <PageLayout title="super-yates">
+    <PageLayout title="MAIARC Vip Concierge">
       <Hero images={c.hero.images} />
 
       <TextImage

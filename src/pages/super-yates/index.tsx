@@ -56,7 +56,7 @@ const SuperYatesPage: React.FC<SuperYatesPageProps> = ({ super_yatches_data, sup
   );
 
   return (
-    <PageLayout title="super-yates">
+    <PageLayout title="MAIARC Vip Concierge">
       <Hero images={c.hero.images} />
 
       <TextImage

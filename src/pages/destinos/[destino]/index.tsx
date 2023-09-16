@@ -135,7 +135,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
       </Section>
 
       {(section === "Luxury Accommodations" || section === "Alojamientos de lujo") && (
-        <Section classes="container" noPadding>
+        <Section classes="container" noPadding id="luxuryAccommodations">
           {/* Services Carousel */}
           <Carousel>
             {villas.map((villa) => (
@@ -157,7 +157,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
       )}
 
       {(section === "Yatchs" || section === "Yates") && (
-        <Section classes="container" noPadding>
+        <Section classes="container" noPadding id="yatchs">
           {/* Yatch Carousel */}
           <Carousel>
             {yatchs.map((yatch) => (
@@ -170,7 +170,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
       )}
 
       {(section === "Premium Vehicles" || section === "Vehiculos Premium") && (
-        <Section classes="container" noPadding>
+        <Section classes="container" noPadding id="premiumVehicles">
           {/* Premium Vehicles Carousel */}
           <Carousel>
             {vehicles.map((vehicle) => (

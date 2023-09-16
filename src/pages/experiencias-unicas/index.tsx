@@ -60,7 +60,7 @@ const SuperYatesPage: React.FC<UniqueExperienceProps> = ({
   );
 
   return (
-    <PageLayout title="super-yates">
+    <PageLayout title="MAIARC Vip Concierge">
       <Hero images={c.hero.images} />
 
       <TextImage

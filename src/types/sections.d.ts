@@ -6,4 +6,5 @@ export interface ISection {
   children?: ReactNode;
   classes?: string;
   noPadding?: boolean;
+  id?: string;
 }
