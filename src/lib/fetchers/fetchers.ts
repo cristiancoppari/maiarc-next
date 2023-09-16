@@ -375,6 +375,7 @@ export const fetchHomePage = async (locale: string) => {
           id: service.id,
           name: service.attributes.name,
           main_image: service.attributes.main_image.data.attributes.url,
+          selector: service.attributes.selector,
         };
       }),
       services_block: {
@@ -483,6 +484,7 @@ export const fetchDestinoPage = async (locale: string) => {
           id: service.id,
           name: service.attributes.name,
           main_image: service.attributes.main_image.data.attributes.url,
+          selector: service.attributes.selector,
         };
       }),
       hero_images: {

@@ -379,6 +379,7 @@ export interface Attributes10 {
   locale: string;
   main_image: MainImage3;
   localizations: Localizations3;
+  selector: string;
 }
 
 export interface MainImage3 {

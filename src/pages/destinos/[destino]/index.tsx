@@ -1,6 +1,7 @@
 import type { Hotel, PremiumVehicle, Service, Villa, Yatch } from "@/types/services";
 import type { DestinoPage as IDestinoPage } from "@/types/pages";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { SwiperSlide } from "swiper/react";
@@ -46,11 +47,12 @@ export const getServerSideProps = async ({ params, locale }: { params: Params; l
     const destino_page_data = await fetchDestinoPage(locale);
 
     // Filter the services to show only the clickable ones
-    const services = destino_page_data?.services.map((service) => {
+    const services = destino_page_data?.services.map((service): Service => {
       return {
         id: service.id,
         name: service.name,
         main_image: service.main_image,
+        selector: service.selector,
       };
     });
 
@@ -127,9 +129,9 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
         {/* Cards with the services that acts like a filter */}
         <div className="container grid grid-cols-1 gap-8 md:grid-cols-3">
           {services.map((service) => (
-            <button key={service.id} onClick={() => selectSectionHandler(service.name)}>
+            <Link href={`#${service.selector}`} key={service.id} onClick={() => selectSectionHandler(service.name)}>
               <ImageTitle classes="capitalize" title={service.name} image={service.main_image} />
-            </button>
+            </Link>
           ))}
         </div>
       </Section>

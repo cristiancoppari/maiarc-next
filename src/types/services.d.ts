@@ -16,6 +16,7 @@ export interface Service {
   main_image: string;
   images?: string[];
   is_clickable?: boolean;
+  selector?: string;
 }
 
 export interface Accommodation extends Service {

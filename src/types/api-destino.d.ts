@@ -286,6 +286,7 @@ export interface Attributes6 {
   locale: string;
   main_image: MainImage;
   localizations: Localizations;
+  selector: string;
 }
 
 export interface MainImage {
