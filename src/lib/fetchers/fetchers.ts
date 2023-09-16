@@ -467,12 +467,8 @@ export const fetchDestinosPage = async (locale: string) => {
 export const fetchDestinoPage = async (locale: string) => {
   try {
     const res = await fetch(`${process.env.API_URL}/destino-page/?populate=deep&locale=${locale}`);
-    // const clickable_services_res = await fetch(
-    //   `${process.env.API_URL}/clickable-services/?populate=deep&locale=${locale}`,
-    // );
 
     const data = (await res.json()) as ApiResponseDestinoPage;
-    // const clickable_services_data = (await clickable_services_res.json()) as ApiResponseServices;
 
     const destino_page = {
       title: data.data.attributes.title,
