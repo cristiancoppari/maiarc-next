@@ -13,8 +13,10 @@ import { fetchDestinoPage, fetchHotels, fetchPremiumVehicles, fetchVillas, fetch
 import Carousel from "@/components/Carousel/Carousel";
 import CardSlide from "@/components/Cards/CardSlides/CardSlide";
 
+type DestinoType = "tulum" | "miami" | "ibiza" | "punta-del-este";
+
 interface Params {
-  destino: string;
+  destino: DestinoType;
 }
 
 interface DestinoPageProps extends Params {
@@ -89,6 +91,13 @@ export const getServerSideProps = async ({ params, locale }: { params: Params; l
   }
 };
 
+const destinosMap = {
+  tulum: "Tulum",
+  miami: "Miami",
+  ibiza: "Ibiza",
+  "punta-del-este": "Punta del Este",
+};
+
 const DestinoPage: React.FC<DestinoPageProps> = ({
   destino,
   services,
@@ -111,10 +120,10 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
   };
 
   return (
-    <PageLayout title={`${destino} - MAIARC`}>
+    <PageLayout title={`${destinosMap[destino]} - MAIARC`}>
       <Hero images={c.hero_images[destino]} />
 
-      <Section title={`${c.title} ${destino}`} text={c.texts[destino]}>
+      <Section title={`${c.title} ${destinosMap[destino]}`} text={c.texts[destino]}>
         {/* Cards with the services that acts like a filter */}
         <div className="container grid grid-cols-1 gap-8 md:grid-cols-3">
           {services.map((service) => (
