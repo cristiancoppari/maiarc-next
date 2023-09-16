@@ -8,8 +8,8 @@ import type {
   RealEstateItem,
   UniqueExperience,
 } from "@/types/services";
-import { XMarkIcon } from "@heroicons/react/24/solid";
 
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
@@ -83,7 +83,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModa
 
                 {/* Reservation Form */}
                 {"location" in item ? (
-                  <ReservationForm name={item.name} destination={!!item.location ? item.location : ""} />
+                  <ReservationForm name={item.name} destination={!!item.location ? (item.location as string) : ""} />
                 ) : (
                   <ReservationForm name={item.name} destination={item.destination} />
                 )}

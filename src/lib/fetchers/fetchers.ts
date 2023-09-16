@@ -482,7 +482,7 @@ export const fetchDestinoPage = async (locale: string) => {
         tulum: data.data.attributes.tulum_text,
         "punta-del-este": data.data.attributes.pde_text,
       },
-      services: data.data.attributes.clickable_services.data.map((service) => {
+      services: data.data.attributes.clickable_services.data.map((service): Service => {
         return {
           id: service.id,
           name: service.attributes.name,
