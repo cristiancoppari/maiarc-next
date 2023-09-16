@@ -12,19 +12,20 @@ export interface Data {
 export interface Attributes {
   title: string;
   text: string;
-  miami_text: string;
-  pde_text: string;
-  tulum_text: string;
-  ibiza_text: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   locale: string;
+  miami_text: string;
+  tulum_text: string;
+  ibiza_text: string;
+  pde_text: string;
   images_ibiza: ImagesIbiza;
   images_tulum: ImagesTulum;
   images_punta_del_este: ImagesPuntaDelEste;
   images_miami: ImagesMiami;
-  localizations: Localizations;
+  clickable_services: ClickableServices;
+  localizations: Localizations2;
 }
 
 export interface ImagesIbiza {
@@ -113,7 +114,46 @@ export interface Attributes3 {
 }
 
 export interface Formats2 {
+  large: Large;
+  small: Small2;
+  medium: Medium;
   thumbnail: Thumbnail2;
+}
+
+export interface Large {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Small2 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Medium {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
 }
 
 export interface Thumbnail2 {
@@ -202,7 +242,7 @@ export interface Attributes5 {
 
 export interface Formats4 {
   thumbnail: Thumbnail4;
-  small?: Small2;
+  small?: Small3;
 }
 
 export interface Thumbnail4 {
@@ -217,7 +257,109 @@ export interface Thumbnail4 {
   height: number;
 }
 
-export interface Small2 {
+export interface Small3 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface ClickableServices {
+  data: Daum5[];
+}
+
+export interface Daum5 {
+  id: number;
+  attributes: Attributes6;
+}
+
+export interface Attributes6 {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  main_image: MainImage;
+  localizations: Localizations;
+}
+
+export interface MainImage {
+  data: Data2;
+}
+
+export interface Data2 {
+  id: number;
+  attributes: Attributes7;
+}
+
+export interface Attributes7 {
+  name: string;
+  alternativeText: any;
+  caption: any;
+  width: number;
+  height: number;
+  formats: Formats5;
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: any;
+  provider: string;
+  provider_metadata: any;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Formats5 {
+  large: Large2;
+  small: Small4;
+  medium: Medium2;
+  thumbnail: Thumbnail5;
+}
+
+export interface Large2 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Small4 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Medium2 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Thumbnail5 {
   ext: string;
   url: string;
   hash: string;
@@ -230,21 +372,42 @@ export interface Small2 {
 }
 
 export interface Localizations {
-  data: Daum5[];
+  data: Daum6[];
 }
 
-export interface Daum5 {
+export interface Daum6 {
   id: number;
-  attributes: Attributes6;
+  attributes: Attributes8;
 }
 
-export interface Attributes6 {
+export interface Attributes8 {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+}
+
+export interface Localizations2 {
+  data: Daum7[];
+}
+
+export interface Daum7 {
+  id: number;
+  attributes: Attributes9;
+}
+
+export interface Attributes9 {
   title: string;
   text: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   locale: string;
+  miami_text: string;
+  tulum_text: string;
+  ibiza_text: string;
+  pde_text: string;
 }
 
 export interface Meta {}

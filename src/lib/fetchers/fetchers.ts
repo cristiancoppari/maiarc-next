@@ -467,12 +467,12 @@ export const fetchDestinosPage = async (locale: string) => {
 export const fetchDestinoPage = async (locale: string) => {
   try {
     const res = await fetch(`${process.env.API_URL}/destino-page/?populate=deep&locale=${locale}`);
-    const clickable_services_res = await fetch(
-      `${process.env.API_URL}/clickable-services/?populate=deep&locale=${locale}`,
-    );
+    // const clickable_services_res = await fetch(
+    //   `${process.env.API_URL}/clickable-services/?populate=deep&locale=${locale}`,
+    // );
 
     const data = (await res.json()) as ApiResponseDestinoPage;
-    const clickable_services_data = (await clickable_services_res.json()) as ApiResponseServices;
+    // const clickable_services_data = (await clickable_services_res.json()) as ApiResponseServices;
 
     const destino_page = {
       title: data.data.attributes.title,
@@ -482,7 +482,7 @@ export const fetchDestinoPage = async (locale: string) => {
         tulum: data.data.attributes.tulum_text,
         "punta-del-este": data.data.attributes.pde_text,
       },
-      services: clickable_services_data.data.map((service): Service => {
+      services: data.data.attributes.clickable_services.data.map((service) => {
         return {
           id: service.id,
           name: service.attributes.name,
