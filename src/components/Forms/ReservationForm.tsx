@@ -1,19 +1,17 @@
-/* eslint-disable @typescript-eslint/require-await */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useContext } from "react";
-import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { LangContext } from "@/context/langContext";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import DatePicker from "../DatePicker/DatePicker";
-import { Textarea } from "../ui/textarea";
 import { Btn } from "../Buttons/Button/Buttons";
+import { Textarea } from "../ui/textarea";
+import DatePicker from "../DatePicker/DatePicker";
 
 const formSchema = z.object({
   name: z
@@ -57,20 +55,26 @@ const formSchema = z.object({
       required_error: "Tienes que ingresar una fecha",
     })
     .optional(),
-  persons: z
+  prefix: z
     .string({
-      required_error: "Tienes que ingresar una cantidad de personas",
+      required_error: "Tienes que ingresar un nombre",
     })
     .min(1, {
-      message: "Tienes que ingresar una cantidad de personas",
+      message: "Tienes que ingresar un nombre",
     }),
+  service: z.string({
+    required_error: "Tienes que ingresar un servicio",
+  }),
+  destination: z.string({
+    required_error: "Tienes que ingresar un destino",
+  }),
 });
 
 const ReservationForm = ({ name, destination }: { name: string; destination: string }) => {
   const content = useContext(LangContext);
   const c = content.locale_file.contact;
 
-  const form = useForm<z.infer<typeof formSchema> & { [key: string]: string }>({
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -78,13 +82,13 @@ const ReservationForm = ({ name, destination }: { name: string; destination: str
       email: "",
       message: "",
       prefix: "",
+      service: name,
+      destination: destination,
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema> & { [key: string]: string }) {
-    values.service = name ?? "";
-    values.destination = destination ?? "";
-
+  // eslint-disable-next-line @typescript-eslint/require-await
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     toast.promise(
       fetch("/api/send-mail", {
         method: "POST",
@@ -104,34 +108,56 @@ const ReservationForm = ({ name, destination }: { name: string; destination: str
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="container space-y-8 text-start md:max-w-xl">
-        <div className="flex gap-4">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormLabel>{c.form.name.label}</FormLabel>
-                <FormControl>
-                  <Input placeholder={c.form.name.placeholder} {...field} />
-                </FormControl>
-                {/* <FormMessage /> */}
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormLabel>{c.form.email.label}</FormLabel>
-                <FormControl>
-                  <Input placeholder={c.form.name.placeholder} {...field} />
-                </FormControl>
-                {/* <FormMessage /> */}
-              </FormItem>
-            )}
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="service"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input type="hidden" {...field} />
+              </FormControl>
+              {/* <FormMessage /> */}
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="destination"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input type="hidden" {...field} />
+              </FormControl>
+              {/* <FormMessage /> */}
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{c.form.name.label}</FormLabel>
+              <FormControl>
+                <Input placeholder={c.form.name.placeholder} {...field} />
+              </FormControl>
+              {/* <FormMessage /> */}
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{c.form.email.label}</FormLabel>
+              <FormControl>
+                <Input placeholder={c.form.name.placeholder} {...field} />
+              </FormControl>
+              {/* <FormMessage /> */}
+            </FormItem>
+          )}
+        />
         <div className="flex gap-4">
           <FormField
             control={form.control}

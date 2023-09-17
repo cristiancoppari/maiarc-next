@@ -28,7 +28,7 @@ export default async function sendMail(data: IFormData) {
 
   const mailOptions = {
     from: ZOHO_USER,
-    to: "anagomezfernandez23@gmail.com",
+    to: "cristian.coppari@gmail.com",
     subject: "MAIARC Concierge ⚜️ - Nuevo mensaje de contacto",
     html: `
         <h1>Nuevo contacto:</h1>
