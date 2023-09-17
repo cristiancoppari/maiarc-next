@@ -28,7 +28,7 @@ export default async function sendMail(data: IFormData) {
 
   const mailOptions = {
     from: ZOHO_USER,
-    to: "cristian.coppari@gmail.com",
+    to: "anagomezfernandez23@gmail.com",
     subject: "MAIARC Concierge ⚜️ - Nuevo mensaje de contacto",
     html: `
         <h1>Nuevo contacto:</h1>
@@ -44,6 +44,7 @@ export default async function sendMail(data: IFormData) {
 
   try {
     await transporter.sendMail(mailOptions);
+    console.log("Email sent");
   } catch (error) {
     console.log(error);
   }
