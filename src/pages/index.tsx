@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { Locale } from "@/types/locales";
 import type { Service, Villa } from "@/types/services";
 import type { HomePage } from "@/types/pages";
@@ -24,11 +25,17 @@ export const getServerSideProps = async ({ locale }: { locale: Locale }) => {
   // Fetch data from Strapi API
   const villas_data = await fetchVillas();
   const home_page_data = await fetchHomePage(locale);
+  const url = `https://graph.instagram.com/me/media?fields=id,media_url,permalink,media_type&access_token=${process.env.INSTAGRAM_TOKEN}`;
+  const data = await fetch(url);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const feed = await data.json();
 
   return {
     props: {
       villas_data: villas_data,
       home_page_data,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      feed,
     },
   };
 };
@@ -38,9 +45,11 @@ interface HomeProps {
   premium_services: Service[];
   villas_data: Villa[];
   home_page_data: HomePage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  feed: any;
 }
 
-const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
+const Home: React.FC<HomeProps> = ({ villas_data, home_page_data, feed }) => {
   const c = home_page_data;
   const content = useContext(LangContext);
   const locale_content = content.locale_file;
@@ -91,7 +100,7 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
       </Section>
 
       <Section title={c.community_block.title} text={c.community_block.text} classes="container">
-        <InstagramGallery />
+        <InstagramGallery feed={feed} />
       </Section>
 
       <Newsletter title={c.newsletter_block.title} text={c.newsletter_block.text} />

@@ -1,25 +1,23 @@
-import instagram_1 from "@/assets/images/instagram-1.png";
-import instagram_2 from "@/assets/images/instagram-2.png";
-import instagram_3 from "@/assets/images/instagram-3.png";
-import instagram_4 from "@/assets/images/instagram-4.png";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const InstagramGallery = ({ feed }: any) => {
+  const instagram_images = feed.data
+    .filter((item: { media_type: string }) => {
+      return item.media_type === "IMAGE";
+    })
+    .slice(0, 4);
 
-const instagram_images = [
-  instagram_1.src,
-  instagram_2.src,
-  instagram_3.src,
-  instagram_4.src,
-];
+  console.log(instagram_images);
 
-const InstagramGallery = () => {
   return (
-    <div className="flex flex-wrap justify-center gap-12">
-      {instagram_images.map((image, index) => (
-        <img
-          className="w-full sm:w-1/3 md:w-1/5"
-          src={image}
-          alt={"Maiarc Concierce"}
-          key={index}
-        />
+    <div className="flex flex-col gap-12 md:flex-row">
+      {instagram_images.map((item: { permalink: string; media_url: string }) => (
+        <a href={item.permalink} key={item.media_url} className="aspect-square w-full" target="_blank">
+          <img className="aspect-square h-full w-full object-cover" src={item.media_url} alt={"Maiarc Concierce"} />
+        </a>
       ))}
     </div>
   );
