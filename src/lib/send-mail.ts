@@ -13,6 +13,7 @@ export interface IFormData {
   date_start: string;
   date_end: string;
   service: string;
+  destination: string;
 }
 
 export default async function sendMail(data: IFormData) {
@@ -36,9 +37,10 @@ export default async function sendMail(data: IFormData) {
         <p>Email: ${data.email}</p>
         <p>Teléfono: ${data.phone}</p>
         <p>Mensaje: ${data.message}</p>
-        <p>Servicio: ${data.service ?? "no ingresado"}</p>
+        <p>Consulta por: ${data.service ?? "no ingresado"}</p>
         <p>Fecha de entrada: ${data.date_start ?? "no ingresado"}</p>
         <p>Fecha de salida: ${data.date_end ?? "no ingresado"}</p>
+        <p>Destino: ${data.destination ?? "no ingresado"}</p>
       `,
   };
 

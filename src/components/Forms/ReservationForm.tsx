@@ -89,6 +89,7 @@ const ReservationForm = ({ name, destination }: { name: string; destination: str
 
   // eslint-disable-next-line @typescript-eslint/require-await
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(JSON.stringify(values, null, 2));
     toast.promise(
       fetch("/api/send-mail", {
         method: "POST",

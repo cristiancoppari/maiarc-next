@@ -83,7 +83,10 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, closeModa
 
                 {/* Reservation Form */}
                 {"location" in item ? (
-                  <ReservationForm name={item.name} destination={!!item.location ? (item.location as string) : ""} />
+                  <ReservationForm
+                    name={item.name}
+                    destination={!!item.location ? `${item.location as string} ${item.destination}` : ""}
+                  />
                 ) : (
                   <ReservationForm name={item.name} destination={item.destination} />
                 )}
