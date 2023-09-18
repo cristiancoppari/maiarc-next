@@ -80,6 +80,10 @@ typo light -> neutral-100
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-background text-foreground;
 }
