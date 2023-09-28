@@ -118,6 +118,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
   const [section, setSection] = useState<string>(service);
 
   const selectSectionHandler = (section: string) => {
+    console.log("section", section);
     setSection(section);
   };
 
@@ -129,7 +130,14 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
         {/* Cards with the services that acts like a filter */}
         <div className="container grid grid-cols-1 gap-8 md:grid-cols-3">
           {services.map((service) => (
-            <Link href={`#${service.selector}`} key={service.id} onClick={() => selectSectionHandler(service.name)}>
+            <Link
+              href={`#${service.selector}`}
+              key={service.id}
+              onClick={() => {
+                selectSectionHandler(service.name);
+                console.log(service.name);
+              }}
+            >
               <ImageTitle classes="capitalize" title={service.name} image={service.main_image} />
             </Link>
           ))}
@@ -171,7 +179,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
         </Section>
       )}
 
-      {(section === "Premium Vehicles" || section === "Vehiculos Premium") && (
+      {(section === "Premium Vehicles" || section === "Vehículos Premium") && (
         <Section classes="container" noPadding id="premiumVehicles">
           {/* Premium Vehicles Carousel */}
           <Carousel>
