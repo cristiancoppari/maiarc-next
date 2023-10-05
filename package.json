@@ -39,6 +39,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "react-markdown": "^8.0.7",
+    "resend": "^1.1.0",
     "sonner": "^0.6.2",
     "swiper": "^10.0.4",
     "tailwind-merge": "^1.13.2",

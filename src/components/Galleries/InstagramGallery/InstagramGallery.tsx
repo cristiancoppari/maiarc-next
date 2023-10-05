@@ -10,8 +10,6 @@ const InstagramGallery = ({ feed }: any) => {
     })
     .slice(0, 4);
 
-  console.log(instagram_images);
-
   return (
     <div className="flex flex-col gap-12 md:flex-row">
       {instagram_images.map((item: { permalink: string; media_url: string }) => (

@@ -46,7 +46,7 @@ const formSchema = z.object({
     .max(1000, {
       message: "El mensaje no puede tener más de 1000 caracteres",
     }),
-  destinations: z
+  destination: z
     .string({
       required_error: "Tienes que ingresar un destino",
     })
@@ -83,7 +83,7 @@ const ContactForm = () => {
       phone: "",
       email: "",
       message: "",
-      destinations: "",
+      destination: "",
       prefix: "",
     },
   });
@@ -166,7 +166,7 @@ const ContactForm = () => {
         </div>
         <FormField
           control={form.control}
-          name="destinations"
+          name="destination"
           render={({ field }) => (
             <FormItem>
               <FormLabel>{c.form.destinations.label}</FormLabel>

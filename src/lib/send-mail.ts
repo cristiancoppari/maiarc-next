@@ -2,8 +2,9 @@ import type SMTPTransport from "nodemailer/lib/smtp-transport";
 
 import * as nodemailer from "nodemailer";
 
-const ZOHO_USER = process.env.ZOHO_USER;
-const ZOHO_APP_PASS = process.env.ZOHO_APP_PASS;
+// const ZOHO_USER = process.env.ZOHO_USER;
+// const ZOHO_APP_PASS = process.env.ZOHO_APP_PASS;
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
 export interface IFormData {
   name: string;
@@ -18,18 +19,18 @@ export interface IFormData {
 
 export default async function sendMail(data: IFormData) {
   const transporter: nodemailer.Transporter<SMTPTransport.SentMessageInfo> = nodemailer.createTransport({
-    host: "smtp.zoho.com",
+    host: "smtp.resend.com",
     port: 465,
     secure: true, // use SSL
     auth: {
-      user: ZOHO_USER,
-      pass: ZOHO_APP_PASS,
+      user: "resend",
+      pass: RESEND_API_KEY,
     },
   });
 
   const mailOptions = {
-    from: ZOHO_USER,
-    to: "cristian.coppari@gmail.com",
+    from: "maiarc@resend.dev",
+    to: process.env.MAIL_TO,
     subject: "MAIARC Concierge ⚜️ - Nuevo mensaje de contacto",
     html: `
         <h1>Nuevo contacto:</h1>
@@ -37,10 +38,10 @@ export default async function sendMail(data: IFormData) {
         <p>Email: ${data.email}</p>
         <p>Teléfono: ${data.phone}</p>
         <p>Mensaje: ${data.message}</p>
-        <p>Consulta por: ${data.service ?? "no ingresado"}</p>
-        <p>Fecha de entrada: ${data.date_start ?? "no ingresado"}</p>
-        <p>Fecha de salida: ${data.date_end ?? "no ingresado"}</p>
-        <p>Destino: ${data.destination ?? "no ingresado"}</p>
+        ${data.service ? `<p>Consulta por: ${data.service}</p>` : ""}
+        <p>Fecha de entrada: ${data.date_start ?? ""}</p>
+        <p>Fecha de salida: ${data.date_end ?? ""}</p>
+        <p>Destino: ${data.destination ?? ""}</p>
       `,
   };
 
