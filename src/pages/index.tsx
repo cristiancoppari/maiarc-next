@@ -83,7 +83,7 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data, feed }) => {
         <LinkBtn link="/contacto" text={locale_content.ctas.more} classes="my-16" />
 
         {/* Premium Services */}
-        <BigGallery services={c.premium_services_block.premium_services} />
+        <BigGallery services={c.premium_services_block.premium_services} cta={locale_content.ctas.more} />
       </Section>
 
       <Section title={c.accommodations_block.title} text={c.accommodations_block.text} classes="bg-zinc-200">

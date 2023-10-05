@@ -118,7 +118,6 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
   const [section, setSection] = useState<string>(service);
 
   const selectSectionHandler = (section: string) => {
-    console.log("section", section);
     setSection(section);
   };
 

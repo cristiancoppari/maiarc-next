@@ -1,6 +1,13 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import ReactMarkdown from "react-markdown";
 import { useContext } from "react";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { LangContext } from "@/context/langContext";
 
 import { Button } from "../../ui/button";
@@ -10,8 +17,19 @@ interface NewsletterProps {
   text: string;
 }
 
+const formSchema = z.object({
+  email: z
+    .string({
+      required_error: "Tienes que ingresar un email",
+    })
+    .email({
+      message: "Tienes que ingresar un email",
+    }),
+});
+
 const Newsletter = ({ title, text }: NewsletterProps) => {
   const content = useContext(LangContext);
+
   const c = content.locale_file;
 
   return (
@@ -42,13 +60,71 @@ const Newsletter = ({ title, text }: NewsletterProps) => {
         </div>
 
         <div className="mx-auto flex flex-col justify-center gap-4 sm:flex-row">
-          <input type="text" className="w-full rounded-full p-2 px-4" placeholder={`${c.newsletter.placeholder}`} />
-          <Button variant="outline" className="rounded-full px-12 uppercase">
-            {c.ctas.subscription}
-          </Button>
+          <NewsletterForm content={c.ctas.subscription} />
         </div>
       </div>
     </section>
+  );
+};
+
+const NewsletterForm = ({ content }: { content: string }) => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+    },
+  });
+
+  // eslint-disable-next-line @typescript-eslint/require-await
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(
+      JSON.stringify({
+        data: {
+          lead: values.email,
+        },
+      }),
+    );
+    toast.promise(
+      fetch("https://lobster-app-ywbip.ondigitalocean.app/api/newsletters", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: {
+            lead: values.email,
+          },
+        }),
+      }),
+      {
+        loading: "Enviando mail...",
+        success: "Tu mensaje ha sido enviado",
+        error: "Hubo un error al enviar tu mensaje",
+      },
+    );
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full items-center justify-center gap-4 space-y-8">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem className="w-full rounded-full text-zinc-100">
+              <FormControl>
+                <Input className="rounded-full" placeholder={"juan@gmail.com"} {...field} />
+              </FormControl>
+              {/* <FormMessage /> */}
+            </FormItem>
+          )}
+        />
+
+        <Button variant="outline" className="!mt-0 rounded-full uppercase">
+          {content}
+        </Button>
+      </form>
+    </Form>
   );
 };
 
