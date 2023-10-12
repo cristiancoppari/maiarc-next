@@ -130,6 +130,11 @@ export const es = {
       },
       submit: "Enviar",
     },
+    messages: {
+      sending: "Enviando...",
+      success: "Tu mensaje fue enviado.",
+      error: "Hubo un error al enviar tu mensaje.",
+    },
   },
   ctas: {
     more: "Más información",

@@ -99,9 +99,9 @@ const ContactForm = () => {
         body: JSON.stringify(values),
       }),
       {
-        loading: "Enviando mail...",
-        success: "Tu mensaje ha sido enviado",
-        error: "Hubo un error al enviar tu mensaje",
+        loading: c.messages.sending,
+        success: c.messages.success,
+        error: c.messages.error,
       },
     );
   }

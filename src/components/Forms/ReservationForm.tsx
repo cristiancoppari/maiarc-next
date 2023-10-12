@@ -98,13 +98,11 @@ const ReservationForm = ({ name, destination }: { name: string; destination: str
         body: JSON.stringify(values),
       }),
       {
-        loading: "Enviando mail...",
-        success: "Tu mensaje ha sido enviado",
-        error: "Hubo un error al enviar tu mensaje",
+        loading: c.messages.sending,
+        success: c.messages.success,
+        error: c.messages.error,
       },
     );
-
-    console.log(JSON.stringify(values));
   }
 
   return (
