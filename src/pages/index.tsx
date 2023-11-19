@@ -17,7 +17,7 @@ import Carousel from "@/components/Carousel/Carousel";
 import ImageTitle from "@/components/Cards/ImageTitle";
 import { LinkBtn } from "@/components/Buttons/Button/Buttons";
 import BigGallery from "@/components/Galleries/BigGallery/BigGallery";
-import InstagramGallery from "@/components/Galleries/InstagramGallery/InstagramGallery";
+// import InstagramGallery from "@/components/Galleries/InstagramGallery/InstagramGallery";
 import Newsletter from "@/components/Sections/Newsletter/Newsletter";
 import CardSlide from "@/components/Cards/CardSlides/CardSlide";
 
