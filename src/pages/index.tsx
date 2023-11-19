@@ -99,9 +99,9 @@ const Home: React.FC<HomeProps> = ({ villas_data, home_page_data, feed }) => {
         </div>
       </Section>
 
-      <Section title={c.community_block.title} text={c.community_block.text} classes="container">
-        <InstagramGallery feed={feed} />
-      </Section>
+      {/*<Section title={c.community_block.title} text={c.community_block.text} classes="container">*/}
+      {/*  <InstagramGallery feed={feed} />*/}
+      {/*</Section>*/}
 
       <Newsletter title={c.newsletter_block.title} text={c.newsletter_block.text} />
     </PageLayout>
