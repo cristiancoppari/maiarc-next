@@ -111,6 +111,9 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
 }) => {
   const router = useRouter();
   const service = router.query.service as string;
+  const hideCards = router.query.hideCards as string;
+
+  const { locale } = router;
 
   const c = destino_page_data;
 
@@ -125,23 +128,36 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
     <PageLayout title={`${destinosMap[destino]} - MAIARC`}>
       <Hero images={c.hero_images[destino]} />
 
-      <Section title={`${c.title} ${destinosMap[destino]}`} text={c.texts[destino]}>
+      <Section
+        title={`${hideCards ? service : c.title} ${destinosMap[destino]}`}
+        text={!hideCards ? c.texts[destino] : ""}
+        classes={`${hideCards ? "!pb-0" : ""}`}
+      >
         {/* Cards with the services that acts like a filter */}
-        <div className="container grid grid-cols-1 gap-8 md:grid-cols-3">
-          {services.map((service) => (
-            <Link
-              href={`#${service.selector}`}
-              key={service.id}
-              onClick={() => {
-                selectSectionHandler(service.name);
-                console.log(service.name);
-              }}
-            >
-              <ImageTitle classes="capitalize" title={service.name} image={service.main_image} />
-            </Link>
-          ))}
+        <div className={`${hideCards ? "hidden" : "none"}`}>
+          <div className="container grid grid-cols-1 gap-8 md:grid-cols-3">
+            {services.map((service) => (
+              <Link
+                href={`#${service.selector}`}
+                key={service.id}
+                onClick={() => {
+                  selectSectionHandler(service.name);
+                  console.log(service.name);
+                }}
+              >
+                <ImageTitle classes="capitalize" title={service.name} image={service.main_image} />
+              </Link>
+            ))}
+          </div>
         </div>
       </Section>
+
+      {villas.length === 0 && yatchs.length === 0 && hotels.length === 0 && vehicles.length === 0 && (
+        <Section
+          text={`${locale === "es" ? "No se encontraron resultados" : "No results found"}`}
+          classes="container"
+        />
+      )}
 
       {(section === "Luxury Accommodations" || section === "Alojamientos de lujo") && (
         <Section classes="container" noPadding id="luxuryAccommodations">

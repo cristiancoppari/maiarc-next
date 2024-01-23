@@ -40,7 +40,10 @@ const DestinationsPage: React.FC<DestinationsPageProps> = ({ destinations, desti
           {destinations
             .sort((a, b) => a.order - b.order)
             .map((destination) => (
-              <Link href={`/destinos/${destination.slug}/${service ? "?service=" + service : ""}`} key={destination.id}>
+              <Link
+                href={`/destinos/${destination.slug}/${service ? "?service=" + service : ""}&hideCards=true`}
+                key={destination.id}
+              >
                 <ImageTitle classes="capitalize" title={destination.name} image={destination.main_image} />
               </Link>
             ))}

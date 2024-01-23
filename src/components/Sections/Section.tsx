@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const Section = ({ title, text, children, classes, noPadding, id }: ISection) => {
   return (
     <section
-      className={cn(!noPadding && `section-padding`, `scroll-m-32 text-center ${!!classes ? classes : ""}`)}
+      className={cn(!noPadding && `px-8 py-12 lg:py-24`, `scroll-m-32 text-center ${!!classes ? classes : ""}`)}
       id={id ?? undefined}
     >
       <div className="mb-10">

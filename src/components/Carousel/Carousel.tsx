@@ -1,9 +1,9 @@
-import type { ReactNode } from "react";
+import React, {PropsWithChildren} from "react";
 
 import { Swiper } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
-const Carousel: React.FC<{ children: ReactNode }> = ({ children }) => {
+const Carousel: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <Swiper
       style={{ paddingTop: "2rem" }}

@@ -7,4 +7,5 @@ export interface ISection {
   classes?: string;
   noPadding?: boolean;
   id?: string;
+  style?: React.CSSProperties | undefined;
 }
