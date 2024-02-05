@@ -57,11 +57,37 @@ export interface Attributes2 {
 }
 
 export interface Formats {
-  small?: Small;
+  large: Large;
+  small: Small;
+  medium: Medium;
   thumbnail: Thumbnail;
 }
 
+export interface Large {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
 export interface Small {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Medium {
   ext: string;
   url: string;
   hash: string;
@@ -114,13 +140,13 @@ export interface Attributes3 {
 }
 
 export interface Formats2 {
-  large: Large;
+  large: Large2;
   small: Small2;
-  medium: Medium;
+  medium: Medium2;
   thumbnail: Thumbnail2;
 }
 
-export interface Large {
+export interface Large2 {
   ext: string;
   url: string;
   hash: string;
@@ -144,7 +170,7 @@ export interface Small2 {
   height: number;
 }
 
-export interface Medium {
+export interface Medium2 {
   ext: string;
   url: string;
   hash: string;
@@ -197,7 +223,46 @@ export interface Attributes4 {
 }
 
 export interface Formats3 {
+  large: Large3;
+  small: Small3;
+  medium: Medium3;
   thumbnail: Thumbnail3;
+}
+
+export interface Large3 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Small3 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Medium3 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
 }
 
 export interface Thumbnail3 {
@@ -241,11 +306,13 @@ export interface Attributes5 {
 }
 
 export interface Formats4 {
+  large: Large4;
+  small: Small4;
+  medium: Medium4;
   thumbnail: Thumbnail4;
-  small?: Small3;
 }
 
-export interface Thumbnail4 {
+export interface Large4 {
   ext: string;
   url: string;
   hash: string;
@@ -257,7 +324,31 @@ export interface Thumbnail4 {
   height: number;
 }
 
-export interface Small3 {
+export interface Small4 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Medium4 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Thumbnail4 {
   ext: string;
   url: string;
   hash: string;
@@ -284,9 +375,13 @@ export interface Attributes6 {
   updatedAt: string;
   publishedAt: string;
   locale: string;
-  main_image: MainImage;
-  localizations: Localizations;
   selector: string;
+  main_image: MainImage;
+  ibiza_img: IbizaImg;
+  pde_img: PdeImg;
+  miami_img: MiamiImg;
+  tulum_img: TulumImg;
+  localizations: Localizations;
 }
 
 export interface MainImage {
@@ -318,13 +413,13 @@ export interface Attributes7 {
 }
 
 export interface Formats5 {
-  large: Large2;
-  small: Small4;
-  medium: Medium2;
+  large: Large5;
+  small: Small5;
+  medium: Medium5;
   thumbnail: Thumbnail5;
 }
 
-export interface Large2 {
+export interface Large5 {
   ext: string;
   url: string;
   hash: string;
@@ -336,7 +431,7 @@ export interface Large2 {
   height: number;
 }
 
-export interface Small4 {
+export interface Small5 {
   ext: string;
   url: string;
   hash: string;
@@ -348,7 +443,7 @@ export interface Small4 {
   height: number;
 }
 
-export interface Medium2 {
+export interface Medium5 {
   ext: string;
   url: string;
   hash: string;
@@ -372,21 +467,354 @@ export interface Thumbnail5 {
   height: number;
 }
 
-export interface Localizations {
-  data: Daum6[];
+export interface IbizaImg {
+  data?: Data3;
 }
 
-export interface Daum6 {
+export interface Data3 {
   id: number;
   attributes: Attributes8;
 }
 
 export interface Attributes8 {
   name: string;
+  alternativeText: any;
+  caption: any;
+  width: number;
+  height: number;
+  formats: Formats6;
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: any;
+  provider: string;
+  provider_metadata: any;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Formats6 {
+  large: Large6;
+  small: Small6;
+  medium: Medium6;
+  thumbnail: Thumbnail6;
+}
+
+export interface Large6 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Small6 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Medium6 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Thumbnail6 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface PdeImg {
+  data?: Data4;
+}
+
+export interface Data4 {
+  id: number;
+  attributes: Attributes9;
+}
+
+export interface Attributes9 {
+  name: string;
+  alternativeText: any;
+  caption: any;
+  width: number;
+  height: number;
+  formats: Formats7;
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: any;
+  provider: string;
+  provider_metadata: any;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Formats7 {
+  large: Large7;
+  small: Small7;
+  medium: Medium7;
+  thumbnail: Thumbnail7;
+}
+
+export interface Large7 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Small7 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Medium7 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Thumbnail7 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface MiamiImg {
+  data?: Data5;
+}
+
+export interface Data5 {
+  id: number;
+  attributes: Attributes10;
+}
+
+export interface Attributes10 {
+  name: string;
+  alternativeText: any;
+  caption: any;
+  width: number;
+  height: number;
+  formats: Formats8;
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: any;
+  provider: string;
+  provider_metadata: any;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Formats8 {
+  large: Large8;
+  small: Small8;
+  medium: Medium8;
+  thumbnail: Thumbnail8;
+}
+
+export interface Large8 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Small8 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Medium8 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Thumbnail8 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface TulumImg {
+  data?: Data6;
+}
+
+export interface Data6 {
+  id: number;
+  attributes: Attributes11;
+}
+
+export interface Attributes11 {
+  name: string;
+  alternativeText: any;
+  caption: any;
+  width: number;
+  height: number;
+  formats: Formats9;
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: any;
+  provider: string;
+  provider_metadata: any;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Formats9 {
+  large: Large9;
+  small: Small9;
+  medium: Medium9;
+  thumbnail: Thumbnail9;
+}
+
+export interface Large9 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Small9 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Medium9 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Thumbnail9 {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Localizations {
+  data: Daum6[];
+}
+
+export interface Daum6 {
+  id: number;
+  attributes: Attributes12;
+}
+
+export interface Attributes12 {
+  name: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   locale: string;
+  selector: string;
 }
 
 export interface Localizations2 {
@@ -395,10 +823,10 @@ export interface Localizations2 {
 
 export interface Daum7 {
   id: number;
-  attributes: Attributes9;
+  attributes: Attributes13;
 }
 
-export interface Attributes9 {
+export interface Attributes13 {
   title: string;
   text: string;
   createdAt: string;

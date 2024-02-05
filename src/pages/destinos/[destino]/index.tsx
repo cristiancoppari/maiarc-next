@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { Hotel, PremiumVehicle, Service, Villa, Yatch } from "@/types/services";
 import type { DestinoPage as IDestinoPage } from "@/types/pages";
 
@@ -46,12 +47,31 @@ export const getServerSideProps = async ({ params, locale }: { params: Params; l
     const vehicles_data = await fetchPremiumVehicles();
     const destino_page_data = await fetchDestinoPage(locale);
 
-    // Filter the services to show only the clickable ones
-    const services = destino_page_data?.services.map((service): Service => {
+    const services = destino_page_data?.services.map((service) => {
+      // Intenta seleccionar la imagen principal basada en el destino y utiliza main_image como respaldo
+      let main_image = service.main_image; // Valor por defecto que siempre existe según tus requerimientos
+
+      switch (destino) {
+        case "ibiza":
+          main_image = service.ibiza_img || main_image;
+          break;
+        case "miami":
+          main_image = service.miami_img || main_image;
+          break;
+        case "punta-del-este":
+          main_image = service.pde_img || main_image;
+          break;
+        case "tulum":
+          main_image = service.tulum_img || main_image;
+          break;
+      }
+
+      // No es necesario un chequeo adicional para una imagen por defecto aquí, ya que main_image ya contiene un valor por defecto
+
       return {
         id: service.id,
         name: service.name,
-        main_image: service.main_image,
+        main_image: main_image, // Usa la imagen seleccionada basada en el destino o la imagen por defecto
         selector: service.selector,
       };
     });
@@ -136,29 +156,28 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
         {/* Cards with the services that acts like a filter */}
         <div className={`${hideCards ? "hidden" : "none"}`}>
           <div className="container grid grid-cols-1 gap-8 md:grid-cols-3">
-            {services.map((service) => (
-              <Link
-                href={`#${service.selector}`}
-                key={service.id}
-                onClick={() => {
-                  selectSectionHandler(service.name);
-                  console.log(service.name);
-                }}
-              >
-                <ImageTitle classes="capitalize" title={service.name} image={service.main_image} />
-              </Link>
-            ))}
+            {services.map((service) => {
+              return (
+                <Link
+                  href={`#${service.selector}`}
+                  key={service.id}
+                  onClick={() => {
+                    selectSectionHandler(service.name);
+                  }}
+                >
+                  <ImageTitle classes="capitalize" title={service.name} image={service.main_image} />
+                </Link>
+              );
+            })}
           </div>
         </div>
       </Section>
-
       {villas.length === 0 && yatchs.length === 0 && hotels.length === 0 && vehicles.length === 0 && (
         <Section
           text={`${locale === "es" ? "No se encontraron resultados" : "No results found"}`}
           classes="container"
         />
       )}
-
       {(section === "Luxury Accommodations" || section === "Alojamientos de lujo") && (
         <Section classes="container" noPadding id="luxuryAccommodations">
           {/* Services Carousel */}
@@ -180,7 +199,6 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
           </Carousel>
         </Section>
       )}
-
       {(section === "Yatchs" || section === "Yates") && (
         <Section classes="container" noPadding id="yatchs">
           {/* Yatch Carousel */}
@@ -193,7 +211,6 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
           </Carousel>
         </Section>
       )}
-
       {(section === "Premium Vehicles" || section === "Vehículos Premium") && (
         <Section classes="container" noPadding id="premiumVehicles">
           {/* Premium Vehicles Carousel */}

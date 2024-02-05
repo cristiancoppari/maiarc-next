@@ -485,6 +485,10 @@ export const fetchDestinoPage = async (locale: string) => {
           name: service.attributes.name,
           main_image: service.attributes.main_image.data.attributes.url,
           selector: service.attributes.selector,
+          tulum_img: service.attributes.tulum_img.data?.attributes.url ?? null,
+          pde_img: service.attributes.pde_img.data?.attributes.url ?? null,
+          miami_img: service.attributes.miami_img.data?.attributes.url ?? null,
+          ibiza_img: service.attributes.ibiza_img.data?.attributes.url ?? null,
         };
       }),
       hero_images: {
