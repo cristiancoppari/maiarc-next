@@ -49,7 +49,7 @@ interface HomeProps {
   feed: any;
 }
 
-const Home: React.FC<HomeProps> = ({ villas_data, home_page_data, feed }) => {
+const Home: React.FC<HomeProps> = ({ villas_data, home_page_data }) => {
   const c = home_page_data;
   const content = useContext(LangContext);
   const locale_content = content.locale_file;
