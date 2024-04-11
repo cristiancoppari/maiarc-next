@@ -483,7 +483,7 @@ export const fetchDestinoPage = async (locale: string) => {
         return {
           id: service.id,
           name: service.attributes.name,
-          main_image: service.attributes.main_image.data.attributes.url,
+          main_image: service.attributes.main_image.data.attributes.url ?? null,
           selector: service.attributes.selector,
           tulum_img: service.attributes.tulum_img.data?.attributes.url ?? null,
           pde_img: service.attributes.pde_img.data?.attributes.url ?? null,

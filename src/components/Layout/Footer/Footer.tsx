@@ -36,7 +36,7 @@ const Footer = ({ content }: Footer) => {
       <p className="mb-2 uppercase"> Ibiza | Tulum | Miami | Punta del Este</p>
 
       <div className="mb-4 flex flex-col items-center gap-4 uppercase md:flex-row">
-        <p>contact@maiarconcierge.com</p> <p>|</p> <p>+52 984 186 9125</p>
+        <p>contact@maiarconcierge.com</p> <p>|</p> <p>+52 984 202 8334</p>
       </div>
 
       <div>
