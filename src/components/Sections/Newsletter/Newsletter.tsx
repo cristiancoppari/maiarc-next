@@ -77,13 +77,6 @@ const NewsletterForm = ({ content }: { content: string }) => {
 
   // eslint-disable-next-line @typescript-eslint/require-await
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(
-      JSON.stringify({
-        data: {
-          lead: values.email,
-        },
-      }),
-    );
     toast.promise(
       fetch("https://lobster-app-ywbip.ondigitalocean.app/api/newsletters", {
         method: "POST",

@@ -34,6 +34,13 @@ export const getServerSideProps = async ({ params, locale }: { params: Params; l
   // Get the params from the URL
   const { destino } = params;
 
+  const destinosMap = {
+    tulum: "tulum",
+    miami: "miami",
+    ibiza: "ibiza",
+    "punta-del-este": "punta del este",
+  };
+
   if (destino !== "tulum" && destino !== "miami" && destino !== "ibiza" && destino !== "punta-del-este") {
     return {
       notFound: true,
@@ -78,22 +85,22 @@ export const getServerSideProps = async ({ params, locale }: { params: Params; l
 
     // Filter the villas to match the destination
     const villas = villas_data.filter((element) => {
-      return element.destination === destino;
+      return element.destination === destinosMap[destino];
     });
 
     // Filter the yatchs to match the destination
     const yatchs = yatchs_data.filter((element) => {
-      return element.destination === destino;
+      return element.destination === destinosMap[destino];
     });
 
     // Filter the hotels to match the destination
     const hotels = hotels_data.filter((element) => {
-      return element.destination === destino;
+      return element.destination === destinosMap[destino];
     });
 
     // Filter the vehicles to match the destination
     const vehicles = vehicles_data.filter((element) => {
-      return element.destination === destino;
+      return element.destination === destinosMap[destino];
     });
 
     return {
@@ -172,12 +179,14 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
           </div>
         </div>
       </Section>
+
       {villas.length === 0 && yatchs.length === 0 && hotels.length === 0 && vehicles.length === 0 && (
         <Section
           text={`${locale === "es" ? "No se encontraron resultados" : "No results found"}`}
           classes="container"
         />
       )}
+
       {(section === "Luxury Accommodations" || section === "Alojamientos de lujo") && (
         <Section classes="container" noPadding id="luxuryAccommodations">
           {/* Services Carousel */}
@@ -199,6 +208,7 @@ const DestinoPage: React.FC<DestinoPageProps> = ({
           </Carousel>
         </Section>
       )}
+
       {(section === "Yatchs" || section === "Yates") && (
         <Section classes="container" noPadding id="yatchs">
           {/* Yatch Carousel */}
